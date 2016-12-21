@@ -1,0 +1,48 @@
+<?php
+// Prepare form
+$loginForm->setAttribute('action', $this->url('zfcuser/login'));
+$loginForm->setAttribute('method', 'post');
+$loginForm->prepare();
+
+// Get elements
+$identity   = $loginForm->get('identity');
+$credential = $loginForm->get('credential');
+$submit     = $loginForm->get('submit');
+
+// Setup elements
+$submit->setAttribute('class', 'btn btn-primary pull-right');
+
+// Start form
+echo $this->form()->openTag($loginForm);
+
+?>
+<h1 class="form-signin-heading">
+    <?php echo $this->translate('Sign In') ?>
+</h1>
+<?php echo $this->formRow($identity) ?>
+<?php echo $this->formRow($credential) ?>
+<div class="form-buttons">
+    <?php if ($this->redirect): ?>
+        <input type="hidden" name="redirect"
+               value="<?php echo $this->escapeHtml($this->redirect) ?>">
+           <?php endif ?>
+    <div class="form-links">
+        <?php if ($this->enableRegistration): ?>
+            <?php echo $this->translate('Not registered?') ?>
+            <a href="<?php
+            echo $this->url('zfcuser/register'),
+            ($this->redirect ? '?redirect=' . $this->redirect : '')
+
+            ?>">
+                   <?php echo $this->translate('Sign up!') ?>
+            </a><br>
+        <?php endif /* ?>
+          <a href="<?php echo $this->url('zfcuser/forgottenpassword'),
+          ($this->redirect ? '?redirect=' . $this->redirect : '') ?>">
+          <?php echo $this->translate('Forgotten your password?') ?>
+          </a> */ ?>
+    </div>
+    <?php echo $this->formRow($submit) ?>
+</div>
+<?php
+echo $this->form()->closeTag();

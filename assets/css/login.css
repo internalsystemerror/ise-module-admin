@@ -1,0 +1,88 @@
+body
+{
+    padding: 0;
+    background-color: #f5f5f5;
+}
+body > .container
+{
+    padding: 0;
+}
+
+.form-signin
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+    padding: 19px 29px 109px;
+    margin: 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.form-signin .form-signin-heading
+{
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox
+{
+    margin-bottom: 20px;
+}
+
+.form-signin .form-controls
+{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.form-signin .form-control
+{
+    height: auto;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 6px 7px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin .form-group
+{
+    margin-bottom: 0;
+}
+.form-signin label.control-label
+{
+    display: none;
+}
+.form-signin .form-buttons
+{
+    display: block;
+    overflow: hidden;
+}
+.form-signin .form-links
+{
+    float: left;
+    margin-top: 5px;
+    font-size: 12px;
+}
+.form-signin footer
+{
+    clear: both;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 10px;
+    padding-bottom: 20px;
+    position: absolute;
+    bottom: 0;
+}

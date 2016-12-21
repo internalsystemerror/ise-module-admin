@@ -1,0 +1,32 @@
+<?php
+// Add buttons
+$factory = new \IseBread\Factory\FormAbstractFactory();
+$factory->addButtonsToForm($changeEmailForm, 'Confirm');
+
+// Set up email fields
+$newEmail    = $changeEmailForm->get('newIdentity');
+$newEmail->setAttribute('type', 'email');
+$verifyEmail = $changeEmailForm->get('newIdentityVerify');
+$verifyEmail->setAttribute('type', 'email');
+
+// Set up cancel button
+$cancel = $changeEmailForm->get('buttons')->get('cancel');
+$cancel->setAttribute('href', $this->url('zfcuser/profile'));
+
+// Prepare form
+$changeEmailForm->setAttribute('action', $this->url());
+$changeEmailForm->setAttribute('class', 'form-horizontal');
+$changeEmailForm->setAttribute('autocomplete', 'off');
+$changeEmailForm->prepare();
+
+?>
+<h1 class="page-header">
+    <?php echo $this->translate('Change Email Address'); ?>
+</h1>
+<?php
+if ($status === true) {
+    echo $this->alert()->success('Email address changed successfully.');
+} elseif ($status === false) {
+    echo $this->alert()->error('Unable to update your email address. Please try again.');
+}
+echo $this->form($changeEmailForm);

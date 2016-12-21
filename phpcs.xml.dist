@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="IseStandard">
+    <description>Internalsystemerror Coding Standards</description>
+    <file>config</file>
+    <file>src</file>
+    <file>tests</file>
+
+    <arg name="generator" value="html" />
+    <arg name="report-full" value="./build/logs/phpcs.html" />
+    <arg name="extensions" value="php" />
+    <arg value="np" />
+    <arg name="colors" />
+    
+    <rule ref="PSR2" />
+</ruleset>
