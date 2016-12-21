@@ -1,0 +1,53 @@
+<?php
+// Dont render if disabled
+if (!$this->enableRegistration) {
+    return;
+}
+// Prepare form
+$registerForm->setAttribute('action', $this->url());
+$registerForm->prepare();
+
+// Setup elements
+$submit = $registerForm->get('submit');
+$submit->setAttribute('class', 'btn btn-primary pull-right');
+
+// Start form
+echo $this->form()->openTag($registerForm);
+
+?>
+<h1 class="form-signin-heading">
+    <?php echo $this->translate('Register') ?>
+</h1>
+<?php
+foreach ($registerForm->getElements() as $element) {
+    if ($element->getName() === 'submit') {
+        continue;
+    }
+    echo $this->formRow($element);
+}
+
+?>
+<div class="form-buttons">
+    <?php if ($this->redirect): ?>
+        <input type="hidden" name="redirect"
+               value="<?php echo $this->escapeHtml($this->redirect) ?>">
+           <?php endif ?>
+    <div class="form-links">
+        <?php echo $this->translate('Already registered?') ?>
+        <a href="<?php
+        echo $this->url('zfcuser/login'),
+        ($this->redirect ? '?redirect=' . $this->redirect : '')
+
+        ?>">
+               <?php echo $this->translate('Sign In!') ?>
+        </a><br>
+        <?php /*
+          <a href="<?php echo $this->url('zfcuser/forgottenpassword'),
+          ($this->redirect ? '?redirect=' . $this->redirect : '') ?>">
+          <?php echo $this->translate('Forgotten your password?') ?>
+          </a> */ ?>
+    </div>
+    <?php echo $this->formRow($submit) ?>
+</div>
+<?php
+echo $this->form()->closeTag();
