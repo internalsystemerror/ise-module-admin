@@ -20,9 +20,9 @@ return [
                 ],
             ],
         ],
-    ],
-    'data-fixture'  => [
-        'admin_fixture' => __DIR__ . '/../src/Fixture',
+        'fixtures' => [
+            'admin_fixture' => __DIR__ . '/../src/Fixture',
+        ],
     ],
     'view_manager'  => [
         'template_map'        => [

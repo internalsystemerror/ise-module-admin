@@ -979,12 +979,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/zf2-module-doctrinedatafixture.git",
-                "reference": "f062943d07fa1144b9fe655de882e24f1a31d792"
+                "reference": "529623d419ff760aa816b657f8391c46db37d17f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/zf2-module-doctrinedatafixture/zipball/f062943d07fa1144b9fe655de882e24f1a31d792",
-                "reference": "f062943d07fa1144b9fe655de882e24f1a31d792",
+                "url": "https://api.github.com/repos/internalsystemerror/zf2-module-doctrinedatafixture/zipball/529623d419ff760aa816b657f8391c46db37d17f",
+                "reference": "529623d419ff760aa816b657f8391c46db37d17f",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1031,7 @@
                 "module",
                 "zf2"
             ],
-            "time": "2016-12-22 13:49:22"
+            "time": "2016-12-22 16:34:04"
         },
         {
             "name": "kriswallsmith/assetic",
