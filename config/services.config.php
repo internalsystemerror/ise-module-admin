@@ -10,7 +10,7 @@ use Ise\Admin\Navigation\Service\MenuNavigationFactory;
 use Ise\Admin\Service\UserService;
 use Ise\Admin\Service\RoleService;
 use Ise\Admin\Service\PermissionService;
-use IseBread\Factory\DoctrineOrmMapperFactory;
+use Ise\Bread\Factory\DoctrineOrmMapperFactory;
 use Zend\Authentication\AuthenticationService;
 use Zend\Db\Adapter\Adapter;
 use ZfcRbac\Initializer\AuthorizationServiceInitializer;

@@ -13,7 +13,7 @@ use Ise\Admin\Controller\UserController;
 use Ise\Admin\Controller\Factory\DiagnosticsControllerFactory;
 use Ise\Admin\Controller\Factory\ProfileControllerFactory;
 use Ise\Admin\Controller\Factory\RbacControllerFactory;
-use IseBread\Controller\Factory\AbstractActionControllerFactory;
+use Ise\Bread\Controller\Factory\AbstractActionControllerFactory;
 
 return [
     'aliases'    => [

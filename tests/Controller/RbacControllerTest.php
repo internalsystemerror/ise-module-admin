@@ -33,7 +33,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::browseAction
+     * @covers Ise\Bread\Controller\AbstractActionController::browseAction
      * @todo   Implement testBrowseAction().
      */
     public function testBrowseAction()
@@ -45,7 +45,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::readAction
+     * @covers Ise\Bread\Controller\AbstractActionController::readAction
      * @todo   Implement testReadAction().
      */
     public function testReadAction()
@@ -57,7 +57,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::addAction
+     * @covers Ise\Bread\Controller\AbstractActionController::addAction
      * @todo   Implement testAddAction().
      */
     public function testAddAction()
@@ -69,7 +69,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::editAction
+     * @covers Ise\Bread\Controller\AbstractActionController::editAction
      * @todo   Implement testEditAction().
      */
     public function testEditAction()
@@ -81,7 +81,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::deleteAction
+     * @covers Ise\Bread\Controller\AbstractActionController::deleteAction
      * @todo   Implement testDeleteAction().
      */
     public function testDeleteAction()
@@ -93,7 +93,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::enableAction
+     * @covers Ise\Bread\Controller\AbstractActionController::enableAction
      * @todo   Implement testEnableAction().
      */
     public function testEnableAction()
@@ -105,7 +105,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseBread\Controller\AbstractActionController::disableAction
+     * @covers Ise\Bread\Controller\AbstractActionController::disableAction
      * @todo   Implement testDisableAction().
      */
     public function testDisableAction()
