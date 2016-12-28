@@ -87,7 +87,7 @@ class RoleController extends AbstractRbacActionController
 
     /**
      * Does role inherit the permission?
-     * 
+     *
      * @param Role $role
      * @param Permission $permission
      * @return boolean

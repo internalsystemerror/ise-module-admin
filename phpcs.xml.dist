@@ -5,8 +5,7 @@
     <file>src</file>
     <file>tests</file>
 
-    <arg name="generator" value="html" />
-    <arg name="report-full" value="./build/logs/phpcs.html" />
+    <arg name="report-full" value="./build/logs/phpcs.txt" />
     <arg name="extensions" value="php" />
     <arg value="np" />
     <arg name="colors" />

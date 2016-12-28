@@ -96,7 +96,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
 
     /**
      * Set id
-     * 
+     *
      * @param string $id
      * @return self
      */

@@ -21,5 +21,4 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      * @var string
      */
     protected $id;
-
 }
