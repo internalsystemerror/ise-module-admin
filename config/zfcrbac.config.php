@@ -1,9 +1,9 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
-use IseAdmin\Assertion\NotCurrentUserAssertion;
-use IseAdmin\Entity\Role;
+use Ise\Admin\Assertion\NotCurrentUserAssertion;
+use Ise\Admin\Entity\Role;
 
 return [
     'assertion_manager' => [

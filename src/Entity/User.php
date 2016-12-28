@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -71,7 +71,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     protected $banned = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity="IseAdmin\Entity\Role", mappedBy="")
+     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="")
      * @ZF\Exclude()
      * @var Role[]|Collection
      */

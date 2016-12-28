@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Assertion;
+namespace Ise\Admin\Assertion;
 
 use ZfcRbac\Assertion\AssertionInterface;
 use ZfcRbac\Service\AuthorizationService;

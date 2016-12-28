@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Mapper\DoctrineOrm;
+namespace Ise\Admin\Mapper\DoctrineOrm;
 
 use IseBread\Mapper\DoctrineOrm\AbstractMapper;
 
@@ -10,5 +10,5 @@ class UserMapper extends AbstractMapper
     /**
      * @var string
      */
-    protected $entityClass = 'IseAdmin\Entity\User';
+    protected $entityClass = 'Ise\Admin\Entity\User';
 }

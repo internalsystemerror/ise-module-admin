@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
 return [
     'routes' => [

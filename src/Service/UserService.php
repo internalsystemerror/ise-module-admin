@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Service;
+namespace Ise\Admin\Service;
 
 use IseBread\Service\AbstractService;
 use ZfcRbac\Service\AuthorizationServiceAwareInterface;
@@ -17,24 +17,24 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
     /**
      * @var string
      */
-    protected $entityClass = 'IseAdmin\Entity\User';
+    protected $entityClass = 'Ise\Admin\Entity\User';
 
     /**
      * @var string
      */
-    protected $mapperClass = 'IseAdmin\Mapper\User';
+    protected $mapperClass = 'Ise\Admin\Mapper\User';
 
     /**
      * @var string[]
      */
     protected $form = [
-        'add'     => 'IseAdmin\Form\User\Add',
-        'edit'    => 'IseAdmin\Form\User\Edit',
-        'delete'  => 'IseAdmin\Form\User\Delete',
-        'enable'  => 'IseAdmin\Form\User\Enable',
-        'disable' => 'IseAdmin\Form\User\Disable',
-        'ban'     => 'IseAdmin\Form\User\Ban',
-        'unban'   => 'IseAdmin\Form\User\Delete',
+        'add'     => 'Ise\Admin\Form\User\Add',
+        'edit'    => 'Ise\Admin\Form\User\Edit',
+        'delete'  => 'Ise\Admin\Form\User\Delete',
+        'enable'  => 'Ise\Admin\Form\User\Enable',
+        'disable' => 'Ise\Admin\Form\User\Disable',
+        'ban'     => 'Ise\Admin\Form\User\Ban',
+        'unban'   => 'Ise\Admin\Form\User\Delete',
     ];
 
     public function ban(array $data)

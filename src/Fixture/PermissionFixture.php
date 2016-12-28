@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdmin\Fixture;
+namespace Ise\Admin\Fixture;
 
-use IseAdmin\Entity\Permission;
+use Ise\Admin\Entity\Permission;
 
 class PermissionFixture extends AbstractFixture
 {

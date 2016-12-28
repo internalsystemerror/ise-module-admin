@@ -1,15 +1,15 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
-use IseAdmin\Mapper\DoctrineOrm\UserMapper;
-use IseAdmin\Mapper\DoctrineOrm\RoleMapper;
-use IseAdmin\Mapper\DoctrineOrm\PermissionMapper;
-use IseAdmin\Navigation\Service\AdminNavigationFactory;
-use IseAdmin\Navigation\Service\MenuNavigationFactory;
-use IseAdmin\Service\UserService;
-use IseAdmin\Service\RoleService;
-use IseAdmin\Service\PermissionService;
+use Ise\Admin\Mapper\DoctrineOrm\UserMapper;
+use Ise\Admin\Mapper\DoctrineOrm\RoleMapper;
+use Ise\Admin\Mapper\DoctrineOrm\PermissionMapper;
+use Ise\Admin\Navigation\Service\AdminNavigationFactory;
+use Ise\Admin\Navigation\Service\MenuNavigationFactory;
+use Ise\Admin\Service\UserService;
+use Ise\Admin\Service\RoleService;
+use Ise\Admin\Service\PermissionService;
 use IseBread\Factory\DoctrineOrmMapperFactory;
 use Zend\Authentication\AuthenticationService;
 use Zend\Db\Adapter\Adapter;

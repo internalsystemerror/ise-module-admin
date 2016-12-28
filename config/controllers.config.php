@@ -1,18 +1,18 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
-use IseAdmin\Controller\ConsoleController;
-use IseAdmin\Controller\DiagnosticsController;
-use IseAdmin\Controller\IndexController;
-use IseAdmin\Controller\RbacController;
-use IseAdmin\Controller\RoleController;
-use IseAdmin\Controller\PermissionController;
-use IseAdmin\Controller\ProfileController;
-use IseAdmin\Controller\UserController;
-use IseAdmin\Controller\Factory\DiagnosticsControllerFactory;
-use IseAdmin\Controller\Factory\ProfileControllerFactory;
-use IseAdmin\Controller\Factory\RbacControllerFactory;
+use Ise\Admin\Controller\ConsoleController;
+use Ise\Admin\Controller\DiagnosticsController;
+use Ise\Admin\Controller\IndexController;
+use Ise\Admin\Controller\RbacController;
+use Ise\Admin\Controller\RoleController;
+use Ise\Admin\Controller\PermissionController;
+use Ise\Admin\Controller\ProfileController;
+use Ise\Admin\Controller\UserController;
+use Ise\Admin\Controller\Factory\DiagnosticsControllerFactory;
+use Ise\Admin\Controller\Factory\ProfileControllerFactory;
+use Ise\Admin\Controller\Factory\RbacControllerFactory;
 use IseBread\Controller\Factory\AbstractActionControllerFactory;
 
 return [

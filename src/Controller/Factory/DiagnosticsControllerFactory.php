@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Controller\Factory;
+namespace Ise\Admin\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\FactoryInterface;

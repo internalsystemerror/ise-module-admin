@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
-use IseAdmin\Entity\User;
+use Ise\Admin\Entity\User;
 
 return [
     'enable_default_entities'           => false,

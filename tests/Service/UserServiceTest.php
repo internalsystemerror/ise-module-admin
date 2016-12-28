@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Service;
+namespace Ise\AdminTest\Service;
 
-use IseAdmin\Service\UserService;
+use Ise\Admin\Service\UserService;
 
 class UserServiceTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Service\UserService::ban
+     * @covers Ise\Admin\Service\UserService::ban
      * @todo   Implement testBan().
      */
     public function testBan()
@@ -33,7 +33,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Service\UserService::unban
+     * @covers Ise\Admin\Service\UserService::unban
      * @todo   Implement testUnban().
      */
     public function testUnban()
@@ -45,7 +45,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Service\UserService::setAuthorizationService
+     * @covers Ise\Admin\Service\UserService::setAuthorizationService
      * @todo   Implement testSetAuthorizationService().
      */
     public function testSetAuthorizationService()
@@ -57,7 +57,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Service\UserService::getAuthorizationService
+     * @covers Ise\Admin\Service\UserService::getAuthorizationService
      * @todo   Implement testGetAuthorizationService().
      */
     public function testGetAuthorizationService()

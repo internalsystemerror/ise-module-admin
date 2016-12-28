@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Listener;
+namespace Ise\AdminTest\Listener;
 
-use IseAdmin\Listener\RbacNavigationListener;
+use Ise\Admin\Listener\RbacNavigationListener;
 
 class RbacNavigationListenerTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class RbacNavigationListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Listener\RbacNavigationListener::attachShared
+     * @covers Ise\Admin\Listener\RbacNavigationListener::attachShared
      * @todo   Implement testAttachShared().
      */
     public function testAttachShared()
@@ -33,7 +33,7 @@ class RbacNavigationListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Listener\RbacNavigationListener::detachShared
+     * @covers Ise\Admin\Listener\RbacNavigationListener::detachShared
      * @todo   Implement testDetachShared().
      */
     public function testDetachShared()
@@ -45,7 +45,7 @@ class RbacNavigationListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Listener\RbacNavigationListener::accept
+     * @covers Ise\Admin\Listener\RbacNavigationListener::accept
      * @todo   Implement testAccept().
      */
     public function testAccept()

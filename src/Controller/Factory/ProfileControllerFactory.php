@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Controller\Factory;
+namespace Ise\Admin\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\FactoryInterface;
@@ -15,7 +15,7 @@ class ProfileControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         // Load services
-        $userService = $container->getServiceLocator()->get('IseAdmin\Service\User');
+        $userService = $container->getServiceLocator()->get('Ise\Admin\Service\User');
         
         return new $requestedName($userService);
     }

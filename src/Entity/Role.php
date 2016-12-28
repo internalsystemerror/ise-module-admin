@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -26,7 +26,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="IseAdmin\Entity\Role", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Ise\Admin\Entity\Role", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ZF\Options({"label": "Parent Role"})
      * @var Role
@@ -34,13 +34,13 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     protected $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="IseAdmin\Entity\Role", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="parent")
      * @var Role[]|Collection
      */
     protected $children;
 
     /**
-     * @ORM\ManyToMany(targetEntity="IseAdmin\Entity\Permission", mappedBy="")
+     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Permission", mappedBy="")
      * @ZF\Options({"label": "Permissions"})
      * @ZF\Type("DoctrineORMModule\Form\Element\EntityMultiCheckbox")
      * @var Permission[]|Collection

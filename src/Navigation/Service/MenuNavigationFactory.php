@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Navigation\Service;
+namespace Ise\Admin\Navigation\Service;
 
 use Zend\Navigation\Service\AbstractNavigationFactory;
 

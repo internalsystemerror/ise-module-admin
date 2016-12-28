@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Assertion;
+namespace Ise\AdminTest\Assertion;
 
-use IseAdmin\Assertion\NotCurrentUserAssertion;
+use Ise\Admin\Assertion\NotCurrentUserAssertion;
 
 class NotCurrentUserAssertionTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class NotCurrentUserAssertionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Assertion\NotCurrentUserAssertion::assert
+     * @covers Ise\Admin\Assertion\NotCurrentUserAssertion::assert
      * @todo   Implement testAssert().
      */
     public function testAssert()

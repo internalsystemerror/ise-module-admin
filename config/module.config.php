@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
@@ -16,7 +16,7 @@ return [
             ],
             'orm_default'             => [
                 'drivers' => [
-                    'IseAdmin\Entity' => 'admin_annotation_driver',
+                    'Ise\Admin\Entity' => 'admin_annotation_driver',
                 ],
             ],
         ],

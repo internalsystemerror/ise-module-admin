@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
-use IseAdmin\Service\UserService;
+use Ise\Admin\Service\UserService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface;
 use Zend\View\Model\ViewModel;

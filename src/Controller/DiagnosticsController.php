@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
 use Zend\Console\ColorInterface;
 use ZendDiagnostics\Check\Callback;

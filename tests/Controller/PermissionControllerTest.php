@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdminTest\Controller;
+namespace Ise\AdminTest\Controller;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 

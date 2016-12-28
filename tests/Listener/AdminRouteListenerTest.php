@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Listener;
+namespace Ise\AdminTest\Listener;
 
-use IseAdmin\Listener\AdminRouteListener;
+use Ise\Admin\Listener\AdminRouteListener;
 
 class AdminRouteListenerTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class AdminRouteListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Listener\AdminRouteListener::attach
+     * @covers Ise\Admin\Listener\AdminRouteListener::attach
      * @todo   Implement testAttach().
      */
     public function testAttach()
@@ -33,7 +33,7 @@ class AdminRouteListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Listener\AdminRouteListener::detach
+     * @covers Ise\Admin\Listener\AdminRouteListener::detach
      * @todo   Implement testDetach().
      */
     public function testDetach()
@@ -45,7 +45,7 @@ class AdminRouteListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Listener\AdminRouteListener::selectLayoutBasedOnRoute
+     * @covers Ise\Admin\Listener\AdminRouteListener::selectLayoutBasedOnRoute
      * @todo   Implement testSelectLayoutBasedOnRoute().
      */
     public function testSelectLayoutBasedOnRoute()

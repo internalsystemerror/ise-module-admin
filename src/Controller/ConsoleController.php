@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;

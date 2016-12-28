@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdmin\Fixture;
+namespace Ise\Admin\Fixture;
 
-use IseAdmin\Entity\User;
+use Ise\Admin\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class UserFixture extends AbstractFixture implements DependentFixtureInterface
@@ -14,7 +14,7 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            'IseAdmin\Fixture\RoleFixture',
+            'Ise\Admin\Fixture\RoleFixture',
         ];
     }
 

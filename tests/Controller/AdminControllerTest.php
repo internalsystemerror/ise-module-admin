@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdminTest\Controller;
+namespace Ise\AdminTest\Controller;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
@@ -17,7 +17,7 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\AdminController::indexAction
+     * @covers Ise\Admin\Controller\AdminController::indexAction
      */
     public function testIndexActionCanNotBeAccessed()
     {
@@ -25,15 +25,15 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Admin');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Admin');
         $this->assertControllerClass('AdminController');
         $this->assertActionName('index');
         $this->assertMatchedRouteName('admin/index');
     }
 
     /**
-     * @covers IseAdmin\Controller\AdminController::dashboardAction
+     * @covers Ise\Admin\Controller\AdminController::dashboardAction
      */
     public function testDashboardActionCanNotBeAccessed()
     {
@@ -41,8 +41,8 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Admin');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Admin');
         $this->assertControllerClass('AdminController');
         $this->assertActionName('dashboard');
         $this->assertMatchedRouteName('zfcuser/dashboard');

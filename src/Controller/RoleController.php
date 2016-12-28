@@ -1,9 +1,9 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
-use IseAdmin\Entity\Permission;
-use IseAdmin\Entity\Role;
+use Ise\Admin\Entity\Permission;
+use Ise\Admin\Entity\Role;
 use Zend\View\Model\ViewModel;
 
 /**

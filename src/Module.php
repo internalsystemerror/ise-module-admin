@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
@@ -94,8 +94,8 @@ class Module implements
     public function getModuleDependencies()
     {
         return [
-            'IseBootstrap',
-            'IseBread',
+            'Ise\Bootstrap',
+            'Ise\Bread',
             'ZfcBase',
             'ZfcRbac',
             'ZfcUser',

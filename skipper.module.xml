@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <skipper version="3.2.7.1338" mvc="Zend Framework" orm="Doctrine2">
-  <module name="\IseAdmin" local-name="IseAdmin" namespace="\IseAdmin\Entity" local-namespace="IseAdmin\Entity" export-format="Doctrine2Php" export-path="src/Entity" uuid="cd690b66-fdf3-41b8-a47b-eadda2a4124b">
-    <entity name="\IseAdmin\Entity\AbstractRbacEntity" local-name="AbstractRbacEntity" namespace="\IseAdmin\Entity" uuid="abc3affb-174b-4f43-8804-d7c2a8d5354a">
+  <module name="\Ise\Admin" local-name="Ise\Admin" namespace="\Ise\Admin\Entity" local-namespace="Ise\Admin\Entity" export-format="Doctrine2Php" export-path="src/Entity" uuid="cd690b66-fdf3-41b8-a47b-eadda2a4124b">
+    <entity name="\Ise\Admin\Entity\AbstractRbacEntity" local-name="AbstractRbacEntity" namespace="\Ise\Admin\Entity" uuid="abc3affb-174b-4f43-8804-d7c2a8d5354a">
       <field name="permanent" type="boolean" required="true" uuid="54139641-8f5b-44a8-b99e-2269855b3dde"/>
       <inheritance-parent type="MAPPED_SUPERCLASS" uuid="9cfcc291-a5bd-4ab4-935c-7fc13921bcac"/>
       <inheritance-child derived-from="\IseBread\Entity\AbstractBasicEntity" uuid="5de0e11c-8bb8-48ff-8086-7740a3b1808a"/>
     </entity>
-    <entity name="\IseAdmin\Entity\Permission" local-name="Permission" namespace="\IseAdmin\Entity" uuid="8240fe44-a55f-4a8f-bfec-33cabc4ffd95">
+    <entity name="\Ise\Admin\Entity\Permission" local-name="Permission" namespace="\Ise\Admin\Entity" uuid="8240fe44-a55f-4a8f-bfec-33cabc4ffd95">
       <field name="id" type="guid" required="true" unique="true" primary="true" auto-increment="true" uuid="38fd1da0-d6ef-4018-87dc-37a336fbd97b">
         <orm-attributes>
           <attribute name="generator">
@@ -14,12 +14,12 @@
           </attribute>
         </orm-attributes>
       </field>
-      <inheritance-child derived-from="\IseAdmin\Entity\AbstractRbacEntity" uuid="b8329b50-144a-4608-b99f-0d99c9827133"/>
+      <inheritance-child derived-from="\Ise\Admin\Entity\AbstractRbacEntity" uuid="b8329b50-144a-4608-b99f-0d99c9827133"/>
       <orm-attributes>
         <attribute name="table">admin_permission</attribute>
       </orm-attributes>
     </entity>
-    <entity name="\IseAdmin\Entity\Role" local-name="Role" namespace="\IseAdmin\Entity" uuid="19ecd2bb-13ba-4222-a252-8bc3343197df">
+    <entity name="\Ise\Admin\Entity\Role" local-name="Role" namespace="\Ise\Admin\Entity" uuid="19ecd2bb-13ba-4222-a252-8bc3343197df">
       <field name="id" type="guid" required="true" unique="true" primary="true" auto-increment="true" uuid="38d4b91f-e691-4934-b25b-387228fa92a4">
         <orm-attributes>
           <attribute name="generator">
@@ -28,15 +28,15 @@
         </orm-attributes>
       </field>
       <field name="parent_id" type="guid" uuid="8a73abc8-0114-4cd0-85a0-6a54f9e6376c"/>
-      <inheritance-child derived-from="\IseAdmin\Entity\AbstractRbacEntity" uuid="8138837d-6fed-4c72-8308-06a223faf5b5"/>
+      <inheritance-child derived-from="\Ise\Admin\Entity\AbstractRbacEntity" uuid="8138837d-6fed-4c72-8308-06a223faf5b5"/>
       <orm-attributes>
         <attribute name="table">admin_role</attribute>
       </orm-attributes>
     </entity>
-    <association from="\IseAdmin\Entity\Role" to="\IseAdmin\Entity\Role" owner-alias="children" inverse-alias="parent" many-owner="true" many-inverse="false" uuid="0b5c8962-8e2a-4c2f-ac10-872630a913c1">
+    <association from="\Ise\Admin\Entity\Role" to="\Ise\Admin\Entity\Role" owner-alias="children" inverse-alias="parent" many-owner="true" many-inverse="false" uuid="0b5c8962-8e2a-4c2f-ac10-872630a913c1">
       <association-field from="parent_id" to="id"/>
     </association>
-    <entity name="\IseAdmin\Entity\User" local-name="User" namespace="\IseAdmin\Entity" uuid="226bed3b-9861-4dcf-8191-08dc486868bc">
+    <entity name="\Ise\Admin\Entity\User" local-name="User" namespace="\Ise\Admin\Entity" uuid="226bed3b-9861-4dcf-8191-08dc486868bc">
       <field name="id" type="guid" required="true" unique="true" primary="true" auto-increment="true" uuid="cb22b314-6f97-449c-b02c-3586c05c8bc4">
         <orm-attributes>
           <attribute name="generator">
@@ -59,33 +59,33 @@
         <attribute name="table">admin_user</attribute>
       </orm-attributes>
     </entity>
-    <entity name="\IseAdmin\Entity\UserRoles" local-name="UserRoles" namespace="\IseAdmin\Entity" uuid="16f906f3-20b0-4fa9-8f71-aca696c53606">
+    <entity name="\Ise\Admin\Entity\UserRoles" local-name="UserRoles" namespace="\Ise\Admin\Entity" uuid="16f906f3-20b0-4fa9-8f71-aca696c53606">
       <field name="user_id" type="guid" required="true" primary="true" uuid="bb83360c-fdd6-4abe-8b60-58892b1c0f40"/>
       <field name="role_id" type="guid" required="true" primary="true" uuid="64d1f880-3fff-4d90-b384-b9d40743c07e"/>
       <orm-attributes>
         <attribute name="table">admin_user_role</attribute>
       </orm-attributes>
     </entity>
-    <many-to-many mn-entity="\IseAdmin\Entity\UserRoles" uuid="15224e92-fdba-4a6d-8841-f6d22d0a4090">
-      <many-to-many-entity name="\IseAdmin\Entity\Role" owning-side="true" alias="roles" uuid="a62ad5d6-24bc-46f5-a335-a2fe624cb1d2">
+    <many-to-many mn-entity="\Ise\Admin\Entity\UserRoles" uuid="15224e92-fdba-4a6d-8841-f6d22d0a4090">
+      <many-to-many-entity name="\Ise\Admin\Entity\Role" owning-side="true" alias="roles" uuid="a62ad5d6-24bc-46f5-a335-a2fe624cb1d2">
         <many-to-many-field from="role_id" to="id"/>
       </many-to-many-entity>
-      <many-to-many-entity name="\IseAdmin\Entity\User" owning-side="false" uuid="b766fe32-4bff-4d9f-aa52-082a78198851">
+      <many-to-many-entity name="\Ise\Admin\Entity\User" owning-side="false" uuid="b766fe32-4bff-4d9f-aa52-082a78198851">
         <many-to-many-field from="user_id" to="id"/>
       </many-to-many-entity>
     </many-to-many>
-    <entity name="\IseAdmin\Entity\RolePermissions" local-name="RolePermissions" namespace="\IseAdmin\Entity" uuid="0c8907b5-304d-4544-9e48-1c2a1b9a20cd">
+    <entity name="\Ise\Admin\Entity\RolePermissions" local-name="RolePermissions" namespace="\Ise\Admin\Entity" uuid="0c8907b5-304d-4544-9e48-1c2a1b9a20cd">
       <field name="role_id" type="guid" required="true" primary="true" uuid="af255e4e-a213-4b42-8322-58151c79e2f4"/>
       <field name="permission_id" type="guid" required="true" primary="true" uuid="8f972c95-8a3e-408a-9927-8e61d38761f8"/>
       <orm-attributes>
         <attribute name="table">admin_role_permissions</attribute>
       </orm-attributes>
     </entity>
-    <many-to-many mn-entity="\IseAdmin\Entity\RolePermissions" uuid="f9c6348a-21ac-4a43-9cd4-47eb4cc7c4ec">
-      <many-to-many-entity name="\IseAdmin\Entity\Permission" owning-side="true" alias="permissions" uuid="a3e577d1-08a0-4c25-a851-c69762fb0385">
+    <many-to-many mn-entity="\Ise\Admin\Entity\RolePermissions" uuid="f9c6348a-21ac-4a43-9cd4-47eb4cc7c4ec">
+      <many-to-many-entity name="\Ise\Admin\Entity\Permission" owning-side="true" alias="permissions" uuid="a3e577d1-08a0-4c25-a851-c69762fb0385">
         <many-to-many-field from="permission_id" to="id"/>
       </many-to-many-entity>
-      <many-to-many-entity name="\IseAdmin\Entity\Role" owning-side="false" uuid="8d6568dc-0b7c-44ef-97d0-365bdcf3fc8e">
+      <many-to-many-entity name="\Ise\Admin\Entity\Role" owning-side="false" uuid="8d6568dc-0b7c-44ef-97d0-365bdcf3fc8e">
         <many-to-many-field from="role_id" to="id"/>
       </many-to-many-entity>
     </many-to-many>

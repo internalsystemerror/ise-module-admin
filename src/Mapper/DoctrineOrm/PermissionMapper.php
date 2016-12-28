@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Mapper\DoctrineOrm;
+namespace Ise\Admin\Mapper\DoctrineOrm;
 
 use IseBread\Mapper\DoctrineOrm\AbstractMapper;
 
@@ -10,7 +10,7 @@ class PermissionMapper extends AbstractMapper
     /**
      * @var string
      */
-    protected $entityClass = 'IseAdmin\Entity\Permission';
+    protected $entityClass = 'Ise\Admin\Entity\Permission';
 
     /**
      * {@inheritDoc}

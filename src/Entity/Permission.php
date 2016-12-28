@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ZfcRbac\Permission\PermissionInterface;

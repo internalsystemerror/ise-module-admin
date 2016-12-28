@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
 use IseBread\Controller\AbstractActionController;
 use ZfcRbac\Exception\UnauthorizedException;

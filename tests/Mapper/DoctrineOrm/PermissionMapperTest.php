@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Mapper\DoctrineOrm;
+namespace Ise\AdminTest\Mapper\DoctrineOrm;
 
-use IseAdmin\Mapper\DoctrineOrm\PermissionMapper;
+use Ise\Admin\Mapper\DoctrineOrm\PermissionMapper;
 
 class PermissionMapperTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class PermissionMapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Mapper\DoctrineOrm\PermissionMapper::browse
+     * @covers Ise\Admin\Mapper\DoctrineOrm\PermissionMapper::browse
      * @todo   Implement testBrowse().
      */
     public function testBrowse()

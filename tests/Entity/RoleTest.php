@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Entity;
+namespace Ise\AdminTest\Entity;
 
-use IseAdmin\Entity\Role;
+use Ise\Admin\Entity\Role;
 
 class RoleTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::getParent
+     * @covers Ise\Admin\Entity\Role::getParent
      * @todo   Implement testGetParent().
      */
     public function testGetParent()
@@ -33,7 +33,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::setParent
+     * @covers Ise\Admin\Entity\Role::setParent
      * @todo   Implement testSetParent().
      */
     public function testSetParent()
@@ -45,7 +45,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::getChildren
+     * @covers Ise\Admin\Entity\Role::getChildren
      * @todo   Implement testGetChildren().
      */
     public function testGetChildren()
@@ -57,7 +57,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::setChildren
+     * @covers Ise\Admin\Entity\Role::setChildren
      * @todo   Implement testSetChildren().
      */
     public function testSetChildren()
@@ -69,7 +69,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::addChild
+     * @covers Ise\Admin\Entity\Role::addChild
      * @todo   Implement testAddChild().
      */
     public function testAddChild()
@@ -81,7 +81,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::hasChildren
+     * @covers Ise\Admin\Entity\Role::hasChildren
      * @todo   Implement testHasChildren().
      */
     public function testHasChildren()
@@ -93,7 +93,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::getPermissions
+     * @covers Ise\Admin\Entity\Role::getPermissions
      * @todo   Implement testGetPermissions().
      */
     public function testGetPermissions()
@@ -105,7 +105,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::setPermissions
+     * @covers Ise\Admin\Entity\Role::setPermissions
      * @todo   Implement testSetPermissions().
      */
     public function testSetPermissions()
@@ -117,7 +117,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::addPermission
+     * @covers Ise\Admin\Entity\Role::addPermission
      * @todo   Implement testAddPermission().
      */
     public function testAddPermission()
@@ -129,7 +129,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\Role::hasPermission
+     * @covers Ise\Admin\Entity\Role::hasPermission
      * @todo   Implement testHasPermission().
      */
     public function testHasPermission()

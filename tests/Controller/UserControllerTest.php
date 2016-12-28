@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
@@ -101,7 +101,7 @@ class UserControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\UserController::banAction
+     * @covers Ise\Admin\Controller\UserController::banAction
      * @todo   Implement testBanAction().
      */
     public function testBanAction()
@@ -113,7 +113,7 @@ class UserControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\UserController::unbanAction
+     * @covers Ise\Admin\Controller\UserController::unbanAction
      * @todo   Implement testUnbanAction().
      */
     public function testUnbanAction()

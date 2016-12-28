@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdminTest\Controller;
+namespace Ise\AdminTest\Controller;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
@@ -17,7 +17,7 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\RbacController::indexAction
+     * @covers Ise\Admin\Controller\RbacController::indexAction
      */
     public function testIndexActionCanNotBeAccessed()
     {
@@ -25,8 +25,8 @@ class RbacControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Rbac');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Rbac');
         $this->assertControllerClass('RbacController');
         $this->assertActionName('index');
         $this->assertMatchedRouteName('admin/rbac');

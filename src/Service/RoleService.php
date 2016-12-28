@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Service;
+namespace Ise\Admin\Service;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
@@ -11,21 +11,21 @@ class RoleService extends AbstractRbacService
     /**
      * @var string
      */
-    protected $entityClass = 'IseAdmin\Entity\Role';
+    protected $entityClass = 'Ise\Admin\Entity\Role';
 
     /**
      * @var string
      */
-    protected $mapperClass = 'IseAdmin\Mapper\Role';
+    protected $mapperClass = 'Ise\Admin\Mapper\Role';
 
     /**
      * @var string[]
      */
     protected $form = [
-        'add'     => 'IseAdmin\Form\Role\Add',
-        'edit'    => 'IseAdmin\Form\Role\Edit',
-        'delete'  => 'IseAdmin\Form\Role\Delete',
-        'enable'  => 'IseAdmin\Form\Role\Enable',
-        'disable' => 'IseAdmin\Form\Role\Disable',
+        'add'     => 'Ise\Admin\Form\Role\Add',
+        'edit'    => 'Ise\Admin\Form\Role\Edit',
+        'delete'  => 'Ise\Admin\Form\Role\Delete',
+        'enable'  => 'Ise\Admin\Form\Role\Enable',
+        'disable' => 'Ise\Admin\Form\Role\Disable',
     ];
 }

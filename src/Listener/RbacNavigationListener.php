@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Listener;
+namespace Ise\Admin\Listener;
 
 use Zend\EventManager\SharedEventManagerInterface;
 use Zend\EventManager\SharedListenerAggregateInterface;

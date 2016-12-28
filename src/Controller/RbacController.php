@@ -1,9 +1,9 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
-use IseAdmin\Service\RoleService;
-use IseAdmin\Service\PermissionService;
+use Ise\Admin\Service\RoleService;
+use Ise\Admin\Service\PermissionService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 

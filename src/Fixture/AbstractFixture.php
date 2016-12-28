@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Fixture;
+namespace Ise\Admin\Fixture;
 
 use Doctrine\Common\DataFixtures\AbstractFixture as AbstractDoctrineFixture;
 use Doctrine\Common\Persistence\ObjectManager;

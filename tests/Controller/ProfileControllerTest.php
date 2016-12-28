@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdminTest\Controller;
+namespace Ise\AdminTest\Controller;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
@@ -17,7 +17,7 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::indexAction
+     * @covers Ise\Admin\Controller\ProfileController::indexAction
      */
     public function testIndexActionCanNotBeAccessed()
     {
@@ -25,15 +25,15 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Profile');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Profile');
         $this->assertControllerClass('ProfileController');
         $this->assertActionName('index');
         $this->assertMatchedRouteName('zfcuser/profile');
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::editAction
+     * @covers Ise\Admin\Controller\ProfileController::editAction
      */
     public function testEditActionCanNotBeAccessed()
     {
@@ -41,15 +41,15 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Profile');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Profile');
         $this->assertControllerClass('ProfileController');
         $this->assertActionName('edit');
         $this->assertMatchedRouteName('zfcuser/profile/edit');
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::viewAction
+     * @covers Ise\Admin\Controller\ProfileController::viewAction
      */
     public function testViewActionCanNotBeAccessed()
     {
@@ -57,15 +57,15 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Profile');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Profile');
         $this->assertControllerClass('ProfileController');
         $this->assertActionName('view');
         $this->assertMatchedRouteName('zfcuser/profile/view');
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::settingsAction
+     * @covers Ise\Admin\Controller\ProfileController::settingsAction
      */
     public function testSettingsActionCanNotBeAccessed()
     {
@@ -73,15 +73,15 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(302);
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
-        $this->assertModuleName('IseAdmin');
-        $this->assertControllerName('IseAdmin\Controller\Profile');
+        $this->assertModuleName('Ise\Admin');
+        $this->assertControllerName('Ise\Admin\Controller\Profile');
         $this->assertControllerClass('ProfileController');
         $this->assertActionName('settings');
         $this->assertMatchedRouteName('zfcuser/profile/settings');
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::getUserService
+     * @covers Ise\Admin\Controller\ProfileController::getUserService
      * @todo   Implement testGetUserService().
      */
     public function testGetUserService()
@@ -93,7 +93,7 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::getFormElementManager
+     * @covers Ise\Admin\Controller\ProfileController::getFormElementManager
      * @todo   Implement testGetFormElementManager().
      */
     public function testGetFormElementManager()
@@ -105,7 +105,7 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::setFormElementManager
+     * @covers Ise\Admin\Controller\ProfileController::setFormElementManager
      * @todo   Implement testSetFormElementManager().
      */
     public function testSetFormElementManager()
@@ -117,7 +117,7 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::getForm
+     * @covers Ise\Admin\Controller\ProfileController::getForm
      * @todo   Implement testGetForm().
      */
     public function testGetForm()
@@ -129,7 +129,7 @@ class ProfileControllerTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * @covers IseAdmin\Controller\ProfileController::setForm
+     * @covers Ise\Admin\Controller\ProfileController::setForm
      * @todo   Implement testSetForm().
      */
     public function testSetForm()

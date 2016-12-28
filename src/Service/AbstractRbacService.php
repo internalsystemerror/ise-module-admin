@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Service;
+namespace Ise\Admin\Service;
 
 use IseBread\Service\AbstractService;
 

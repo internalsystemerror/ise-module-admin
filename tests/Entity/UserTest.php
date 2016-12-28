@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdminTest\Entity;
+namespace Ise\AdminTest\Entity;
 
-use IseAdmin\Entity\User;
+use Ise\Admin\Entity\User;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
@@ -24,7 +24,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::__toString
+     * @covers Ise\Admin\Entity\User::__toString
      * @todo   Implement test__toString().
      */
     public function testToString()
@@ -36,7 +36,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setId
+     * @covers Ise\Admin\Entity\User::setId
      * @todo   Implement testSetId().
      */
     public function testSetId()
@@ -48,7 +48,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::getUsername
+     * @covers Ise\Admin\Entity\User::getUsername
      * @todo   Implement testGetUsername().
      */
     public function testGetUsername()
@@ -60,7 +60,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setUsername
+     * @covers Ise\Admin\Entity\User::setUsername
      * @todo   Implement testSetUsername().
      */
     public function testSetUsername()
@@ -72,7 +72,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::getEmail
+     * @covers Ise\Admin\Entity\User::getEmail
      * @todo   Implement testGetEmail().
      */
     public function testGetEmail()
@@ -84,7 +84,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setEmail
+     * @covers Ise\Admin\Entity\User::setEmail
      * @todo   Implement testSetEmail().
      */
     public function testSetEmail()
@@ -96,7 +96,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::getDisplayName
+     * @covers Ise\Admin\Entity\User::getDisplayName
      * @todo   Implement testGetDisplayName().
      */
     public function testGetDisplayName()
@@ -108,7 +108,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setDisplayName
+     * @covers Ise\Admin\Entity\User::setDisplayName
      * @todo   Implement testSetDisplayName().
      */
     public function testSetDisplayName()
@@ -120,7 +120,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::getPassword
+     * @covers Ise\Admin\Entity\User::getPassword
      * @todo   Implement testGetPassword().
      */
     public function testGetPassword()
@@ -132,7 +132,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setPassword
+     * @covers Ise\Admin\Entity\User::setPassword
      * @todo   Implement testSetPassword().
      */
     public function testSetPassword()
@@ -144,7 +144,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::getState
+     * @covers Ise\Admin\Entity\User::getState
      * @todo   Implement testGetState().
      */
     public function testGetState()
@@ -156,7 +156,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setState
+     * @covers Ise\Admin\Entity\User::setState
      * @todo   Implement testSetState().
      */
     public function testSetState()
@@ -168,7 +168,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::getRoles
+     * @covers Ise\Admin\Entity\User::getRoles
      * @todo   Implement testGetRoles().
      */
     public function testGetRoles()
@@ -180,7 +180,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setRoles
+     * @covers Ise\Admin\Entity\User::setRoles
      * @todo   Implement testSetRoles().
      */
     public function testSetRoles()
@@ -192,7 +192,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::addRole
+     * @covers Ise\Admin\Entity\User::addRole
      * @todo   Implement testAddRole().
      */
     public function testAddRole()
@@ -204,7 +204,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::isBanned
+     * @covers Ise\Admin\Entity\User::isBanned
      * @todo   Implement testIsBanned().
      */
     public function testIsBanned()
@@ -216,7 +216,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IseAdmin\Entity\User::setBanned
+     * @covers Ise\Admin\Entity\User::setBanned
      * @todo   Implement testSetBanned().
      */
     public function testSetBanned()
