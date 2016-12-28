@@ -2,7 +2,7 @@
 
 namespace Ise\Admin\Controller;
 
-use IseBread\Controller\AbstractActionController;
+use Ise\Bread\Controller\AbstractActionController;
 use ZfcRbac\Exception\UnauthorizedException;
 
 class AbstractRbacActionController extends AbstractActionController

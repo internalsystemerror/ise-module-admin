@@ -4,8 +4,8 @@ namespace Ise\Admin\Controller;
 
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
-use IseBread\EntityManager\EntityManagerAwareInterface;
-use IseBread\EntityManager\EntityManagerAwareTrait;
+use Ise\Bread\EntityManager\EntityManagerAwareInterface;
+use Ise\Bread\EntityManager\EntityManagerAwareTrait;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\Exception\RuntimeException;
 use Zend\Mvc\MvcEvent;

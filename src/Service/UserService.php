@@ -2,7 +2,7 @@
 
 namespace Ise\Admin\Service;
 
-use IseBread\Service\AbstractService;
+use Ise\Bread\Service\AbstractService;
 use ZfcRbac\Service\AuthorizationServiceAwareInterface;
 use ZfcRbac\Service\AuthorizationServiceAwareTrait;
 

@@ -5,7 +5,7 @@ namespace Ise\Admin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use IseBread\Entity\AbstractEntity;
+use Ise\Bread\Entity\AbstractEntity;
 use Zend\Form\Annotation as ZF;
 use ZfcRbac\Identity\IdentityInterface;
 use ZfcUser\Entity\UserInterface;

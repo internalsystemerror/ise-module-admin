@@ -2,7 +2,7 @@
 
 namespace Ise\Admin\Mapper\DoctrineOrm;
 
-use IseBread\Mapper\DoctrineOrm\AbstractMapper;
+use Ise\Bread\Mapper\DoctrineOrm\AbstractMapper;
 
 class PermissionMapper extends AbstractMapper
 {
