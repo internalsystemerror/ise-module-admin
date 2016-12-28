@@ -4,7 +4,7 @@
     <entity name="\Ise\Admin\Entity\AbstractRbacEntity" local-name="AbstractRbacEntity" namespace="\Ise\Admin\Entity" uuid="abc3affb-174b-4f43-8804-d7c2a8d5354a">
       <field name="permanent" type="boolean" required="true" uuid="54139641-8f5b-44a8-b99e-2269855b3dde"/>
       <inheritance-parent type="MAPPED_SUPERCLASS" uuid="9cfcc291-a5bd-4ab4-935c-7fc13921bcac"/>
-      <inheritance-child derived-from="\IseBread\Entity\AbstractBasicEntity" uuid="5de0e11c-8bb8-48ff-8086-7740a3b1808a"/>
+      <inheritance-child derived-from="\Ise\Bread\Entity\AbstractBasicEntity" uuid="5de0e11c-8bb8-48ff-8086-7740a3b1808a"/>
     </entity>
     <entity name="\Ise\Admin\Entity\Permission" local-name="Permission" namespace="\Ise\Admin\Entity" uuid="8240fe44-a55f-4a8f-bfec-33cabc4ffd95">
       <field name="id" type="guid" required="true" unique="true" primary="true" auto-increment="true" uuid="38fd1da0-d6ef-4018-87dc-37a336fbd97b">
@@ -54,7 +54,7 @@
       </field>
       <field name="state" type="smallint" unsigned="true" uuid="e2c9e6e0-8497-4509-a055-d1a54a6b439f"/>
       <field name="banned" type="boolean" required="true" uuid="72d46086-cd9a-48d0-a3a1-ae3a2a9546ad"/>
-      <inheritance-child derived-from="\IseBread\Entity\AbstractEntity" uuid="e182b053-06d5-4b7a-863c-e8da9243f519"/>
+      <inheritance-child derived-from="\Ise\Bread\Entity\AbstractEntity" uuid="e182b053-06d5-4b7a-863c-e8da9243f519"/>
       <orm-attributes>
         <attribute name="table">admin_user</attribute>
       </orm-attributes>
