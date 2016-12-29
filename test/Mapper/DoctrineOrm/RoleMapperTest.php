@@ -1,6 +1,6 @@
 <?php
 
-namespace Ise\AdminTest\Mapper\DoctrineOrm;
+namespace IseTest\Admin\Mapper\DoctrineOrm;
 
 use Ise\Admin\Mapper\DoctrineOrm\RoleMapper;
 

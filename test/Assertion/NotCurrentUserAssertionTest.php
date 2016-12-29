@@ -1,6 +1,6 @@
 <?php
 
-namespace Ise\AdminTest\Assertion;
+namespace IseTest\Admin\Assertion;
 
 use Ise\Admin\Assertion\NotCurrentUserAssertion;
 

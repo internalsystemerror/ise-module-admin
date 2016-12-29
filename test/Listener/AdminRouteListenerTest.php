@@ -1,6 +1,6 @@
 <?php
 
-namespace Ise\AdminTest\Listener;
+namespace IseTest\Admin\Listener;
 
 use Ise\Admin\Listener\AdminRouteListener;
 

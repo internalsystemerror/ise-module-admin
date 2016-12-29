@@ -78,7 +78,7 @@
       <field name="role_id" type="guid" required="true" primary="true" uuid="af255e4e-a213-4b42-8322-58151c79e2f4"/>
       <field name="permission_id" type="guid" required="true" primary="true" uuid="8f972c95-8a3e-408a-9927-8e61d38761f8"/>
       <orm-attributes>
-        <attribute name="table">admin_role_permissions</attribute>
+        <attribute name="table">admin_role_permission</attribute>
       </orm-attributes>
     </entity>
     <many-to-many mn-entity="\Ise\Admin\Entity\RolePermissions" uuid="f9c6348a-21ac-4a43-9cd4-47eb4cc7c4ec">

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ise\AdminTest\Service;
+namespace IseTest\Admin\Service;
 
 use Ise\Admin\Service\UserService;
 

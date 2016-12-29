@@ -1,6 +1,6 @@
 <?php
 
-namespace Ise\AdminTest\Entity;
+namespace IseTest\Admin\Entity;
 
 use Ise\Admin\Entity\Role;
 
