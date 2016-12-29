@@ -32,7 +32,7 @@ class UserController extends AbstractActionController
     public function browseAction()
     {
         $viewModel = parent::browseAction();
-        $viewModel->setTemplate('ise-admin/user/browse');
+        $viewModel->setTemplate('ise/admin/user/browse');
         return $viewModel;
     }
 
@@ -51,7 +51,7 @@ class UserController extends AbstractActionController
      */
     public function banAction()
     {
-        return $this->bread('ban', 'ise-admin/user/ban');
+        return $this->bread('ban', 'ise/admin/user/ban');
     }
 
     /**
@@ -61,6 +61,6 @@ class UserController extends AbstractActionController
      */
     public function unbanAction()
     {
-        return $this->bread('unban', 'ise-admin/user/unban');
+        return $this->bread('unban', 'ise/admin/user/unban');
     }
 }

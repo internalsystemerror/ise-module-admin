@@ -18,8 +18,6 @@ class NotCurrentUserAssertion implements AssertionInterface
      */
     public function assert(AuthorizationService $authorization, $user = null)
     {
-//        var_dump($authorization->getIdentity());
-//        exit;
         return $authorization->getIdentity() === $user;
     }
 }

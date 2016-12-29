@@ -30,6 +30,6 @@ class PermissionController extends AbstractRbacActionController
      */
     public function editAction()
     {
-        return $this->bread('edit', 'ise-admin/permission/edit');
+        return $this->bread('edit', 'ise/admin/permission/edit');
     }
 }

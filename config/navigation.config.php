@@ -3,7 +3,7 @@ return [
     'admin'      => [
         'index' => [
             'label'      => 'Dashboard',
-            'route'      => 'zfcuser/dashboard',
+            'route'      => 'admin',
             'icon'       => 'dashboard',
             'order'      => -1000,
             'permission' => 'member',

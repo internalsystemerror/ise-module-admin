@@ -46,7 +46,7 @@ class AbstractRbacActionController extends AbstractActionController
             case 'enable':
             case 'disable':
                 if (!$viewTemplate) {
-                    $viewTemplate = 'ise-admin/rbac/' . $actionType;
+                    $viewTemplate = 'ise/admin/rbac/' . $actionType;
                 }
                 $parameters = array_merge([
                     'indexRoute' => 'admin/rbac'

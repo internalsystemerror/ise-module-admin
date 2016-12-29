@@ -36,7 +36,93 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
         'ban'     => 'Ise\Admin\Form\User\Ban',
         'unban'   => 'Ise\Admin\Form\User\Delete',
     ];
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function edit(array $data)
+    {
+        // Check for current user
+        if ($this->getAuthorizationService()->isGranted('notCurrentUser')) {
+            $form = $this->getForm('edit');
+            $this->addFormMessage($form, [
+                'buttons' => [
+                    'security' => [
+                        'You can not edit another user.',
+                    ],
+                ],
+            ]);
+            return false;
+        }
+        parent::edit($data);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function delete(array $data)
+    {
+        // Check for current user
+        if (!$this->getAuthorizationService()->isGranted('notCurrentUser')) {
+            $form = $this->getForm('delete');
+            $this->addFormMessage($form, [
+                'buttons' => [
+                    'security' => [
+                        'You can not delete your own user.',
+                    ],
+                ],
+            ]);
+            return false;
+        }
+        parent::delete($data);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function enable(array $data)
+    {
+        // Check for current user
+        if (!$this->getAuthorizationService()->isGranted('notCurrentUser')) {
+            $form = $this->getForm('enable');
+            $this->addFormMessage($form, [
+                'buttons' => [
+                    'security' => [
+                        'You can not enable your own user.',
+                    ],
+                ],
+            ]);
+            return false;
+        }
+        parent::enable($data);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function disable(array $data)
+    {
+        // Check for current user
+        if (!$this->getAuthorizationService()->isGranted('notCurrentUser')) {
+            $form = $this->getForm('disable');
+            $this->addFormMessage($form, [
+                'buttons' => [
+                    'security' => [
+                        'You can not disable your own user.',
+                    ],
+                ],
+            ]);
+            return false;
+        }
+        parent::disable($data);
+    }
 
+    /**
+     * Ban user
+     * 
+     * @param array $data
+     * @return boolean
+     */
     public function ban(array $data)
     {
         // Check for current user
@@ -44,10 +130,10 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
             $form = $this->getForm('ban');
             $this->addFormMessage($form, [
                 'buttons' => [
-                    'submit' => [
-                        'You can not ban your own user.'
-                    ]
-                ]
+                    'security' => [
+                        'You can not ban your own user.',
+                    ],
+                ],
             ]);
             return false;
         }
@@ -76,12 +162,24 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
         return $result;
     }
 
+    /**
+     * Unban user
+     * 
+     * @param array $data
+     * @return boolean
+     */
     public function unban(array $data)
     {
         // Check for current user
         if (!$this->getAuthorizationService()->isGranted('notCurrentUser')) {
             $form = $this->getForm('unban');
-            $this->addFormMessage($form, 'You can not unban your own user.');
+            $this->addFormMessage($form, [
+                'buttons' => [
+                    'security' => [
+                        'You can not unban your own user.',
+                    ],
+                ],
+            ]);
             return false;
         }
 

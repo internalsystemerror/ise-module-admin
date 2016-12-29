@@ -35,7 +35,7 @@ class RoleController extends AbstractRbacActionController
     public function editAction()
     {
         // Set variables
-        $viewModel = $this->bread('edit', 'ise-admin/role/edit');
+        $viewModel = $this->bread('edit', 'ise/admin/role/edit');
         if (!$viewModel instanceof ViewModel) {
             return $viewModel;
         }

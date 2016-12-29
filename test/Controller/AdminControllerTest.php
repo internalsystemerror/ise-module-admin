@@ -29,7 +29,7 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
         $this->assertControllerName('Ise\Admin\Controller\Admin');
         $this->assertControllerClass('AdminController');
         $this->assertActionName('index');
-        $this->assertMatchedRouteName('admin/index');
+        $this->assertMatchedRouteName('admin');
     }
 
     /**
@@ -42,9 +42,9 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
         $this->assertApplicationException('ZfcRbac\Exception\UnauthorizedException');
 
         $this->assertModuleName('Ise\Admin');
-        $this->assertControllerName('Ise\Admin\Controller\Admin');
-        $this->assertControllerClass('AdminController');
+        $this->assertControllerName('Ise\Admin\Controller\Index');
+        $this->assertControllerClass('IndexController');
         $this->assertActionName('dashboard');
-        $this->assertMatchedRouteName('zfcuser/dashboard');
+        $this->assertMatchedRouteName('zfcuser');
     }
 }

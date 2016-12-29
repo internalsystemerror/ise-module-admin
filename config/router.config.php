@@ -2,25 +2,32 @@
 
 namespace Ise\Admin;
 
+use Zend\Validator\Uuid;
+
+$uuidRegex = trim(Uuid::REGEX_UUID, '/^$');
 return [
     'routes' => [
-        'admin'   => [
-            'type'          => 'hostname',
-            'options'       => [
-                'route' => 'admin.' . APPLICATION_DOMAIN,
-            ],
-            'may_terminate' => false,
-            'child_routes'  => [
-                'index'       => [
-                    'type'    => 'literal',
-                    'options' => [
-                        'route'    => '/',
-                        'defaults' => [
-                            'controller' => __NAMESPACE__ . '\Controller\Index',
-                            'action'     => 'index',
-                        ],
-                    ],
+        'home'    => [
+            'type'    => 'literal',
+            'options' => [
+                'route'    => '/',
+                'defaults' => [
+                    'controller' => __NAMESPACE__ . '\Controller\Index',
+                    'action'     => 'index',
                 ],
+            ],
+        ],
+        'admin'   => [
+            'type'          => 'literal',
+            'options'       => [
+                'route'    => '/admin',
+                'defaults' => [
+                    'controller' => __NAMESPACE__ . '\Controller\Index',
+                    'action'     => 'index',
+                ],
+            ],
+            'may_terminate' => true,
+            'child_routes'  => [
                 'rbac'        => [
                     'type'    => 'literal',
                     'options' => [
@@ -56,7 +63,7 @@ return [
                             'options' => [
                                 'route'       => '/ban/:id',
                                 'constraints' => [
-                                    'id' => '[1-9]{1}[0-9]*',
+                                    'id' => $uuidRegex,
                                 ],
                                 'defaults'    => [
                                     'action' => 'ban'
@@ -68,7 +75,7 @@ return [
                             'options' => [
                                 'route'       => '/unban/:id',
                                 'constraints' => [
-                                    'id' => '[1-9]{1}[0-9]*',
+                                    'id' => $uuidRegex,
                                 ],
                                 'defaults'    => [
                                     'action' => 'unban'
@@ -98,23 +105,12 @@ return [
             ],
         ],
         'zfcuser' => [
-            'type'          => 'hostname',
+            'type'          => 'literal',
             'options'       => [
-                'route'    => 'admin.' . APPLICATION_DOMAIN,
-                'defaults' => null,
+                'route'    => '/admin',
             ],
             'may_terminate' => false,
             'child_routes'  => [
-                'dashboard' => [
-                    'type'    => 'literal',
-                    'options' => [
-                        'route'    => '/',
-                        'defaults' => [
-                            'controller' => __NAMESPACE__ . '\Controller\Index',
-                            'action'     => 'dashboard',
-                        ],
-                    ],
-                ],
                 'profile'   => [
                     'type'          => 'literal',
                     'options'       => [
@@ -140,7 +136,7 @@ return [
                             'options' => [
                                 'route'       => '/view/:id',
                                 'constraints' => [
-                                    'id' => '[1-9]{1}[0-9]*',
+                                    'id' => $uuidRegex,
                                 ],
                                 'defaults'    => [
                                     'action' => 'view'

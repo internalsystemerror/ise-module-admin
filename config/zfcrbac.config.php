@@ -16,7 +16,7 @@ return [
     ],
     'redirect_strategy' => [
         'redirect_when_connected'        => false,
-        'redirect_to_route_connected'    => 'admin/index',
+        'redirect_to_route_connected'    => 'admin',
         'redirect_to_route_disconnected' => 'zfcuser/login',
         'append_previous_uri'            => true,
         'previous_uri_query_key'         => 'redirectTo',
@@ -28,7 +28,9 @@ return [
         'ZfcRbac\Guard\RouteGuard' => [
             'zfcuser/login'    => ['guest'],
             'zfcuser/register' => ['guest'],
+            'zfcuser'          => ['member'],
             'zfcuser/*'        => ['member'],
+            'admin'            => ['member'],
             'admin/*'          => ['member'],
             'admin/rbac'       => ['admin'],
             'admin/users'      => ['admin'],
