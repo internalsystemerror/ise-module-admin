@@ -9,6 +9,8 @@ use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use ZfcRbac\View\Strategy\RedirectStrategy;
+use ZfcRbac\View\Strategy\UnauthorizedStrategy;
 
 class Module implements
     BootstrapListenerInterface,
@@ -34,11 +36,11 @@ class Module implements
         $eventManager->getSharedManager()->attachAggregate(new Listener\RbacNavigationListener);
 
         // Attach ZfcRbac redirect strategy
-        $redirectStrategy = $serviceManager->get('ZfcRbac\View\Strategy\RedirectStrategy');
+        $redirectStrategy = $serviceManager->get(RedirectStrategy::class);
         $eventManager->attach($redirectStrategy);
         
         // Attach ZfcRbac unauthorised strategy
-        $unauthorisedStrategy = $serviceManager->get('ZfcRbac\View\Strategy\UnauthorizedStrategy');
+        $unauthorisedStrategy = $serviceManager->get(UnauthorizedStrategy::class);
         $eventManager->attach($unauthorisedStrategy);
     }
 
