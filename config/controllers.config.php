@@ -2,7 +2,7 @@
 
 namespace Ise\Admin;
 
-use Ise\Bread\Controller\Factory\AbstractActionControllerFactory;
+use Ise\Bread\Controller\Factory\ActionControllerFactory;
 
 return [
     'aliases'    => [
@@ -15,9 +15,9 @@ return [
         'ZFTool\Controller\Diagnostics'           => __NAMESPACE__ . '\Controller\Diagnostics',
     ],
     'factories'  => [
-        Controller\UserController::class        => AbstractActionControllerFactory::class,
-        Controller\RoleController::class        => AbstractActionControllerFactory::class,
-        Controller\PermissionController::class  => AbstractActionControllerFactory::class,
+        Controller\UserController::class        => ActionControllerFactory::class,
+        Controller\RoleController::class        => ActionControllerFactory::class,
+        Controller\PermissionController::class  => ActionControllerFactory::class,
         Controller\RbacController::class        => Controller\Factory\RbacControllerFactory::class,
         Controller\ProfileController::class     => Controller\Factory\ProfileControllerFactory::class,
         Controller\DiagnosticsController::class => Controller\Factory\DiagnosticsControllerFactory::class,
