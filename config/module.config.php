@@ -68,7 +68,7 @@ return [
         ],
     ],
     'asset_manager' => include __DIR__ . '/assets.config.php',
-    'router'        => include __DIR__ . '/router.config.php',
+    'router'        => ['routes' => include __DIR__ . '/routes.config.php'],
     'navigation'    => include __DIR__ . '/navigation.config.php',
     'zfc_rbac'      => include __DIR__ . '/zfcrbac.config.php',
     'zfcuser'       => include __DIR__ . '/zfcuser.config.php',

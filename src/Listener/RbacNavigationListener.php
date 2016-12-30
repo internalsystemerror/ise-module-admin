@@ -5,7 +5,7 @@ namespace Ise\Admin\Listener;
 use Zend\EventManager\SharedEventManagerInterface;
 use Zend\EventManager\SharedListenerAggregateInterface;
 use Zend\EventManager\EventInterface;
-use Zend\Navigation\Page\Mvc;
+use Zend\View\Helper\Navigation\AbstractHelper;
 
 class RbacNavigationListener implements SharedListenerAggregateInterface
 {
@@ -21,7 +21,7 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
     public function attachShared(SharedEventManagerInterface $eventManager)
     {
         $this->listeners[] = $eventManager->attach(
-            'Zend\View\Helper\Navigation\AbstractHelper',
+            AbstractHelper::class,
             'isAllowed',
             [$this, 'accept']
         );

@@ -9,6 +9,7 @@ use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\Http\RouteMatch;
 use Zend\View\Renderer\PhpRenderer;
+use Zend\View\Model\ViewModel;
 
 class AdminRouteListener implements ListenerAggregateInterface
 {
@@ -47,8 +48,11 @@ class AdminRouteListener implements ListenerAggregateInterface
     {
         $match          = $event->getRouteMatch();
         $serviceManager = $event->getApplication()->getServiceManager();
-        if (!$match instanceof RouteMatch || $event->getResult()->terminate() ||
-            !$serviceManager->has('ViewRenderer')) {
+        $viewModel      = $event->getResult();
+        if (!$match instanceof RouteMatch
+            || !$viewModel instanceof ViewModel
+            || $viewModel->terminate()
+            || !$serviceManager->has('ViewRenderer')) {
             return;
         }
 
