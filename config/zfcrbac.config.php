@@ -2,19 +2,27 @@
 
 namespace Ise\Admin;
 
+use Ise\Admin\Assertion\IsCurrentUserAssertion;
 use Ise\Admin\Assertion\NotCurrentUserAssertion;
 use Ise\Admin\Entity\Role;
 
 return [
-    'assertion_manager' => [
+    'assertion_manager'     => [
+        'aliases'   => [
+//            'notCurrentUser' => NotCurrentUserAssertion::class,
+        ],
         'factories' => [
-            'notCurrentUser' => NotCurrentUserAssertion::class,
         ],
     ],
-    'assertion_map'     => [
-        '' => 'notCurrentUser',
+    'assertion_map'         => [
+        'admin.user.edit'    => IsCurrentUserAssertion::class,
+        'admin.user.delete'  => NotCurrentUserAssertion::class,
+        'admin.user.enable'  => NotCurrentUserAssertion::class,
+        'admin.user.disable' => NotCurrentUserAssertion::class,
+        'admin.user.ban'     => NotCurrentUserAssertion::class,
+        'admin.user.unban'   => NotCurrentUserAssertion::class,
     ],
-    'redirect_strategy' => [
+    'redirect_strategy'     => [
         'redirect_when_connected'        => false,
         'redirect_to_route_connected'    => 'admin',
         'redirect_to_route_disconnected' => 'zfcuser/login',
@@ -24,7 +32,7 @@ return [
     'unauthorized_strategy' => [
         'template' => 'error/403'
     ],
-    'guards'            => [
+    'guards'                => [
         'ZfcRbac\Guard\RouteGuard' => [
             'zfcuser/login'    => ['guest'],
             'zfcuser/register' => ['guest'],
@@ -36,7 +44,7 @@ return [
             'admin/users'      => ['admin'],
         ],
     ],
-    'role_provider'     => [
+    'role_provider'         => [
         'ZfcRbac\Role\ObjectRepositoryRoleProvider' => [
             'object_manager'     => 'doctrine.entitymanager.orm_default',
             'class_name'         => Role::class,

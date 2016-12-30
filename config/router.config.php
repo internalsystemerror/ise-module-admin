@@ -7,16 +7,6 @@ use Zend\Validator\Uuid;
 $uuidRegex = trim(Uuid::REGEX_UUID, '/^$');
 return [
     'routes' => [
-        'home'    => [
-            'type'    => 'literal',
-            'options' => [
-                'route'    => '/',
-                'defaults' => [
-                    'controller' => __NAMESPACE__ . '\Controller\Index',
-                    'action'     => 'index',
-                ],
-            ],
-        ],
         'admin'   => [
             'type'          => 'literal',
             'options'       => [
@@ -107,11 +97,11 @@ return [
         'zfcuser' => [
             'type'          => 'literal',
             'options'       => [
-                'route'    => '/admin',
+                'route' => '/admin',
             ],
             'may_terminate' => false,
             'child_routes'  => [
-                'profile'   => [
+                'profile' => [
                     'type'          => 'literal',
                     'options'       => [
                         'route'    => '/profile',

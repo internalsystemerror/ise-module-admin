@@ -1,0 +1,20 @@
+<?php echo $this->doctype() ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Internalsystemerror Limited') ?>
+        <?php echo $this->headMeta() ?>
+        <?php echo $this->headLink() ?>
+        <?php echo $this->headScript() ?>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 main">
+                    <?php echo $content ?>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

@@ -1,6 +1,6 @@
 <?php
 return [
-    'admin'      => [
+    'default'      => [
         'index' => [
             'label'      => 'Dashboard',
             'route'      => 'admin',
@@ -22,7 +22,7 @@ return [
                     'permission' => 'admin.users',
                 ],
                 'rbac'  => [
-                    'label'      => 'Roles & Permissions',
+                    'label'      => 'Role Based Access Control',
                     'route'      => 'admin/rbac',
                     'icon'       => 'tower',
                     'permission' => 'admin.rbac',
@@ -30,7 +30,7 @@ return [
             ],
         ],
     ],
-    'admin_menu' => [
+    'user_menu' => [
         'menu' => [
             'label'      => '',
             'uri'        => '#',

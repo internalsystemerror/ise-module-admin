@@ -14,7 +14,7 @@
             <div id="loader-background"></div>
         </div>
         <?php
-        echo $this->navigation('admin_navigation')->navbar()->render(null, [
+        echo $this->navigation('default_navigation')->navbar()->render(null, [
             'brand'     => [
                 'label' => 'ISE',
                 'route' => 'home',
@@ -22,7 +22,7 @@
             ],
             'inverse'   => true,
             'fixed'     => 'top',
-            'rightMenu' => 'admin_navigation_menu',
+            'rightMenu' => 'user_menu_navigation',
         ])
 
         ?>

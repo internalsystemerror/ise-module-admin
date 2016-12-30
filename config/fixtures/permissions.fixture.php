@@ -7,8 +7,6 @@ return [
             'users'       => [
                 'description' => 'User administration access',
                 'children'    => [
-                    'browse'  => 'Browse list of users',
-                    'read'    => 'Read an existing users data',
                     'add'     => 'Add a new user',
                     'edit'    => 'Edit an existing user',
                     'delete'  => 'Delete an existing user',
@@ -24,8 +22,6 @@ return [
                     'roles'       => [
                         'description' => 'Role administration access',
                         'children'    => [
-                            'browse'  => 'Browse list of roles',
-                            'read'    => 'Read an existing roles data',
                             'add'     => 'Add a new role',
                             'edit'    => 'Edit an existing role',
                             'delete'  => 'Delete an existing role',
@@ -36,8 +32,6 @@ return [
                     'permissions' => [
                         'description' => 'Permission administration access',
                         'children'    => [
-                            'browse'  => 'Browse list of permissions',
-                            'read'    => 'Read an existing permissions data',
                             'add'     => 'Add a new permission',
                             'edit'    => 'Edit an existing permission',
                             'delete'  => 'Delete an existing permission',

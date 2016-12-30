@@ -5,14 +5,14 @@ namespace Ise\Admin;
 use Ise\Admin\Mapper\DoctrineOrm\UserMapper;
 use Ise\Admin\Mapper\DoctrineOrm\RoleMapper;
 use Ise\Admin\Mapper\DoctrineOrm\PermissionMapper;
-use Ise\Admin\Navigation\Service\AdminNavigationFactory;
-use Ise\Admin\Navigation\Service\MenuNavigationFactory;
+use Ise\Admin\Navigation\Service\UserMenuNavigationFactory;
 use Ise\Admin\Service\UserService;
 use Ise\Admin\Service\RoleService;
 use Ise\Admin\Service\PermissionService;
 use Ise\Bread\Factory\DoctrineOrmMapperFactory;
 use Zend\Authentication\AuthenticationService;
 use Zend\Db\Adapter\Adapter;
+use Zend\Navigation\Service\DefaultNavigationFactory;
 use ZfcRbac\Initializer\AuthorizationServiceInitializer;
 
 return [
@@ -27,8 +27,8 @@ return [
         __NAMESPACE__ . '\Service\Permission' => PermissionService::class,
     ],
     'factories'    => [
-        'admin_navigation'      => AdminNavigationFactory::class,
-        'admin_navigation_menu' => MenuNavigationFactory::class,
+        'default_navigation'    => DefaultNavigationFactory::class,
+        'user_menu_navigation'  => UserMenuNavigationFactory::class,
         UserMapper::class       => DoctrineOrmMapperFactory::class,
         RoleMapper::class       => DoctrineOrmMapperFactory::class,
         PermissionMapper::class => DoctrineOrmMapperFactory::class,
