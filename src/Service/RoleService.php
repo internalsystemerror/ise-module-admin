@@ -28,4 +28,5 @@ class RoleService extends AbstractRbacService
         'enable'  => 'Ise\Admin\Form\Role\Enable',
         'disable' => 'Ise\Admin\Form\Role\Disable',
     ];
+
 }
