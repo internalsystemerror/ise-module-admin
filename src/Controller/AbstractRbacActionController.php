@@ -14,7 +14,7 @@ class AbstractRbacActionController extends AbstractActionController
     public function browseAction()
     {
         // Check for access permission
-        if (!$this->isGranted($this->basePermission . '.browse')) {
+        if (!$this->isGranted($this->basePermission)) {
             throw new UnauthorizedException();
         }
         return $this->redirect()->toRoute('admin/rbac');
@@ -27,9 +27,8 @@ class AbstractRbacActionController extends AbstractActionController
     public function deleteAction()
     {
         // Load entity
-        $id      = (int) $this->params($this->identifier, 0);
-        $service = $this->getService();
-        $entity  = $service->read($id);
+        $id     = (string) $this->params($this->identifier, '');
+        $entity = $this->service->read($id);
         if (!$entity || $entity->isPermanent()) {
             return $this->notFoundAction();
         }
@@ -40,7 +39,8 @@ class AbstractRbacActionController extends AbstractActionController
     /**
      * {@inheritDoc}
      */
-    protected function createViewModel($actionType, array $parameters = [], $viewTemplate = null)
+    protected function createViewModel($actionType, array $parameters = [],
+                                       $viewTemplate = null)
     {
         switch ($actionType) {
             case 'enable':

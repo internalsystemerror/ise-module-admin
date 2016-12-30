@@ -17,6 +17,9 @@
         <?php
         if ($this->isGranted($this->basePermission)):
             foreach ($this->list as $user):
+                if (!$this->isGranted($this->basePermission, $user)) {
+                    continue;
+                }
             ?>
             <tr<?php echo $user->isDisabled() ? ' class="danger"' : ($user->isBanned() ? ' class="warning"' : null) ?>>
                 <td><?php echo $this->escapeHtml($user->getId()) ?></td>
@@ -46,16 +49,20 @@
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
                         <?php endif ?>
-                        <?php if ($this->isGranted($this->basePermission . '.disable', $user)): ?>
-                        <a class="btn btn-warning" role="button" title="Disable"
-                           href="<?php echo $this->url('admin/users/disable', ['id' => $user->getId()]) ?>">
-                            <span class="glyphicon glyphicon-off"></span>
+                        <a class="btn btn-primary" role="button" title="View"
+                           href="<?php echo $this->url('admin/users/read', ['id' => $user->getId()]) ?>">
+                            <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
-                        <?php endif ?>
                         <?php if ($this->isGranted($this->basePermission . '.delete', $user)): ?>
                         <a class="btn btn-danger" role="button" title="Delete"
                            href="<?php echo $this->url('admin/users/delete', ['id' => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                        <?php endif ?>
+                        <?php if ($this->isGranted($this->basePermission . '.disable', $user)): ?>
+                        <a class="btn btn-warning" role="button" title="Disable"
+                           href="<?php echo $this->url('admin/users/disable', ['id' => $user->getId()]) ?>">
+                            <span class="glyphicon glyphicon-off"></span>
                         </a>
                         <?php endif ?>
                     </div>

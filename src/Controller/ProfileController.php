@@ -70,7 +70,13 @@ class ProfileController extends AbstractActionController
 
     public function viewAction()
     {
-        return new ViewModel;
+        $id   = (string) $this->params('id', '');
+        $user = $this->userService->read($id);
+        if (!$user) {
+            return $this->notFoundAction();
+        }
+
+        return new ViewModel(['user' => $user]);
     }
 
     public function settingsAction()

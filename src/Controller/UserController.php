@@ -35,6 +35,15 @@ class UserController extends AbstractActionController
         $viewModel->setTemplate('ise/admin/user/browse');
         return $viewModel;
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function readAction()
+    {
+        $id = (string) $this->params($this->identifier, '');
+        return $this->redirect()->toRoute('zfcuser/profile/view', ['id' => $id]);
+    }
 
     /**
      * {@inheritDoc}
