@@ -4,7 +4,7 @@
 
 body
 {
-    padding-top: 70px;
+    padding-top: 50px;
 }
 
 .main
@@ -222,4 +222,9 @@ tr > td:last-child
 {
     color: #fff;
     background-color: #428bca;
+}
+
+.container-fluid
+{
+    max-width: 1680px;
 }
