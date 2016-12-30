@@ -18,6 +18,6 @@ class IsCurrentUserAssertion implements AssertionInterface
      */
     public function assert(AuthorizationService $authorization, $user = null)
     {
-        return $authorization->getIdentity() !== $user;
+        return $authorization->getIdentity() === $user;
     }
 }

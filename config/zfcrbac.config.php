@@ -15,12 +15,12 @@ return [
         ],
     ],
     'assertion_map'         => [
-        'admin.user.edit'    => IsCurrentUserAssertion::class,
-        'admin.user.delete'  => NotCurrentUserAssertion::class,
-        'admin.user.enable'  => NotCurrentUserAssertion::class,
-        'admin.user.disable' => NotCurrentUserAssertion::class,
-        'admin.user.ban'     => NotCurrentUserAssertion::class,
-        'admin.user.unban'   => NotCurrentUserAssertion::class,
+        'admin.users.edit'    => IsCurrentUserAssertion::class,
+        'admin.users.delete'  => NotCurrentUserAssertion::class,
+        'admin.users.enable'  => NotCurrentUserAssertion::class,
+        'admin.users.disable' => NotCurrentUserAssertion::class,
+        'admin.users.ban'     => NotCurrentUserAssertion::class,
+        'admin.users.unban'   => NotCurrentUserAssertion::class,
     ],
     'redirect_strategy'     => [
         'redirect_when_connected'        => false,

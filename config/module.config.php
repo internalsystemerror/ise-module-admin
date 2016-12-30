@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
     'doctrine'      => [
-        'driver' => [
+        'driver'   => [
             'admin_annotation_driver' => [
                 'class' => AnnotationDriver::class,
                 'cache' => 'array',
@@ -26,8 +26,9 @@ return [
     ],
     'view_manager'  => [
         'template_map'        => [
-            'layout/admin' => __DIR__ . '/../view/layout/admin.phtml',
-            'layout/login' => __DIR__ . '/../view/layout/login.phtml',
+            'layout/admin'  => __DIR__ . '/../view/layout/admin.phtml',
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/login'  => __DIR__ . '/../view/layout/login.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

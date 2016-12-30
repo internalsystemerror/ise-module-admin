@@ -15,7 +15,7 @@
     </thead>
     <tbody>
         <?php
-        if ($this->isGranted($this->basePermission . '.browse')):
+        if ($this->isGranted($this->basePermission)):
             foreach ($this->list as $user):
             ?>
             <tr<?php echo $user->isDisabled() ? ' class="danger"' : ($user->isBanned() ? ' class="warning"' : null) ?>>
@@ -27,7 +27,7 @@
                 <td><?php echo $this->time($user->getCreated()) ?></td>
                 <td>
                     <?php if ($user->isDisabled()): ?>
-                        <?php if ($this->isGranted($this->basePermission . '.enable')): ?>
+                        <?php if ($this->isGranted($this->basePermission . '.enable', $user)): ?>
                     <a class="btn btn-success" role="button" title="Enable"
                        href="<?php echo $this->url('admin/users/enable', ['id' => $user->getId()]) ?>">
                         <span class="glyphicon glyphicon-off"></span>
@@ -35,24 +35,24 @@
                         <?php endif ?>
                     <?php else: ?>
                     <div class="btn-group" role="group" aria-label="Actions">
-                        <?php if ($user->isBanned() && $this->isGranted($this->basePermission . '.unban')): ?>
+                        <?php if ($user->isBanned() && $this->isGranted($this->basePermission . '.unban', $user)): ?>
                         <a class="btn btn-success" role="button" title="Unban"
                            href="<?php echo $this->url('admin/users/unban', ['id' => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
-                        <?php elseif ($this->isGranted($this->basePermission . '.ban')): ?>
+                        <?php elseif ($this->isGranted($this->basePermission . '.ban', $user)): ?>
                         <a class="btn btn-warning" role="button" title="Ban"
                            href="<?php echo $this->url('admin/users/ban', ['id' => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
                         <?php endif ?>
-                        <?php if ($this->isGranted($this->basePermission . '.disable')): ?>
+                        <?php if ($this->isGranted($this->basePermission . '.disable', $user)): ?>
                         <a class="btn btn-warning" role="button" title="Disable"
                            href="<?php echo $this->url('admin/users/disable', ['id' => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-off"></span>
                         </a>
                         <?php endif ?>
-                        <?php if ($this->isGranted($this->basePermission . '.delete')): ?>
+                        <?php if ($this->isGranted($this->basePermission . '.delete', $user)): ?>
                         <a class="btn btn-danger" role="button" title="Delete"
                            href="<?php echo $this->url('admin/users/delete', ['id' => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-trash"></span>
