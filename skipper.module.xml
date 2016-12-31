@@ -2,7 +2,7 @@
 <skipper version="3.2.7.1338" mvc="Zend Framework" orm="Doctrine2">
   <module name="\Ise\Admin" local-name="Ise\Admin" namespace="\Ise\Admin\Entity" local-namespace="Ise\Admin\Entity" export-format="Doctrine2Php" export-path="src/Entity" uuid="cd690b66-fdf3-41b8-a47b-eadda2a4124b">
     <entity name="\Ise\Admin\Entity\AbstractRbacEntity" local-name="AbstractRbacEntity" namespace="\Ise\Admin\Entity" uuid="abc3affb-174b-4f43-8804-d7c2a8d5354a">
-      <field name="name" type="string" size="16" required="true" unique="true" uuid="c5871b76-6abf-47e8-a814-c5cdee864639"/>
+      <field name="name" type="string" size="128" required="true" unique="true" uuid="c5871b76-6abf-47e8-a814-c5cdee864639"/>
       <field name="permanent" type="boolean" required="true" uuid="54139641-8f5b-44a8-b99e-2269855b3dde"/>
       <inheritance-parent type="MAPPED_SUPERCLASS" uuid="9cfcc291-a5bd-4ab4-935c-7fc13921bcac"/>
       <inheritance-child derived-from="\Ise\Bread\Entity\AbstractBasicEntity" uuid="5de0e11c-8bb8-48ff-8086-7740a3b1808a"/>
