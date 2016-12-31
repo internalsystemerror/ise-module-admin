@@ -5,7 +5,6 @@
     "homepage": "https://github.com/internalsystemerror/ise-module-admin",
     "require": {
         "php": "^5.6 || ^7.0",
-        "ise/ise-module-bootstrap": "dev-feature/zf3",
         "ise/ise-module-bread": "dev-feature/zf3",
         "ise/zf2-module-doctrinedatafixture": "dev-feature/zf3",
         "zendframework/zend-config": "^2.5 || ^3.0",

@@ -11,6 +11,12 @@ use Zend\Form\Annotation as ZF;
  */
 class AbstractRbacEntity extends AbstractBasicEntity
 {
+    /**
+     * @ORM\Column(type="string", unique=true, length=16, nullable=false)
+     * @ZF\Options({"label": "Name"})
+     * @var string
+     */
+    protected $name;
 
     /**
      * @ORM\Column(type="boolean", nullable=false)

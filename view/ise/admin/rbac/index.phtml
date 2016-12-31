@@ -14,6 +14,7 @@ $permissionsPermission = $basePermission . '.permissions';
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Key</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Last Modified</th>
@@ -30,6 +31,7 @@ $permissionsPermission = $basePermission . '.permissions';
                 ?>
             <tr<?php echo $role->isDisabled() ? ' class="danger"' : ($role->isPermanent() ? ' class="warning"' : null) ?>>
                 <td><?php echo $this->escapeHtml($role->getId()) ?></td>
+                <td><?php echo $this->escapeHtml($role->getKey()) ?></td>
                 <td><?php echo $this->escapeHtml($role->getName()) ?></td>
                 <td><?php echo $this->escapeHtml($role->getDescription()) ?></td>
                 <td><?php echo $this->time($role->getLastModified()) ?></td>
@@ -82,6 +84,7 @@ $permissionsPermission = $basePermission . '.permissions';
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Key</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Last Modified</th>
@@ -98,6 +101,7 @@ $permissionsPermission = $basePermission . '.permissions';
                 ?>
             <tr<?php echo $permission->isDisabled() ? ' class="danger"' : ($permission->isPermanent() ? ' class="warning"' : null) ?>>
                 <td><?php echo $this->escapeHtml($permission->getId()) ?></td>
+                <td><?php echo $this->escapeHtml($permission->getKey()) ?></td>
                 <td><?php echo $this->escapeHtml($permission->getName()) ?></td>
                 <td><?php echo $this->escapeHtml($permission->getDescription()) ?></td>
                 <td><?php echo $this->time($permission->getLastModified()) ?></td>
