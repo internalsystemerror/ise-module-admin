@@ -17,7 +17,6 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      * @ORM\Id
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
-     * @ZF\Exclude()
      * @var string
      */
     protected $id;

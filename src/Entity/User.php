@@ -21,7 +21,6 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * @ORM\Id
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
-     * @ZF\Exclude()
      * @var string
      */
     protected $id;

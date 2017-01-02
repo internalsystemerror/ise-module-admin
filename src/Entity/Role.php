@@ -20,7 +20,6 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      * @ORM\Id
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
-     * @ZF\Exclude()
      * @var string
      */
     protected $id;
