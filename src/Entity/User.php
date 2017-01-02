@@ -30,7 +30,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * @ZF\Options({"label": "Username"})
      * @ZF\Filter({"name": "StripNewlines"})
      * @ZF\Filter({"name": "StripTags"})
-     * @ZF\Validator({"name": "StringLength", "options": {"min": 3, "max": 128}})
+     * @ZF\Validator({"name": "StringLength", "options": {"min": 3}})
      * @var string
      */
     protected $username;
@@ -47,7 +47,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * @ORM\Column(type="string", length=128, nullable=false)
      * @ZF\Options({"label": "Password"})
      * @ZF\Type("password")
-     * @ZF\Validator({"name": "StringLength", "options": {"min": 7, "max": 128}})
+     * @ZF\Validator({"name": "StringLength", "options": {"min": 7}})
      * @var string
      */
     protected $password;
@@ -56,7 +56,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * @ORM\Column(type="string", length=255, nullable=true, name="display_name")
      * @ZF\Options({"label": "Display Name"})
      * @ZF\Filter({"name": "StripNewlines"})
-     * @ZF\Validator({"name": "StringLength", "options": {"min": 3, "max": 128}})
+     * @ZF\Validator({"name": "StringLength", "options": {"min": 3}})
      * @var string
      */
     protected $displayName;
