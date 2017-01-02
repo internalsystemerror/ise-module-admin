@@ -122,6 +122,20 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     {
         return !$this->children->isEmpty();
     }
+    
+    /**
+     * Add permissions
+     * 
+     * @param Collection $permissions
+     * @return self
+     */
+    public function addPermissions(Collection $permissions)
+    {
+        foreach ($permissions as $permission) {
+            $this->addPermission($permission);
+        }
+        return $this;
+    }
 
     /**
      * Add permission
@@ -135,6 +149,20 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
         return $this;
     }
 
+    /**
+     * Remove permissions
+     * 
+     * @param Collection $permissions
+     * @return self
+     */
+    public function removePermissions(Collection $permissions)
+    {
+        foreach ($permissions as $permission) {
+            $this->removePermission($permission);
+        }
+        return $this;
+    }
+    
     /**
      * Remove permission
      *
