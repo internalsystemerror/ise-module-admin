@@ -2,6 +2,7 @@
 
 namespace Ise\Admin\Service;
 
+use Ise\Admin\Entity\User;
 use Ise\Bread\Router\Http\BreadRouteStack;
 use Ise\Bread\Service\AbstractService;
 use ZfcRbac\Service\AuthorizationServiceAwareInterface;
@@ -18,7 +19,7 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
     /**
      * @var string
      */
-    protected $entityClass = 'Ise\Admin\Entity\User';
+    protected $entityClass = User::class;
 
     /**
      * @var string

@@ -5,6 +5,7 @@ namespace Ise\Admin\Controller;
 use Ise\Admin\Entity\Permission;
 use Ise\Admin\Entity\Role;
 use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Admin\Service\RoleService;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -12,6 +13,11 @@ use Zend\View\Model\ViewModel;
  */
 class RoleController extends AbstractRbacActionController
 {
+    
+    /**
+     * @var string
+     */
+    protected static $serviceClass = RoleService::class;
 
     /**
      * @var string

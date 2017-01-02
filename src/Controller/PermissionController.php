@@ -3,12 +3,18 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Admin\Service\PermissionService;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
 class PermissionController extends AbstractRbacActionController
 {
+    
+    /**
+     * @var string
+     */
+    protected static $serviceClass = PermissionService::class;
 
     /**
      * @var string

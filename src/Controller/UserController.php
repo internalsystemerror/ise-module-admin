@@ -3,6 +3,7 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Bread\Controller\AbstractActionController;
+use Ise\Admin\Service\UserService;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -10,6 +11,11 @@ use Zend\View\Model\ViewModel;
  */
 class UserController extends AbstractActionController
 {
+    
+    /**
+     * @var string
+     */
+    protected static $serviceClass = UserService::class;
 
     /**
      * @var string

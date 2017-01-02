@@ -2,6 +2,7 @@
 
 namespace Ise\Admin\Service;
 
+use Ise\Admin\Entity\Permission;
 use Ise\Bread\Router\Http\BreadRouteStack;
 
 /**
@@ -13,7 +14,7 @@ class PermissionService extends AbstractRbacService
     /**
      * @var string
      */
-    protected $entityClass = 'Ise\Admin\Entity\Permission';
+    protected $entityClass = Permission::class;
 
     /**
      * @var string
