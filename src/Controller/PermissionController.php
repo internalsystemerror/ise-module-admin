@@ -2,6 +2,8 @@
 
 namespace Ise\Admin\Controller;
 
+use Ise\Bread\Router\Http\BreadRouteStack;
+
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
@@ -30,6 +32,6 @@ class PermissionController extends AbstractRbacActionController
      */
     public function editAction()
     {
-        return $this->bread('edit', 'ise/admin/permission/edit');
+        return $this->bread(BreadRouteStack::ACTION_UPDATE, 'ise/admin/permission/' . BreadRouteStack::ACTION_UPDATE);
     }
 }

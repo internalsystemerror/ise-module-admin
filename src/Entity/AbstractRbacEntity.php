@@ -13,6 +13,7 @@ class AbstractRbacEntity extends AbstractBasicEntity
 {
     /**
      * @ORM\Column(type="string", unique=true, length=128, nullable=false)
+     * @ZF\Flags({"priority": 100})
      * @ZF\Options({"label": "Name"})
      * @var string
      */

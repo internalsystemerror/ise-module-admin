@@ -2,6 +2,7 @@
 
 namespace Ise\Admin\Service;
 
+use Ise\Bread\Router\Http\BreadRouteStack;
 use Ise\Bread\Service\AbstractService;
 
 class AbstractRbacService extends AbstractService
@@ -21,7 +22,7 @@ class AbstractRbacService extends AbstractService
     public function getForm($action)
     {
         $form = parent::getForm($action);
-        if ($action !== 'edit') {
+        if ($action !== BreadRouteStack::ACTION_UPDATE) {
             return $form;
         }
         $nameParts = explode('\\', $this->entityClass);

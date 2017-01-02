@@ -2,6 +2,7 @@
 
 namespace Ise\Admin\Service;
 
+use Ise\Bread\Router\Http\BreadRouteStack;
 use Ise\Bread\Service\AbstractService;
 use ZfcRbac\Service\AuthorizationServiceAwareInterface;
 use ZfcRbac\Service\AuthorizationServiceAwareTrait;
@@ -28,13 +29,13 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
      * @var string[]
      */
     protected $form = [
-        'add'     => 'Ise\Admin\Form\User\Add',
-        'edit'    => 'Ise\Admin\Form\User\Edit',
-        'delete'  => 'Ise\Admin\Form\User\Delete',
-        'enable'  => 'Ise\Admin\Form\User\Enable',
-        'disable' => 'Ise\Admin\Form\User\Disable',
-        'ban'     => 'Ise\Admin\Form\User\Ban',
-        'unban'   => 'Ise\Admin\Form\User\Delete',
+        BreadRouteStack::ACTION_CREATE  => 'Ise\Admin\Form\User\Add',
+        BreadRouteStack::ACTION_UPDATE  => 'Ise\Admin\Form\User\Edit',
+        BreadRouteStack::ACTION_DELETE  => 'Ise\Admin\Form\User\Delete',
+        BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\User\Enable',
+        BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\User\Disable',
+        'ban'                           => 'Ise\Admin\Form\User\Ban',
+        'unban'                         => 'Ise\Admin\Form\User\Delete',
     ];
 
     /**

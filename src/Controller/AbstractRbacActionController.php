@@ -3,6 +3,7 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Bread\Controller\AbstractActionController;
+use Ise\Bread\Router\Http\BreadRouteStack;
 use ZfcRbac\Exception\UnauthorizedException;
 
 class AbstractRbacActionController extends AbstractActionController
@@ -33,18 +34,17 @@ class AbstractRbacActionController extends AbstractActionController
             return $this->notFoundAction();
         }
 
-        return $this->bread('delete');
+        return $this->bread(BreadRouteStack::ACTION_DELETE);
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function createViewModel($actionType, array $parameters = [],
-                                       $viewTemplate = null)
+    protected function createViewModel($actionType, array $parameters = [], $viewTemplate = null)
     {
         switch ($actionType) {
-            case 'enable':
-            case 'disable':
+            case BreadRouteStack::ACTION_ENABLE:
+            case BreadRouteStack::ACTION_DISABLE:
                 if (!$viewTemplate) {
                     $viewTemplate = 'ise/admin/rbac/' . $actionType;
                 }

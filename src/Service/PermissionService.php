@@ -2,6 +2,8 @@
 
 namespace Ise\Admin\Service;
 
+use Ise\Bread\Router\Http\BreadRouteStack;
+
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
@@ -22,10 +24,11 @@ class PermissionService extends AbstractRbacService
      * @var string[]
      */
     protected $form = [
-        'add'     => 'Ise\Admin\Form\Permission\Add',
-        'edit'    => 'Ise\Admin\Form\Permission\Edit',
-        'delete'  => 'Ise\Admin\Form\Permission\Delete',
-        'enable'  => 'Ise\Admin\Form\Permission\Enable',
-        'disable' => 'Ise\Admin\Form\Permission\Disable',
+        BreadRouteStack::ACTION_CREATE  => 'Ise\Admin\Form\Permission\Add',
+        BreadRouteStack::ACTION_UPDATE  => 'Ise\Admin\Form\Permission\Edit',
+        BreadRouteStack::ACTION_DELETE  => 'Ise\Admin\Form\Permission\Delete',
+        BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\Permission\Enable',
+        BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\Permission\Disable',
     ];
+
 }

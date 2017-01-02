@@ -1,4 +1,7 @@
 <?php
+
+use Ise\Bread\Router\Http\BreadRouteStack;
+
 return [
     'admin'  => [
         'description' => 'Administration access',
@@ -7,13 +10,13 @@ return [
             'users'       => [
                 'description' => 'User administration access',
                 'children'    => [
-                    'add'     => 'Add a new user',
-                    'edit'    => 'Edit an existing user',
-                    'delete'  => 'Delete an existing user',
-                    'enable'  => 'Enable a user',
-                    'disable' => 'Disable a user',
-                    'ban'     => 'Ban a user',
-                    'unban'   => 'Unban a user',
+                    BreadRouteStack::ACTION_CREATE  => 'Add a new user',
+                    BreadRouteStack::ACTION_UPDATE  => 'Edit an existing user',
+                    BreadRouteStack::ACTION_DELETE  => 'Delete an existing user',
+                    BreadRouteStack::ACTION_ENABLE  => 'Enable a user',
+                    BreadRouteStack::ACTION_DISABLE => 'Disable a user',
+                    'ban'                           => 'Ban a user',
+                    'unban'                         => 'Unban a user',
                 ],
             ],
             'rbac'        => [
@@ -22,21 +25,21 @@ return [
                     'roles'       => [
                         'description' => 'Role administration access',
                         'children'    => [
-                            'add'     => 'Add a new role',
-                            'edit'    => 'Edit an existing role',
-                            'delete'  => 'Delete an existing role',
-                            'enable'  => 'Enable a role',
-                            'disable' => 'Disable a role',
+                            BreadRouteStack::ACTION_CREATE  => 'Add a new role',
+                            BreadRouteStack::ACTION_UPDATE  => 'Edit an existing role',
+                            BreadRouteStack::ACTION_DELETE  => 'Delete an existing role',
+                            BreadRouteStack::ACTION_ENABLE  => 'Enable a role',
+                            BreadRouteStack::ACTION_DISABLE => 'Disable a role',
                         ],
                     ],
                     'permissions' => [
                         'description' => 'Permission administration access',
                         'children'    => [
-                            'add'     => 'Add a new permission',
-                            'edit'    => 'Edit an existing permission',
-                            'delete'  => 'Delete an existing permission',
-                            'enable'  => 'Enable a permission',
-                            'disable' => 'Disable a permission',
+                            BreadRouteStack::ACTION_CREATE  => 'Add a new permission',
+                            BreadRouteStack::ACTION_UPDATE  => 'Edit an existing permission',
+                            BreadRouteStack::ACTION_DELETE  => 'Delete an existing permission',
+                            BreadRouteStack::ACTION_ENABLE  => 'Enable a permission',
+                            BreadRouteStack::ACTION_DISABLE => 'Disable a permission',
                         ],
                     ],
                 ],

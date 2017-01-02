@@ -3,6 +3,7 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Admin\Service\UserService;
+use Ise\Bread\Router\Http\BreadRouteStack;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface;
 use Zend\View\Model\ViewModel;
@@ -49,7 +50,7 @@ class ProfileController extends AbstractActionController
             throw new UnauthorizedException();
         }
 
-        $form = $this->userService->getForm('edit');
+        $form = $this->userService->getForm(BreadRouteStack::ACTION_UPDATE);
         $form->bind($user);
         $form->getInputFilter()->remove('email');
         $form->getInputFilter()->remove('password');

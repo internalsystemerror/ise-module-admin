@@ -4,6 +4,7 @@ namespace Ise\Admin\Controller;
 
 use Ise\Admin\Entity\Permission;
 use Ise\Admin\Entity\Role;
+use Ise\Bread\Router\Http\BreadRouteStack;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -35,7 +36,7 @@ class RoleController extends AbstractRbacActionController
     public function editAction()
     {
         // Set variables
-        $viewModel = $this->bread('edit', 'ise/admin/role/edit');
+        $viewModel = $this->bread(BreadRouteStack::ACTION_UPDATE, 'ise/admin/role/edit');
         if (!$viewModel instanceof ViewModel) {
             return $viewModel;
         }
