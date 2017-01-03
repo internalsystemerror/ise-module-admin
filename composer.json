@@ -6,23 +6,12 @@
     "require": {
         "php": "^5.6 || ^7.0",
         "ise/ise-module-bread": "dev-feature/zf3",
+        "ise/ise-module-bootstrap": "dev-feature/zf3",
         "ise/zf2-module-doctrinedatafixture": "dev-feature/zf3",
-        "zendframework/zend-config": "^2.5 || ^3.0",
-        "zendframework/zend-eventmanager": "^2.5 || ^3.0",
-        "zendframework/zend-form": "^2.5 || ^3.0",
-        "zendframework/zend-modulemanager": "^2.5 || ^3.0",
-        "zendframework/zend-mvc": "^2.5 || ^3.0",
-        "zendframework/zend-navigation": "^2.5 || ^3.0",
-        "zendframework/zend-servicemanager": "^2.5 || ^3.0",
-        "zendframework/zend-stdlib": "^2.5 || ^3.0",
-        "zendframework/zend-view": "^2.5 || ^3.0",
         "zf-commons/zfc-user-doctrine-orm": "^1.0",
         "zf-commons/zfc-rbac": "^2.5"
     },
     "require-dev": {
-        "zendframework/zend-console": "^2.5",
-        "zendframework/zftool": "^0.1 || ^1.0",
-        "zendframework/zenddiagnostics": "^1.0",
         "ise/php-metapackage-development": "^1.0"
     },
     "autoload": {

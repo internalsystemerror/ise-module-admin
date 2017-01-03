@@ -41,7 +41,7 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
 
     /**
      * Ban user
-     * 
+     *
      * @param array $data
      * @return boolean
      */
@@ -62,7 +62,7 @@ class UserService extends AbstractService implements AuthorizationServiceAwareIn
 
     /**
      * Unban user
-     * 
+     *
      * @param array $data
      * @return boolean
      */

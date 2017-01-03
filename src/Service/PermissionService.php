@@ -31,5 +31,4 @@ class PermissionService extends AbstractRbacService
         BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\Permission\Enable',
         BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\Permission\Disable',
     ];
-
 }

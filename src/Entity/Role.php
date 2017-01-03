@@ -124,7 +124,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     
     /**
      * Add permissions
-     * 
+     *
      * @param Collection $permissions
      * @return self
      */
@@ -150,7 +150,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
     /**
      * Remove permissions
-     * 
+     *
      * @param Collection $permissions
      * @return self
      */

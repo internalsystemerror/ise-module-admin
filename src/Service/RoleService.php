@@ -31,5 +31,4 @@ class RoleService extends AbstractRbacService
         BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\Role\Enable',
         BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\Role\Disable',
     ];
-
 }
