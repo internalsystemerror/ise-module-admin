@@ -34,39 +34,6 @@ return [
             __DIR__ . '/../view',
         ],
     ],
-    'console'       => [
-        'router' => [
-            'routes' => [
-                'install' => [
-                    'options' => [
-                        'route'    => 'install',
-                        'defaults' => [
-                            'controller' => __NAMESPACE__ . '\Controller\Console',
-                            'action'     => 'install',
-                        ],
-                    ],
-                ],
-                'update'  => [
-                    'options' => [
-                        'route'    => 'update',
-                        'defaults' => [
-                            'controller' => __NAMESPACE__ . '\Controller\Console',
-                            'action'     => 'update',
-                        ],
-                    ],
-                ],
-                'refresh' => [
-                    'options' => [
-                        'route'    => 'refresh',
-                        'defaults' => [
-                            'controller' => __NAMESPACE__ . '\Controller\Console',
-                            'action'     => 'refresh',
-                        ],
-                    ],
-                ],
-            ],
-        ],
-    ],
     'asset_manager' => include __DIR__ . '/assets.config.php',
     'router'        => ['routes' => include __DIR__ . '/routes.config.php'],
     'navigation'    => include __DIR__ . '/navigation.config.php',

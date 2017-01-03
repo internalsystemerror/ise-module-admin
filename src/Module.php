@@ -77,20 +77,6 @@ class Module implements
     }
 
     /**
-     * Get diagnostics
-     *
-     * @return array
-     */
-    public function getDiagnostics()
-    {
-        return [
-            'Datatables CDN is available' => [
-                'HttpService', 'cdn.datatables.net'
-            ],
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function getModuleDependencies()

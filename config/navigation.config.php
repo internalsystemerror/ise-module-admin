@@ -50,12 +50,6 @@ return [
                     'icon'       => 'cog',
                     'permission' => 'member',
                 ],
-                'diagnostics' => [
-                    'label'      => 'Site Diagnostics',
-                    'route'      => 'admin/diagnostics',
-                    'icon'       => 'plus',
-                    'permission' => 'admin.diagnostics',
-                ],
                 'logout'      => [
                     'label'      => 'Logout',
                     'route'      => 'zfcuser/logout',

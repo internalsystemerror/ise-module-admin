@@ -6,7 +6,6 @@ return [
     'admin'  => [
         'description' => 'Administration access',
         'children'    => [
-            'diagnostics' => 'Run site diagnostics',
             'users'       => [
                 'description' => 'User administration access',
                 'children'    => [

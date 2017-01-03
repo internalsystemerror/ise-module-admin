@@ -27,16 +27,6 @@ return [
                     ],
                 ],
             ],
-            'diagnostics' => [
-                'type'    => 'literal',
-                'options' => [
-                    'route'    => '/diagnostics',
-                    'defaults' => [
-                        'controller' => 'ZFTool\Controller\Diagnostics',
-                        'action'     => 'run',
-                    ],
-                ],
-            ],
             'users'       => [
                 'type'          => 'bread',
                 'options'       => [

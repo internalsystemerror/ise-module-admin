@@ -4,7 +4,6 @@ return [
         'description' => 'Administrator',
         'permissions' => [
             'admin',
-            'admin.diagnostics',
         ],
         'children'    => [
             'user_admin' => [
