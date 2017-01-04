@@ -5,16 +5,12 @@ namespace Ise\Admin\Service;
 use Ise\Admin\Entity\User;
 use Ise\Bread\Router\Http\BreadRouteStack;
 use Ise\Bread\Service\AbstractService;
-use ZfcRbac\Service\AuthorizationServiceAwareInterface;
-use ZfcRbac\Service\AuthorizationServiceAwareTrait;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class UserService extends AbstractService implements AuthorizationServiceAwareInterface
+class UserService extends AbstractService
 {
-
-    use AuthorizationServiceAwareTrait;
 
     /**
      * @var string
