@@ -33,7 +33,7 @@ class RoleController extends AbstractRbacActionController
     /**
      * @var Role
      */
-    private $permanentRole;
+    protected $currentRole;
 
     /**
      * Edit action
@@ -60,9 +60,7 @@ class RoleController extends AbstractRbacActionController
         }
 
         if ($role->isPermanent()) {
-            $this->permanentRole = $role;
             $this->setupPermanentRole($form, $role);
-            $this->permanentRole = null;
         }
 
         // Return view
@@ -85,7 +83,7 @@ class RoleController extends AbstractRbacActionController
         if ($permission->isPermanent()) {
             $label = '[PERMANENT] ' . $label;
         }
-        if ($this->roleInheritsPermission($this->permanentRole, $permission)) {
+        if ($this->roleInheritsPermission($this->currentRole, $permission)) {
             $label .= ' (Inherited)';
         }
         return $label;
@@ -99,7 +97,7 @@ class RoleController extends AbstractRbacActionController
      */
     public function optionCheckedAttributeGenerator(Permission $permission)
     {
-        if ($this->roleInheritsPermission($this->permanentRole, $permission)) {
+        if ($this->roleInheritsPermission($this->currentRole, $permission)) {
             return 'checked';
         }
         return null;
@@ -113,7 +111,7 @@ class RoleController extends AbstractRbacActionController
      */
     public function optionDisabledAttributeGenerator(Permission $permission)
     {
-        if ($permission->isPermanent() || $this->roleInheritsPermission($this->permanentRole, $permission)) {
+        if ($permission->isPermanent() || $this->roleInheritsPermission($this->currentRole, $permission)) {
             return 'disabled';
         }
         return null;
@@ -127,6 +125,9 @@ class RoleController extends AbstractRbacActionController
      */
     protected function setupPermanentRole(Form $form, Role $role)
     {
+        // Set current role
+        $this->currentRole = $role;
+        
         // Get elements
         $name        = $form->get('name');
         $parent      = $form->get('parent');
@@ -149,7 +150,7 @@ class RoleController extends AbstractRbacActionController
      * @param Permission $permission
      * @return boolean
      */
-    private function roleInheritsPermission(Role $role, Permission $permission)
+    protected function roleInheritsPermission(Role $role, Permission $permission)
     {
         foreach ($role->getChildren() as $childRole) {
             if ($childRole->hasPermission($permission)) {
