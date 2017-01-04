@@ -19,11 +19,7 @@ class AbstractRbacActionController extends AbstractActionController
      */
     public function browseAction()
     {
-        // Check for access permission
-        if (!$this->isGranted($this->basePermission)) {
-            throw new UnauthorizedException();
-        }
-        return $this->redirect()->toRoute($this->indexRoute);
+        return $this->redirectBrowse();
     }
 
     /**
