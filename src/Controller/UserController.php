@@ -47,8 +47,7 @@ class UserController extends AbstractActionController
      */
     public function readAction()
     {
-        $id = (string) $this->params($this->identifier, '');
-        return $this->redirect()->toRoute('zfcuser/profile/view', ['id' => $id]);
+        return $this->redirect()->toRoute('zfcuser/profile/view', [], null, true);
     }
 
     /**
@@ -66,7 +65,7 @@ class UserController extends AbstractActionController
      */
     public function banAction()
     {
-        return $this->bread('ban', 'ise/admin/user/ban');
+        return $this->dialogueAction('ban', 'ise/admin/user/ban');
     }
 
     /**
@@ -76,6 +75,6 @@ class UserController extends AbstractActionController
      */
     public function unbanAction()
     {
-        return $this->bread('unban', 'ise/admin/user/unban');
+        return $this->dialogueAction('unban', 'ise/admin/user/unban');
     }
 }

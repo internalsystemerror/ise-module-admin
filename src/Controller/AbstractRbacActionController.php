@@ -10,6 +10,11 @@ class AbstractRbacActionController extends AbstractActionController
 {
 
     /**
+     * @var string
+     */
+    protected $indexRoute = 'admin/rbac';
+
+    /**
      * {@inheritDoc}
      */
     public function browseAction()
@@ -18,41 +23,49 @@ class AbstractRbacActionController extends AbstractActionController
         if (!$this->isGranted($this->basePermission)) {
             throw new UnauthorizedException();
         }
-        return $this->redirect()->toRoute('admin/rbac');
+        return $this->redirect()->toRoute($this->indexRoute);
     }
 
     /**
      * {@inheritDoc}
-     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function deleteAction()
     {
-        // Load entity
-        $id     = (string) $this->params($this->identifier, '');
-        $entity = $this->service->read($id);
+        // Check access
+        $entity = $this->getEntity();
         if (!$entity || $entity->isPermanent()) {
             return $this->notFoundAction();
         }
-
-        return $this->bread(BreadRouteStack::ACTION_DELETE);
+        $this->checkPermission(BreadRouteStack::ACTION_DELETE, $entity);
+        
+        // Setup form
+        $form = $this->service->getForm(BreadRouteStack::ACTION_DELETE);
+        $form->bind($entity);
+        
+        // Perform action
+        $action = $this->performAction(BreadRouteStack::ACTION_DELETE);
+        if ($action) {
+            return $action;
+        }
+        
+        // Return view
+        $this->setupFormForDialogue($form);
+        return $this->createDialogueViewModelWrapper(BreadRouteStack::ACTION_DELETE, $form, $entity);
     }
-
+    
     /**
      * {@inheritDoc}
      */
-    protected function createViewModel($actionType, array $parameters = [], $viewTemplate = null)
+    public function enableAction()
     {
-        switch ($actionType) {
-            case BreadRouteStack::ACTION_ENABLE:
-            case BreadRouteStack::ACTION_DISABLE:
-                if (!$viewTemplate) {
-                    $viewTemplate = 'ise/admin/rbac/' . $actionType;
-                }
-                $parameters = array_merge([
-                    'indexRoute' => 'admin/rbac'
-                    ], $parameters);
-                break;
-        }
-        return parent::createViewModel($actionType, $parameters, $viewTemplate);
+        return $this->dialogueAction(BreadRouteStack::ACTION_ENABLE, 'ise/admin/rbac/dialogue');
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function disableAction()
+    {
+        return $this->dialogueAction(BreadRouteStack::ACTION_DISABLE, 'ise/admin/rbac/dialogue');
     }
 }

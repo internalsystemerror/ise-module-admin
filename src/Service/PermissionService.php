@@ -31,4 +31,18 @@ class PermissionService extends AbstractRbacService
         BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\Permission\Enable',
         BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\Permission\Disable',
     ];
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getForm($action)
+    {
+        $form = parent::getForm($action);
+        if ($action !== BreadRouteStack::ACTION_UPDATE) {
+            return $form;
+        }
+        
+        $form->getInputFilter()->remove('name');
+        return $form;
+    }
 }

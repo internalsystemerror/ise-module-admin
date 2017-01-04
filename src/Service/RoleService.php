@@ -31,4 +31,20 @@ class RoleService extends AbstractRbacService
         BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\Role\Enable',
         BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\Role\Disable',
     ];
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getForm($action)
+    {
+        $form = parent::getForm($action);
+        if ($action !== BreadRouteStack::ACTION_UPDATE) {
+            return $form;
+        }
+        
+        $form->getInputFilter()->remove('parent');
+        $form->getInputFilter()->remove('permissions');
+        
+        return $form;
+    }
 }

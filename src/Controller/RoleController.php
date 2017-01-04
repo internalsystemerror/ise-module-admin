@@ -6,6 +6,7 @@ use Ise\Admin\Entity\Permission;
 use Ise\Admin\Entity\Role;
 use Ise\Bread\Router\Http\BreadRouteStack;
 use Ise\Admin\Service\RoleService;
+use Zend\Form\Form;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -13,16 +14,11 @@ use Zend\View\Model\ViewModel;
  */
 class RoleController extends AbstractRbacActionController
 {
-    
-    /**
-     * @var string
-     */
-    protected static $serviceClass = RoleService::class;
 
     /**
      * @var string
      */
-    protected $indexRoute = 'admin/roles';
+    protected static $serviceClass = RoleService::class;
 
     /**
      * @var string
@@ -35,61 +31,115 @@ class RoleController extends AbstractRbacActionController
     protected $entityType = 'role';
 
     /**
+     * @var Role
+     */
+    private $permanentRole;
+
+    /**
      * Edit action
      *
      * @return ViewModel
      */
     public function editAction()
     {
-        // Set variables
-        $viewModel = $this->bread(BreadRouteStack::ACTION_UPDATE, 'ise/admin/role/edit');
-        if (!$viewModel instanceof ViewModel) {
-            return $viewModel;
+        // Check access
+        $role = $this->getEntity();
+        if (!$role) {
+            return $this->notFoundAction();
         }
-        $entity = $viewModel->getVariable('entity');
-        $form   = $viewModel->getVariable('form');
-
-        // Check for permanency
-        if ($entity->isPermanent()) {
-            // Get elements
-            $name        = $form->get('name');
-            $parent      = $form->get('parent');
-            $permissions = $form->get('permissions');
-
-            // Set up attributes
-            $name->setAttribute('disabled', 'disabled');
-            $parent->setAttribute('disabled', 'disabled');
-            $permissions->setOption('label_generator', function (Permission $permission) use ($entity) {
-                $label = $permission->getName() . ' - ' . $permission->getDescription();
-                if ($permission->isPermanent()) {
-                    $label = '[PERMANENT] ' . $label;
-                }
-                if ($this->roleInheritsPermission($entity, $permission)) {
-                    $label .= ' (Inherited)';
-                }
-                return $label;
-            });
-            $permissions->setOption('option_attributes', [
-                'checked' => function (Permission $permission) use ($entity) {
-                    if ($this->roleInheritsPermission($entity, $permission)) {
-                        return 'checked';
-                    }
-                    return null;
-                },
-                'disabled' => function (Permission $permission) use ($entity) {
-                    if ($permission->isPermanent() || $this->roleInheritsPermission($entity, $permission)) {
-                        return 'disabled';
-                    }
-                    return null;
-                },
-            ]);
+        $this->checkPermission(BreadRouteStack::ACTION_UPDATE, $role);
+        
+        // Setup form
+        $form = $this->service->getForm(BreadRouteStack::ACTION_UPDATE);
+        $form->bind($role);
+        
+        // Perform action
+        $action = $this->performAction(BreadRouteStack::ACTION_UPDATE);
+        if ($action) {
+            return $action;
         }
 
-        // Set up cancel button
-        $cancel = $form->get('buttons')->get('cancel');
-        $cancel->setAttribute('href', $this->url()->fromRoute($this->indexRoute));
+        if ($role->isPermanent()) {
+            $this->permanentRole = $role;
+            $this->setupPermanentRole($form, $role);
+            $this->permanentRole = null;
+        }
 
-        return $viewModel;
+        // Return view
+        $this->setupFormForView($form);
+        return $this->createActionViewModel(BreadRouteStack::ACTION_UPDATE, [
+                'entity' => $role,
+                'form'   => $form,
+                ], 'ise/admin/role/edit');
+    }
+
+    /**
+     * Generate option label
+     * 
+     * @param Permission $permission
+     * @return string
+     */
+    public function optionLabelGenerator(Permission $permission)
+    {
+        $label = $permission->getName() . ' - ' . $permission->getDescription();
+        if ($permission->isPermanent()) {
+            $label = '[PERMANENT] ' . $label;
+        }
+        if ($this->roleInheritsPermission($this->permanentRole, $permission)) {
+            $label .= ' (Inherited)';
+        }
+        return $label;
+    }
+
+    /**
+     * Generate checked attribute for option
+     * 
+     * @param Permission $permission
+     * @return string
+     */
+    public function optionCheckedAttributeGenerator(Permission $permission)
+    {
+        if ($this->roleInheritsPermission($this->permanentRole, $permission)) {
+            return 'checked';
+        }
+        return null;
+    }
+
+    /**
+     * Generate disabled attribute for option
+     * 
+     * @param Permission $permission
+     * @return string
+     */
+    public function optionDisabledAttributeGenerator(Permission $permission)
+    {
+        if ($permission->isPermanent() || $this->roleInheritsPermission($this->permanentRole, $permission)) {
+            return 'disabled';
+        }
+        return null;
+    }
+
+    /**
+     * Setup permanent role
+     * 
+     * @param Form $form
+     * @param Role $role
+     */
+    protected function setupPermanentRole(Form $form, Role $role)
+    {
+        // Get elements
+        $name        = $form->get('name');
+        $parent      = $form->get('parent');
+        $permissions = $form->get('permissions');
+
+        // Set up attributes
+        $name->setAttribute('disabled', 'disabled');
+        $parent->setAttribute('disabled', 'disabled');
+        $permissions->setOption('label_generator', [$this, 'optionLabelGenerator']);
+        $permissions->setOption('option_attributes', [
+            'checked'  => [$this, 'optionCheckedAttributeGenerator'],
+            'disabled' => [$this, 'optionDisabledAttributeGenerator'],
+        ]);
     }
 
     /**

@@ -52,23 +52,38 @@ class ProfileController extends AbstractActionController
 
         $form = $this->userService->getForm(BreadRouteStack::ACTION_UPDATE);
         $form->bind($user);
-        $form->getInputFilter()->remove('email');
-        $form->getInputFilter()->remove('password');
         $prg  = $this->prg();
 
         if ($prg instanceof ResponseInterface) {
             return $prg;
         } elseif ($prg !== false) {
+            
+            // Set id
             $prg['id'] = $user->getId();
+            
+            // Remove password
+            unset($prg['password']);
+            $form->remove('password');
+            $form->getInputFilter()->remove('password');
+            
+            // Remove email
+            unset($prg['email']);
+            $form->remove('email');
+            $form->getInputFilter()->remove('email');
+            
+            // Perform action
             if ($this->userService->edit($prg)) {
                 return $this->redirect()->toRoute('zfcuser/profile');
             }
         }
-        return new ViewModel([
-            'form' => $form,
-        ]);
+        return new ViewModel(['form' => $form,]);
     }
 
+    /**
+     * View a profile
+     * 
+     * @return ViewModel
+     */
     public function viewAction()
     {
         $id   = (string) $this->params('id', '');
@@ -80,6 +95,11 @@ class ProfileController extends AbstractActionController
         return new ViewModel(['user' => $user]);
     }
 
+    /**
+     * Users settings
+     * 
+     * @return ViewModel
+     */
     public function settingsAction()
     {
         return new ViewModel;

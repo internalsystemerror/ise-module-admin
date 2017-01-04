@@ -2,7 +2,6 @@
 
 namespace Ise\Admin\Service;
 
-use Ise\Bread\Router\Http\BreadRouteStack;
 use Ise\Bread\Service\AbstractService;
 
 class AbstractRbacService extends AbstractService
@@ -14,27 +13,5 @@ class AbstractRbacService extends AbstractService
     public function browse($criteria = [], $orderBy = ['name' => 'ASC'], $limit = null, $offset = null)
     {
         return parent::browse($criteria, $orderBy, $limit, $offset);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getForm($action)
-    {
-        $form = parent::getForm($action);
-        if ($action !== BreadRouteStack::ACTION_UPDATE) {
-            return $form;
-        }
-        $nameParts = explode('\\', $this->entityClass);
-        switch (end($nameParts)) {
-            case 'Role':
-                $form->getInputFilter()->remove('parent');
-                $form->getInputFilter()->remove('permissions');
-                // no break
-            case 'Permission':
-                $form->getInputFilter()->remove('name');
-                break;
-        }
-        return $form;
     }
 }

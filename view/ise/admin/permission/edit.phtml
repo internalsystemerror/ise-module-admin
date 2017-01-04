@@ -22,9 +22,5 @@ if ($entity->isPermanent()) {
     $name->setAttribute('disabled', 'disabled');
 }
 
-// Set up cancel button
-$cancel = $form->get('buttons')->get('cancel');
-$cancel->setAttribute('href', $this->url($indexRoute));
-
 // Display form
 echo $this->form($form);

@@ -1,40 +1,13 @@
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-     aria-labelledby="admin-modal-label">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="admin-modal-label">
-                    <?php echo ucfirst($dialogueType) ?> <?php echo ucfirst($entityType) ?>
-                </h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    <strong>Are you sure</strong> you really want to
-                    <?php echo $dialogueType ?> the <?php echo $entityType ?>:
-                    <em><?php echo $entity ?></em>?
-                </p>
-                <?php
-                if ($entity->isPermanent()) {
-                    echo $this->alert()->danger(
-                        'Please note that you are about to disable a permanent '
-                        . $entityType . ', which can have serious adverse '
-                        . 'effects. Be sure you understand the implications of '
-                        . 'this action before proceeding.');
-                }
-
-                ?>
-            </div>
-            <div class="modal-footer">
-                <?php
-                $cancel = $form->get('buttons')->get('cancel');
-                $cancel->setAttribute('data-href', $this->url($indexRoute));
-                echo $this->form($form);
-                ?>
-            </div>
-        </div>
-    </div>
-</div>
+<p>
+    <strong>Are you sure</strong> you really want to
+    <?php echo $actionTitle ?> the <?php echo $entityTitle ?>:
+    <em><?php echo $entity ?></em>?
+</p>
+<?php
+if ($entity->isPermanent()) {
+    echo $this->alert()->danger(
+        'Please note that you are about to disable a permanent '
+        . $entityType . ', which can have serious adverse '
+        . 'effects. Be sure you understand the implications of '
+        . 'this action before proceeding.');
+}

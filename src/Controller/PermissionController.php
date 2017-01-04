@@ -19,11 +19,6 @@ class PermissionController extends AbstractRbacActionController
     /**
      * @var string
      */
-    protected $indexRoute = 'admin/permissions';
-
-    /**
-     * @var string
-     */
     protected $basePermission = 'admin.rbac.permissions';
 
     /**
@@ -38,6 +33,28 @@ class PermissionController extends AbstractRbacActionController
      */
     public function editAction()
     {
-        return $this->bread(BreadRouteStack::ACTION_UPDATE, 'ise/admin/permission/' . BreadRouteStack::ACTION_UPDATE);
+        // Check access
+        $entity = $this->getEntity();
+        if (!$entity) {
+            return $this->notFoundAction();
+        }
+        $this->checkPermission(BreadRouteStack::ACTION_UPDATE, $entity);
+        
+        // Setup form
+        $form = $this->service->getForm(BreadRouteStack::ACTION_UPDATE);
+        $form->bind($entity);
+        
+        // Perform action
+        $action = $this->performAction(BreadRouteStack::ACTION_UPDATE);
+        if ($action) {
+            return $action;
+        }
+        
+        // Return view
+        $this->setupFormForView($form);
+        return $this->createActionViewModel(BreadRouteStack::ACTION_UPDATE, [
+            'entity' => $entity,
+            'form'   => $form,
+        ], 'ise/admin/permission/edit');
     }
 }
