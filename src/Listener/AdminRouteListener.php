@@ -4,6 +4,7 @@ namespace Ise\Admin\Listener;
 
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
+use Zend\EventManager\ListenerAggregateTrait;
 use Zend\EventManager\EventInterface;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\MvcEvent;
@@ -13,11 +14,8 @@ use Zend\View\Model\ViewModel;
 
 class AdminRouteListener implements ListenerAggregateInterface
 {
-
-    /**
-     * @var array
-     */
-    protected $listeners = [];
+    
+    use ListenerAggregateTrait;
 
     /**
      * {@inheritDoc}
@@ -25,18 +23,6 @@ class AdminRouteListener implements ListenerAggregateInterface
     public function attach(EventManagerInterface $eventManager)
     {
         $this->listeners[] = $eventManager->attach(MvcEvent::EVENT_DISPATCH, [$this, 'selectLayoutBasedOnRoute']);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function detach(EventManagerInterface $eventManager)
-    {
-        foreach ($this->listeners as $index => $listener) {
-            if ($eventManager->detach($listener)) {
-                unset($this->listeners[$index]);
-            }
-        }
     }
 
     /**

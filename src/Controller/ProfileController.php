@@ -3,7 +3,7 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Admin\Service\UserService;
-use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Bread\Router\Http\Bread;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface;
 use Zend\View\Model\ViewModel;
@@ -50,7 +50,7 @@ class ProfileController extends AbstractActionController
             throw new UnauthorizedException();
         }
 
-        $form = $this->userService->getForm(BreadRouteStack::ACTION_UPDATE);
+        $form = $this->userService->getForm(Bread::ACTION_UPDATE);
         $form->bind($user);
         $prg  = $this->prg();
 

@@ -4,7 +4,7 @@ namespace Ise\Admin\Controller;
 
 use Ise\Admin\Entity\Permission;
 use Ise\Admin\Entity\Role;
-use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Bread\Router\Http\Bread;
 use Ise\Admin\Service\RoleService;
 use Zend\Form\Form;
 use Zend\View\Model\ViewModel;
@@ -47,14 +47,14 @@ class RoleController extends AbstractRbacActionController
         if (!$role) {
             return $this->notFoundAction();
         }
-        $this->checkPermission(BreadRouteStack::ACTION_UPDATE, $role);
+        $this->checkPermission(Bread::ACTION_UPDATE, $role);
         
         // Setup form
-        $form = $this->service->getForm(BreadRouteStack::ACTION_UPDATE);
+        $form = $this->service->getForm(Bread::ACTION_UPDATE);
         $form->bind($role);
         
         // Perform action
-        $action = $this->performAction(BreadRouteStack::ACTION_UPDATE);
+        $action = $this->performAction(Bread::ACTION_UPDATE);
         if ($action) {
             return $action;
         }
@@ -65,7 +65,7 @@ class RoleController extends AbstractRbacActionController
 
         // Return view
         $this->setupFormForView($form);
-        return $this->createActionViewModel(BreadRouteStack::ACTION_UPDATE, [
+        return $this->createActionViewModel(Bread::ACTION_UPDATE, [
                 'entity' => $role,
                 'form'   => $form,
                 ], 'ise/admin/role/edit');

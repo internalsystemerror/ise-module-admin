@@ -3,8 +3,7 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Bread\Controller\AbstractActionController;
-use Ise\Bread\Router\Http\BreadRouteStack;
-use ZfcRbac\Exception\UnauthorizedException;
+use Ise\Bread\Router\Http\Bread;
 
 class AbstractRbacActionController extends AbstractActionController
 {
@@ -32,21 +31,21 @@ class AbstractRbacActionController extends AbstractActionController
         if (!$entity || $entity->isPermanent()) {
             return $this->notFoundAction();
         }
-        $this->checkPermission(BreadRouteStack::ACTION_DELETE, $entity);
+        $this->checkPermission(Bread::ACTION_DELETE, $entity);
         
         // Setup form
-        $form = $this->service->getForm(BreadRouteStack::ACTION_DELETE);
+        $form = $this->service->getForm(Bread::ACTION_DELETE);
         $form->bind($entity);
         
         // Perform action
-        $action = $this->performAction(BreadRouteStack::ACTION_DELETE);
+        $action = $this->performAction(Bread::ACTION_DELETE);
         if ($action) {
             return $action;
         }
         
         // Return view
         $this->setupFormForDialogue($form);
-        return $this->createDialogueViewModelWrapper(BreadRouteStack::ACTION_DELETE, $form, $entity);
+        return $this->createDialogueViewModelWrapper(Bread::ACTION_DELETE, $form, $entity);
     }
     
     /**
@@ -54,7 +53,7 @@ class AbstractRbacActionController extends AbstractActionController
      */
     public function enableAction()
     {
-        return $this->dialogueAction(BreadRouteStack::ACTION_ENABLE, 'ise/admin/rbac/dialogue');
+        return $this->dialogueAction(Bread::ACTION_ENABLE, 'ise/admin/rbac/dialogue');
     }
     
     /**
@@ -62,6 +61,6 @@ class AbstractRbacActionController extends AbstractActionController
      */
     public function disableAction()
     {
-        return $this->dialogueAction(BreadRouteStack::ACTION_DISABLE, 'ise/admin/rbac/dialogue');
+        return $this->dialogueAction(Bread::ACTION_DISABLE, 'ise/admin/rbac/dialogue');
     }
 }

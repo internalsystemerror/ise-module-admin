@@ -2,7 +2,7 @@
 
 namespace Ise\Admin\Controller;
 
-use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Bread\Router\Http\Bread;
 use Ise\Admin\Service\PermissionService;
 
 /**
@@ -38,21 +38,21 @@ class PermissionController extends AbstractRbacActionController
         if (!$entity) {
             return $this->notFoundAction();
         }
-        $this->checkPermission(BreadRouteStack::ACTION_UPDATE, $entity);
+        $this->checkPermission(Bread::ACTION_UPDATE, $entity);
         
         // Setup form
-        $form = $this->service->getForm(BreadRouteStack::ACTION_UPDATE);
+        $form = $this->service->getForm(Bread::ACTION_UPDATE);
         $form->bind($entity);
         
         // Perform action
-        $action = $this->performAction(BreadRouteStack::ACTION_UPDATE);
+        $action = $this->performAction(Bread::ACTION_UPDATE);
         if ($action) {
             return $action;
         }
         
         // Return view
         $this->setupFormForView($form);
-        return $this->createActionViewModel(BreadRouteStack::ACTION_UPDATE, [
+        return $this->createActionViewModel(Bread::ACTION_UPDATE, [
             'entity' => $entity,
             'form'   => $form,
         ], 'ise/admin/permission/edit');

@@ -3,7 +3,7 @@
 namespace Ise\Admin\Service;
 
 use Ise\Admin\Entity\Permission;
-use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Bread\Router\Http\Bread;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
@@ -25,11 +25,11 @@ class PermissionService extends AbstractRbacService
      * @var string[]
      */
     protected $form = [
-        BreadRouteStack::ACTION_CREATE  => 'Ise\Admin\Form\Permission\Add',
-        BreadRouteStack::ACTION_UPDATE  => 'Ise\Admin\Form\Permission\Edit',
-        BreadRouteStack::ACTION_DELETE  => 'Ise\Admin\Form\Permission\Delete',
-        BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\Permission\Enable',
-        BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\Permission\Disable',
+        Bread::ACTION_CREATE  => 'Ise\Admin\Form\Permission\Add',
+        Bread::ACTION_UPDATE  => 'Ise\Admin\Form\Permission\Edit',
+        Bread::ACTION_DELETE  => 'Ise\Admin\Form\Permission\Delete',
+        Bread::ACTION_ENABLE  => 'Ise\Admin\Form\Permission\Enable',
+        Bread::ACTION_DISABLE => 'Ise\Admin\Form\Permission\Disable',
     ];
 
     /**
@@ -38,7 +38,7 @@ class PermissionService extends AbstractRbacService
     public function getForm($action)
     {
         $form = parent::getForm($action);
-        if ($action !== BreadRouteStack::ACTION_UPDATE) {
+        if ($action !== Bread::ACTION_UPDATE) {
             return $form;
         }
         

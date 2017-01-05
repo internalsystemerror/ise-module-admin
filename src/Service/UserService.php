@@ -3,7 +3,7 @@
 namespace Ise\Admin\Service;
 
 use Ise\Admin\Entity\User;
-use Ise\Bread\Router\Http\BreadRouteStack;
+use Ise\Bread\Router\Http\Bread;
 use Ise\Bread\Service\AbstractService;
 
 /**
@@ -26,13 +26,13 @@ class UserService extends AbstractService
      * @var string[]
      */
     protected $form = [
-        BreadRouteStack::ACTION_CREATE  => 'Ise\Admin\Form\User\Add',
-        BreadRouteStack::ACTION_UPDATE  => 'Ise\Admin\Form\User\Edit',
-        BreadRouteStack::ACTION_DELETE  => 'Ise\Admin\Form\User\Delete',
-        BreadRouteStack::ACTION_ENABLE  => 'Ise\Admin\Form\User\Enable',
-        BreadRouteStack::ACTION_DISABLE => 'Ise\Admin\Form\User\Disable',
-        'ban'                           => 'Ise\Admin\Form\User\Ban',
-        'unban'                         => 'Ise\Admin\Form\User\Delete',
+        Bread::ACTION_CREATE  => 'Ise\Admin\Form\User\Add',
+        Bread::ACTION_UPDATE  => 'Ise\Admin\Form\User\Edit',
+        Bread::ACTION_DELETE  => 'Ise\Admin\Form\User\Delete',
+        Bread::ACTION_ENABLE  => 'Ise\Admin\Form\User\Enable',
+        Bread::ACTION_DISABLE => 'Ise\Admin\Form\User\Disable',
+        'ban'                 => 'Ise\Admin\Form\User\Ban',
+        'unban'               => 'Ise\Admin\Form\User\Delete',
     ];
 
     /**
