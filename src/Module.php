@@ -32,16 +32,19 @@ class Module implements
         $serviceManager = $target->getServiceManager();
 
         // Attach listeners
-        $eventManager->attachAggregate(new Listener\AdminRouteListener);
-        $eventManager->getSharedManager()->attachAggregate(new Listener\RbacNavigationListener);
+        $adminRouteListener = $serviceManager->get(Listener\AdminRouteListener::class);
+        $adminRouteListener->attach($eventManager);
+        
+        $rbacNavigationListener = $serviceManager->get(Listener\RbacNavigationListener::class);
+        $rbacNavigationListener->attachShared($eventManager->getSharedManager());
 
         // Attach ZfcRbac redirect strategy
         $redirectStrategy = $serviceManager->get(RedirectStrategy::class);
-        $eventManager->attach($redirectStrategy);
+        $redirectStrategy->attach($eventManager);
         
         // Attach ZfcRbac unauthorised strategy
         $unauthorisedStrategy = $serviceManager->get(UnauthorizedStrategy::class);
-        $eventManager->attach($unauthorisedStrategy);
+        $unauthorisedStrategy->attach($eventManager);
     }
 
     /**
