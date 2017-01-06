@@ -46,9 +46,7 @@
                     if (originalTitle && target.hasClass('in')) {
                         $this.html(originalTitle);
                         $this.data('originalTitle', null);
-                        return;
-                    }
-                    if (!originalTitle) {
+                    } else if (!originalTitle) {
                         $this.data('originalTitle', $this.html());
                         $this.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
                     }
