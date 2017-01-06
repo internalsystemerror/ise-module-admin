@@ -20,7 +20,7 @@
                     $(window).load(methods.loaded);
                     $('.table').dataTable();
                     $('.modal').on('hide.bs.modal', methods.hideModal);
-                    $('[data-toggle="collapse"]').on('click', methods.collapse).each(methods.prepareCollapse);
+                    $('[data-toggle="collapse"][value!="Cancel"]').each(methods.prepareCollapse);
                     $('.alert-notifications .alert').each(methods.showNotification);
                 },
                 loaded: function ()
@@ -29,26 +29,23 @@
                 },
                 prepareCollapse: function()
                 {
-                    var $this = $(this), target = $($this.attr('data-target'));
-                    if (target.hasClass('in')) {
-                        $this.data('originalTitle', $this.html());
-                        $this.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
-                    }
-                },
-                collapse: function ()
-                {
-                    var $this = $(this), target = $($this.attr('data-target'));
-                    if (target.hasClass('collapsing')) {
-                        return;
-                    }
+                    var button = $(this), target = $(button.attr('data-target'));
+                    button.data('originalTitle', button.html());
+                    target.on({
+                        'hidden.bs.collapse': function ()
+                        {
+                            button.html(button.data('originalTitle'));
+                            
+                        },
+                        'shown.bs.collapse': function ()
+                        {
+                            button.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
+                        }
+                    });
                     
-                    var originalTitle = $this.data('originalTitle');
-                    if (originalTitle && target.hasClass('in')) {
-                        $this.html(originalTitle);
-                        $this.data('originalTitle', null);
-                    } else if (!originalTitle) {
-                        $this.data('originalTitle', $this.html());
-                        $this.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
+                    if (target.hasClass('in')) {
+                        button.data('originalTitle', button.html());
+                        button.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
                     }
                 },
                 hideModal: function ()
