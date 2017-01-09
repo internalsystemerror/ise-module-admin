@@ -3,6 +3,8 @@
 namespace Ise\Admin\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
+use Ise\Admin\Service\RoleService;
+use Ise\Admin\Service\PermissionService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -14,12 +16,10 @@ class RbacControllerFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        // Load services
-        $serviceLocator    = $container->getServiceLocator();
-        $roleService       = $serviceLocator->get('Ise\Admin\Service\Role');
-        $permissionService = $serviceLocator->get('Ise\Admin\Service\Permission');
-        
-        return new $requestedName($roleService, $permissionService);
+        return new $requestedName(
+            $container->get(RoleService::class),
+            $container->get(PermissionService::class)
+        );
     }
     
     /**
@@ -27,6 +27,6 @@ class RbacControllerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator, $name = null, $requestedName = null)
     {
-        return $this($serviceLocator, $requestedName);
+        return $this($serviceLocator->getServiceLocator(), $requestedName);
     }
 }

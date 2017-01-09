@@ -26,8 +26,14 @@ class AbstractRbacActionController extends AbstractActionController
      */
     public function deleteAction()
     {
+        // PRG wrapper
+        $prg = $this->prg();
+        if ($prg instanceof ResponseInterface) {
+            return $prg;
+        }
+        
         // Check access
-        $entity = $this->getEntity();
+        $entity = $this->getEntity($prg);
         if (!$entity || $entity->isPermanent()) {
             return $this->notFoundAction();
         }
@@ -38,14 +44,14 @@ class AbstractRbacActionController extends AbstractActionController
         $form->bind($entity);
         
         // Perform action
-        $action = $this->performAction(Bread::ACTION_DELETE);
+        $action = $this->performAction(Bread::ACTION_DELETE, $prg);
         if ($action) {
             return $action;
         }
         
         // Return view
         $this->setupFormForDialogue($form);
-        return $this->createDialogueViewModelWrapper(Bread::ACTION_DELETE, $form, $entity);
+        return $this->createDialogueViewModelWrapper(Bread::ACTION_DELETE, $form, $entity, 'ise/admin/rbac/dialogue');
     }
     
     /**

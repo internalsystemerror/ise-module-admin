@@ -42,8 +42,14 @@ class RoleController extends AbstractRbacActionController
      */
     public function editAction()
     {
+        // PRG wrapper
+        $prg = $this->prg();
+        if ($prg instanceof ResponseInterface) {
+            return $prg;
+        }
+        
         // Check access
-        $role = $this->getEntity();
+        $role = $this->getEntity($prg);
         if (!$role) {
             return $this->notFoundAction();
         }
@@ -54,7 +60,7 @@ class RoleController extends AbstractRbacActionController
         $form->bind($role);
         
         // Perform action
-        $action = $this->performAction(Bread::ACTION_UPDATE);
+        $action = $this->performAction(Bread::ACTION_UPDATE, $prg);
         if ($action) {
             return $action;
         }
