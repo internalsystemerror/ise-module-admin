@@ -44,16 +44,14 @@ class UserService extends AbstractService
     public function ban(array $data)
     {
         // Validate form
-        $entity = $this->validateForm('ban', $data);
-        if (!$entity) {
+        $user = $this->validateForm('ban', $data);
+        if (!$user) {
             return false;
         }
-
-        // Get entity
-        $entity->setBanned(true);
-
-        // Save entity
-        return $this->mapper->edit($entity);
+        
+        // Save user
+        $user->setBanned(true);
+        return $this->mapper->edit($user);
     }
 
     /**
@@ -65,15 +63,13 @@ class UserService extends AbstractService
     public function unban(array $data)
     {
         // Validate form
-        $entity = $this->validateForm('unban', $data);
-        if (!$entity) {
+        $user = $this->validateForm('unban', $data);
+        if (!$user) {
             return false;
         }
-
-        // Get entity
-        $entity->setBanned(false);
-
-        // Save entity
-        return $this->mapper->edit($entity);
+        
+        // Save user
+        $user->setBanned(false);
+        return $this->mapper->edit($user);
     }
 }

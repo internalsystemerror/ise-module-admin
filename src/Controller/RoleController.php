@@ -49,7 +49,7 @@ class RoleController extends AbstractRbacActionController
         }
         
         // Check access
-        $role = $this->getEntity($prg);
+        $role = $this->getEntity();
         if (!$role) {
             return $this->notFoundAction();
         }

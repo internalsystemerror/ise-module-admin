@@ -6,7 +6,7 @@ return [
     'admin'  => [
         'description' => 'Administration access',
         'children'    => [
-            'users'       => [
+            'users' => [
                 'description' => 'User administration access',
                 'children'    => [
                     Bread::ACTION_CREATE  => 'Add a new user',
@@ -14,11 +14,11 @@ return [
                     Bread::ACTION_DELETE  => 'Delete an existing user',
                     Bread::ACTION_ENABLE  => 'Enable a user',
                     Bread::ACTION_DISABLE => 'Disable a user',
-                    'ban'                           => 'Ban a user',
-                    'unban'                         => 'Unban a user',
+                    'ban'                 => 'Ban a user',
+                    'unban'               => 'Unban a user',
                 ],
             ],
-            'rbac'        => [
+            'rbac'  => [
                 'description' => 'Role based access control',
                 'children'    => [
                     'roles'       => [

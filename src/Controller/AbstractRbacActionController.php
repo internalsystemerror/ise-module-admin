@@ -33,7 +33,7 @@ class AbstractRbacActionController extends AbstractActionController
         }
         
         // Check access
-        $entity = $this->getEntity($prg);
+        $entity = $this->getEntity();
         if (!$entity || $entity->isPermanent()) {
             return $this->notFoundAction();
         }
