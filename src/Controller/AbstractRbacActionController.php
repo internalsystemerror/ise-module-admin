@@ -59,7 +59,7 @@ class AbstractRbacActionController extends AbstractActionController
      */
     public function enableAction()
     {
-        return $this->dialogueAction(Bread::ACTION_ENABLE, 'ise/admin/rbac/dialogue');
+        return parent::enableAction('ise/admin/rbac/dialogue');
     }
     
     /**
@@ -67,6 +67,6 @@ class AbstractRbacActionController extends AbstractActionController
      */
     public function disableAction()
     {
-        return $this->dialogueAction(Bread::ACTION_DISABLE, 'ise/admin/rbac/dialogue');
+        return parent::disableAction('ise/admin/rbac/dialogue');
     }
 }

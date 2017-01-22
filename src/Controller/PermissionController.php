@@ -27,34 +27,11 @@ class PermissionController extends AbstractRbacActionController
     protected $entityType = 'permission';
 
     /**
-     * Edit action
-     *
-     * @return ViewModel
+     * {@inheritDoc}
      */
     public function editAction()
     {
-        // Check access
-        $entity = $this->getEntity();
-        if (!$entity) {
-            return $this->notFoundAction();
-        }
-        $this->checkPermission(Bread::ACTION_UPDATE, $entity);
         
-        // Setup form
-        $form = $this->service->getForm(Bread::ACTION_UPDATE);
-        $form->bind($entity);
-        
-        // Perform action
-        $action = $this->performAction(Bread::ACTION_UPDATE);
-        if ($action) {
-            return $action;
-        }
-        
-        // Return view
-        $this->setupFormForView($form);
-        return $this->createActionViewModel(Bread::ACTION_UPDATE, [
-            'entity' => $entity,
-            'form'   => $form,
-        ], 'ise/admin/permission/edit');
+        return parent::editAction('ise/admin/permission/edit');
     }
 }
