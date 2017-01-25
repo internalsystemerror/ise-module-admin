@@ -5,7 +5,7 @@ namespace Ise\Admin\Controller;
 use Ise\Bread\Controller\AbstractActionController;
 use Ise\Bread\Router\Http\Bread;
 
-class AbstractRbacActionController extends AbstractActionController
+abstract class AbstractRbacActionController extends AbstractActionController
 {
 
     /**
