@@ -14,7 +14,7 @@ class PermissionController extends AbstractRbacActionController
     /**
      * @var string
      */
-    protected static $serviceClass = PermissionService::class;
+    protected $serviceClass = PermissionService::class;
 
     /**
      * @var string

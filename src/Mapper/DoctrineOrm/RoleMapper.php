@@ -2,6 +2,7 @@
 
 namespace Ise\Admin\Mapper\DoctrineOrm;
 
+use Ise\Admin\Entity\Role;
 use Ise\Bread\Mapper\DoctrineOrm\AbstractMapper;
 
 class RoleMapper extends AbstractMapper
@@ -10,5 +11,5 @@ class RoleMapper extends AbstractMapper
     /**
      * @var string
      */
-    protected $entityClass = 'Ise\Admin\Entity\Role';
+    protected static $entityClass = Role::class;
 }

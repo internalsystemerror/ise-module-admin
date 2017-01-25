@@ -15,7 +15,7 @@ class UserController extends AbstractActionController
     /**
      * @var string
      */
-    protected static $serviceClass = UserService::class;
+    protected $serviceClass = UserService::class;
 
     /**
      * @var string

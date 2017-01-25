@@ -2,6 +2,7 @@
 
 namespace Ise\Admin\Mapper\DoctrineOrm;
 
+use Ise\Admin\Entity\Permission;
 use Ise\Bread\Mapper\DoctrineOrm\AbstractMapper;
 
 class PermissionMapper extends AbstractMapper
@@ -10,5 +11,5 @@ class PermissionMapper extends AbstractMapper
     /**
      * @var string
      */
-    protected $entityClass = 'Ise\Admin\Entity\Permission';
+    protected static $entityClass = Permission::class;
 }

@@ -1,3 +1,4 @@
+<?php use Ise\Bread\Router\Http\Bread ?>
 <h1 class="page-header">
     Browsing User Accounts
 </h1>
@@ -15,9 +16,9 @@
     </thead>
     <tbody>
         <?php
-        if ($this->isGranted($this->basePermission)):
+        if ($this->isGranted($basePermission)):
             foreach ($this->list as $user):
-                if (!$this->isGranted($this->basePermission, $user)) {
+                if (!$this->isGranted($basePermission, $user)) {
                     continue;
                 }
             ?>
@@ -30,38 +31,38 @@
                 <td><?php echo $this->time($user->getCreated()) ?></td>
                 <td>
                     <?php if ($user->isDisabled()): ?>
-                        <?php if ($this->isGranted($this->basePermission . '.enable', $user)): ?>
+                        <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_ENABLE, $user)): ?>
                     <a class="btn btn-success" role="button" title="Enable"
-                       href="<?php echo $this->url('admin/users/enable', ['id' => $user->getId()]) ?>">
+                       href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFER => $user->getId()]) ?>">
                         <span class="glyphicon glyphicon-off"></span>
                     </a>
                         <?php endif ?>
                     <?php else: ?>
                     <div class="btn-group" role="group" aria-label="Actions">
-                        <?php if ($user->isBanned() && $this->isGranted($this->basePermission . '.unban', $user)): ?>
+                        <?php if ($user->isBanned() && $this->isGranted($basePermission . '.unban', $user)): ?>
                         <a class="btn btn-success" role="button" title="Unban"
-                           href="<?php echo $this->url('admin/users/unban', ['id' => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/unban', [Bread::IDENTIFER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
-                        <?php elseif ($this->isGranted($this->basePermission . '.ban', $user)): ?>
+                        <?php elseif ($this->isGranted($basePermission . '.ban', $user)): ?>
                         <a class="btn btn-warning" role="button" title="Ban"
-                           href="<?php echo $this->url('admin/users/ban', ['id' => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/ban', [Bread::IDENTIFER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
                         <?php endif ?>
                         <a class="btn btn-primary" role="button" title="View"
-                           href="<?php echo $this->url('admin/users/read', ['id' => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_READ, [Bread::IDENTIFER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
-                        <?php if ($this->isGranted($this->basePermission . '.delete', $user)): ?>
+                        <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_DELETE, $user)): ?>
                         <a class="btn btn-danger" role="button" title="Delete"
-                           href="<?php echo $this->url('admin/users/delete', ['id' => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DELETE, [Bread::IDENTIFER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                         <?php endif ?>
-                        <?php if ($this->isGranted($this->basePermission . '.disable', $user)): ?>
+                        <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_DISABLE, $user)): ?>
                         <a class="btn btn-warning" role="button" title="Disable"
-                           href="<?php echo $this->url('admin/users/disable', ['id' => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-off"></span>
                         </a>
                         <?php endif ?>

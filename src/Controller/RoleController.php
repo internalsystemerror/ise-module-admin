@@ -18,7 +18,7 @@ class RoleController extends AbstractRbacActionController
     /**
      * @var string
      */
-    protected static $serviceClass = RoleService::class;
+    protected $serviceClass = RoleService::class;
 
     /**
      * @var string

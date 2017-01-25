@@ -37,31 +37,31 @@
                     <?php if ($entity->isDisabled()): ?>
                         <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_ENABLE, $entity)): ?>
                     <a class="btn btn-success" role="button" title="Enable"
-                       href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_ENABLE, [$identifier => $entity->getId()]) ?>">
+                       href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFIER => $entity->getId()]) ?>">
                         <span class="glyphicon glyphicon-off"></span>
                     </a>
                         <?php endif ?>
                     <?php else: ?>
                     <div class="btn-group" role="group" aria-label="Actions">
                         <a class="btn btn-primary" role="button" title="View"
-                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_READ, [$identifier => $entity->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_READ, [Bread::IDENTIFIER => $entity->getId()]) ?>">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
                         <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_UPDATE, $entity)): ?>
                             <a class="btn btn-info" role="button" title="Edit"
-                               href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_UPDATE, [$identifier => $entity->getId()]) ?>">
+                               href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_UPDATE, [Bread::IDENTIFIER => $entity->getId()]) ?>">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         <?php endif ?>
                         <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_DELETE, $entity)): ?>
                         <a class="btn btn-danger" role="button" title="Delete"
-                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DELETE, [$identifier => $entity->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DELETE, [Bread::IDENTIFIER => $entity->getId()]) ?>">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                         <?php endif ?>
                         <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_DISABLE, $entity)): ?>
                         <a class="btn btn-warning" role="button" title="Disable"
-                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DISABLE, [$identifier => $entity->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFIER => $entity->getId()]) ?>">
                             <span class="glyphicon glyphicon-off"></span>
                         </a>
                         <?php endif ?>
