@@ -8,7 +8,6 @@ use Zend\Authentication\AuthenticationService;
 use Zend\Db\Adapter\Adapter;
 use Zend\Navigation\Service\DefaultNavigationFactory;
 use Zend\ServiceManager\Factory\InvokableFactory;
-use ZfcRbac\Initializer\AuthorizationServiceInitializer;
 
 return [
     'aliases'            => [
@@ -41,8 +40,5 @@ return [
         Mapper\DoctrineOrm\UserMapper::class       => DoctrineOrmMapperFactory::class,
         Mapper\DoctrineOrm\RoleMapper::class       => DoctrineOrmMapperFactory::class,
         Mapper\DoctrineOrm\PermissionMapper::class => DoctrineOrmMapperFactory::class,
-    ],
-    'initializers'       => [
-        AuthorizationServiceInitializer::class,
     ],
 ];

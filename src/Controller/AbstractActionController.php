@@ -17,7 +17,7 @@ abstract class AbstractActionController extends BreadAbstractActionController
      */
     protected function checkPermission($actionType = null, $context = null)
     {
-        $permission = $this->basePermission;
+        $permission = static::$basePermission;
         if ($actionType) {
             $permission .= '.' . $actionType;
         }

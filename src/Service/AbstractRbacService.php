@@ -4,7 +4,7 @@ namespace Ise\Admin\Service;
 
 use Ise\Bread\Service\AbstractService;
 
-class AbstractRbacService extends AbstractService
+abstract class AbstractRbacService extends AbstractService
 {
 
     /**
