@@ -10,5 +10,8 @@ abstract class AbstractRbacService extends AbstractService
     /**
      * {@inheritDoc}
      */
-    public function browse($criteria = [], $orderBy = ['name' => 'ASC'], $limit = null, $offset = null);
+    public function browse(array $criteria = [], array $orderBy = ['name' => 'ASC'], $limit = null, $offset = null)
+    {
+        return parent::browse($criteria, $orderBy, $limit, $offset);
+    }
 }

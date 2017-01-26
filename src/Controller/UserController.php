@@ -2,7 +2,6 @@
 
 namespace Ise\Admin\Controller;
 
-use Ise\Bread\Controller\AbstractActionController;
 use Ise\Admin\Service\UserService;
 use Zend\View\Model\ViewModel;
 
@@ -15,22 +14,22 @@ class UserController extends AbstractActionController
     /**
      * @var string
      */
-    protected $serviceClass = UserService::class;
+    protected static $serviceClass = UserService::class;
 
     /**
      * @var string
      */
-    protected $indexRoute = 'admin/users';
+    protected static $indexRoute = 'admin/users';
 
     /**
      * @var string
      */
-    protected $basePermission = 'admin.users';
+    protected static $basePermission = 'admin.users';
 
     /**
      * @var string
      */
-    protected $entityType = 'user';
+    protected static $entityType = 'user';
     
     /**
      * {@inheritDoc}

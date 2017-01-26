@@ -2,7 +2,6 @@
 
 namespace Ise\Admin\Controller;
 
-use Ise\Bread\Controller\AbstractActionController;
 use Ise\Bread\Router\Http\Bread;
 
 abstract class AbstractRbacActionController extends AbstractActionController
@@ -11,7 +10,7 @@ abstract class AbstractRbacActionController extends AbstractActionController
     /**
      * @var string
      */
-    protected $indexRoute = 'admin/rbac';
+    protected static $indexRoute = 'admin/rbac';
 
     /**
      * {@inheritDoc}
@@ -19,6 +18,45 @@ abstract class AbstractRbacActionController extends AbstractActionController
     public function browseAction()
     {
         return $this->redirectBrowse();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function editAction($viewTemplate = null)
+    {
+        // PRG wrapper
+        $prg = $this->prg();
+        if ($prg instanceof ResponseInterface) {
+            return $prg;
+        }
+
+        // Check access
+        $entity = $this->getEntity();
+        if (!$entity) {
+            return $this->notFoundAction();
+        }
+        $this->checkPermission(Bread::ACTION_UPDATE, $entity);
+
+        // Setup form
+        $form = $this->service->getForm(Bread::ACTION_UPDATE);
+        if ($entity->isPermanent()) {
+            $form->setValidationGroup(['description']);
+        }
+
+        // Perform action
+        $form->bind($entity);
+        $action = $this->performAction(Bread::ACTION_UPDATE, $prg);
+        if ($action) {
+            return $action;
+        }
+
+        // Return view
+        $this->setupFormForView($form);
+        return $this->createActionViewModel(Bread::ACTION_UPDATE, [
+                'entity' => $entity,
+                'form'   => $form,
+        ], $viewTemplate);
     }
 
     /**
@@ -51,7 +89,12 @@ abstract class AbstractRbacActionController extends AbstractActionController
         
         // Return view
         $this->setupFormForDialogue($form);
-        return $this->createDialogueViewModelWrapper(Bread::ACTION_DELETE, $form, $entity, 'ise/admin/rbac/dialogue');
+        return $this->createDialogueViewModelWrapper(
+            Bread::ACTION_DELETE,
+            $form,
+            $entity,
+            'ise/admin/rbac/dialogue'
+        );
     }
     
     /**
