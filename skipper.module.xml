@@ -74,6 +74,9 @@
       <many-to-many-entity name="\Ise\Admin\Entity\User" owning-side="false" uuid="b766fe32-4bff-4d9f-aa52-082a78198851">
         <many-to-many-field from="user_id" to="id"/>
       </many-to-many-entity>
+      <orm-attributes>
+        <attribute name="join-table-schema">admin_user_role</attribute>
+      </orm-attributes>
     </many-to-many>
     <entity name="\Ise\Admin\Entity\RolePermissions" local-name="RolePermissions" namespace="\Ise\Admin\Entity" uuid="0c8907b5-304d-4544-9e48-1c2a1b9a20cd">
       <field name="role_id" type="guid" required="true" primary="true" uuid="af255e4e-a213-4b42-8322-58151c79e2f4"/>
@@ -89,6 +92,9 @@
       <many-to-many-entity name="\Ise\Admin\Entity\Role" owning-side="false" uuid="8d6568dc-0b7c-44ef-97d0-365bdcf3fc8e">
         <many-to-many-field from="role_id" to="id"/>
       </many-to-many-entity>
+      <orm-attributes>
+        <attribute name="join-table-schema">admin_role_permission</attribute>
+      </orm-attributes>
     </many-to-many>
     <orm-attributes>
       <attribute name="file-suffix">without-suffix</attribute>
