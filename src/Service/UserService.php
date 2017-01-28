@@ -1,7 +1,7 @@
 <?php
 
 namespace Ise\Admin\Service;
-;
+
 use Ise\Bread\Router\Http\Bread;
 use Ise\Bread\Service\AbstractService;
 
@@ -43,7 +43,7 @@ class UserService extends AbstractService
         // Save entity
         $entity->setBanned(true);
         $entity->setLastModified(new DateTime);
-        return $this->mapper->ban($entity);
+        return $this->mapper->edit($entity);
     }
 
     /**
@@ -63,6 +63,6 @@ class UserService extends AbstractService
         // Save entity
         $entity->setBanned(false);
         $entity->setLastModified(new DateTime);
-        return $this->mapper->unban($entity);
+        return $this->mapper->edit($entity);
     }
 }

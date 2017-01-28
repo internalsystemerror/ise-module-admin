@@ -23,17 +23,4 @@ class PermissionService extends AbstractRbacService
         Bread::ACTION_DISABLE => 'Ise\Admin\Form\Permission\Disable',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-//    public function getForm($action)
-//    {
-//        $form = parent::getForm($action);
-//        if ($action !== Bread::ACTION_UPDATE) {
-//            return $form;
-//        }
-//        
-//        $form->getInputFilter()->remove('name');
-//        return $form;
-//    }
 }
