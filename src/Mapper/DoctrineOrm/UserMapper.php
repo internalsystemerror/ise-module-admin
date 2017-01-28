@@ -22,8 +22,6 @@ class UserMapper extends AbstractMapper
      */
     public function ban(User $user)
     {
-        $user->setBanned(true);
-        $channel->setLastModified(new DateTime);
         return $this->persist($user);
     }
 
@@ -35,8 +33,6 @@ class UserMapper extends AbstractMapper
      */
     public function unban(User $user)
     {
-        $user->setBanned(false);
-        $channel->setLastModified(new DateTime);
         return $this->persist($user);
     }
 }
