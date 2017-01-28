@@ -18,7 +18,7 @@
                 init: function ()
                 {
                     $(window).load(methods.loaded);
-                    $('.table').dataTable();
+                    $('.data-table').dataTable();
                     $('.modal').on('hide.bs.modal', methods.hideModal);
                     $('[data-toggle="collapse"][value!="Cancel"]').each(methods.prepareCollapse);
                     $('.alert-notifications .alert').each(methods.showNotification);
