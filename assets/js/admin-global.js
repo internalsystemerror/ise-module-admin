@@ -1,81 +1,116 @@
-(function ($)
-{
-    var constants = {
-        notification: {
-            show: {
-                duration: 'slow',
-                delay: 500
-            },
-            hide: {
-                duration: 'slow',
-                delay: 5000
-            }
+(function ($, document, window, undefined) {
+    
+    'use strict';
+    
+    var $document = $(document), $window = $(window), notifications = {
+        show: {
+            duration: 'slow',
+            delay: 500
+        },
+        hide: {
+            duration: 'slow',
+            delay: 5000
         }
-    },
-    properties = {
-    },
-            methods = {
-                init: function ()
-                {
-                    $(window).load(methods.loaded);
-                    $('.data-table').dataTable();
-                    $('.modal').on('hide.bs.modal', methods.hideModal);
-                    $('[data-toggle="collapse"][value!="Cancel"]').each(methods.prepareCollapse);
-                    $('.alert-notifications .alert').each(methods.showNotification);
-                },
-                loaded: function ()
-                {
-                    $('body').addClass('loaded');
-                },
-                prepareCollapse: function()
-                {
-                    var button = $(this), target = $(button.attr('data-target'));
-                    button.data('originalTitle', button.html());
-                    target.on({
-                        'hidden.bs.collapse': function ()
-                        {
-                            button.html(button.data('originalTitle'));
-                            
-                        },
-                        'shown.bs.collapse': function ()
-                        {
-                            button.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
-                        }
-                    });
-                    
-                    if (target.hasClass('in')) {
-                        button.data('originalTitle', button.html());
-                        button.html('<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide');
-                    }
-                },
-                hideModal: function ()
-                {
-                    var href = $('.btn-cancel', this).attr('data-href');
-                    if (href) {
-                        window.location.href = href;
-                    }
-                },
-                showNotification: function ()
-                {
-                    $(this).delay(constants.notification.show.delay).fadeIn(
-                            constants.notification.show.duration,
-                            methods.hideNotification
-                            ).hover(
-                            methods.hoverNotification,
-                            methods.hideNotification
-                            );
-                },
-                hideNotification: function ()
-                {
-                    $(this).delay(constants.notification.hide.delay).fadeOut(
-                            constants.notification.hide.duration
-                            );
-                },
-                hoverNotification: function ()
-                {
-                    $(this).stop(true).show();
-                }
-            };
+    }, eventNames = {
+        ready: 'ise:ready',
+        load: 'ise:load'
+    }, selectors = {
+        body: 'body',
+        table: '.data-table',
+        modal: '.modal',
+        alert: '.alert-notifications .alert',
+        cancel: '.btn.cancel',
+        collapse: '[data-toggle="collapse"][value!="Cancel"]'
+    };
+    
+    /**
+     * Initialise
+     */
+    function initialise() {
+        $document.on(eventNames.ready, iseReady);
+        $window.load(windowLoad);
+    }
+    
+    /**
+     * One time window load event
+     */
+    function windowLoad() {
+        $(selectors.body).addClass('loaded');
+    }
+    
+    /**
+     * Custom ready event
+     */
+    function iseReady() {
+        $(selectors.table).dataTable();
+        $(selectors.modal).on('hide.bs.modal', hideModal);
+        $(selectors.alert).each(showNotification);
+        $(selectors.collapse).each(prepareCollapse);
+    }
+    
+    /**
+     * Hide modal
+     */
+    function hideModal() {
+        var href = $(selectors.cancel, this).attr('data-href');
+        if (href) {
+            window.location.href;
+        }
+    }
+    
+    /**
+     * Show a notification
+     */
+    function showNotification() {
+        $(this).delay(notifications.show.delay).fadeIn(notifications.show.duration, hideNotification).hover(hoverNotification, hideNotification);
+    }
+    
+    /**
+     * On hover of a notification
+     */
+    function hoverNotification() {
+        $(this).stop(true).show();
+    }
 
-    $(document).ready(methods.init);
-})(jQuery);
+    /**
+     * Hide a notification
+     */
+    function hideNotification() {
+        $(this).delay(notifications.hide.delay).fadeOut(notifications.hide.duration);
+    }
+    
+    /**
+     * Prepare a collapse element
+     */
+    function prepareCollapse() {
+        var $button = $(this), $target = $($button.attr('data-target')), template = '<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide';
+        
+        /**
+         * On collapse hidden
+         */
+        function collapseHidden() {
+            $button.html($button.data('originalTitle'));
+        }
+        
+        /**
+         * On collapse shown
+         */
+        function collapseShown() {
+            $button.html(template);
+        }
+        
+        $button.data('originalTitle', $button.html());
+        $target.on({
+            'hidden.bs.collapse': collapseHidden,
+            'shown.bs.collapse': collapseShown
+        });
+        if ($target.hasClass('in')) {
+            $button.data('originalTitle', $button.html());
+            $button.html(template);
+        }
+    }
+    
+    // Initialise
+    initialise();
+    
+})(jQuery, document, window);
