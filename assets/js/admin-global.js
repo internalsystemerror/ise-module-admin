@@ -52,6 +52,9 @@
      * Hide modal
      */
     function hideModal() {
+        if ($.ajaxify !== undefined) {
+            return;
+        }
         var href = $(selectors.cancel, this).attr('data-href');
         if (href) {
             window.location.href;
