@@ -96,5 +96,6 @@ class AdminRouteListener implements ListenerAggregateInterface
         $basePath = $renderer->basePath();
         $renderer->headTitle('Login');
         $renderer->headLink()->appendStylesheet($basePath . '/css/login.css');
+        $renderer->inlineScript()->appendFile($basePath . '/js/login.js');
     }
 }

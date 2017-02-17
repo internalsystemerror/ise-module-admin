@@ -27,8 +27,15 @@
      * Initialise
      */
     function initialise() {
-        $document.on(eventNames.ready, iseReady);
+        $document.ready(documentReady).on(eventNames.ready, iseReady);
         $window.load(windowLoad);
+    }
+    
+    /**
+     * One time document ready event
+     */
+    function documentReady() {
+        $document.ajaxify();
     }
     
     /**

@@ -5,6 +5,7 @@
         <?php echo $this->headTitle('Internalsystemerror Limited') ?>
         <?php echo $this->headMeta() ?>
         <?php echo $this->headLink() ?>
+        <?php echo $this->headStyle() ?>
         <?php echo $this->headScript() ?>
     </head>
     <body>
@@ -14,6 +15,7 @@
                     <?php echo $content ?>
                 </main>
             </div>
+            <?php echo $this->partial('partial/footer') ?>
         </div>
         <?php echo $this->inlineScript() ?>
     </body>

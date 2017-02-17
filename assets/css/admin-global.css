@@ -228,3 +228,8 @@ tr > td:last-child
 {
     max-width: 1680px;
 }
+
+.data-table thead th:last-child
+{
+    min-width: 200px;
+}

@@ -23,9 +23,9 @@ echo $this->form()->openTag($loginForm);
 <?php echo $this->formRow($credential) ?>
 <div class="form-buttons">
     <?php if ($this->redirect): ?>
-        <input type="hidden" name="redirect"
-               value="<?php echo $this->escapeHtml($this->redirect) ?>">
-           <?php endif ?>
+    <input type="hidden" name="redirect"
+           value="<?php echo $this->escapeHtml($this->redirect) ?>">
+    <?php endif ?>
     <div class="form-links">
         <?php if ($this->enableRegistration): ?>
             <?php echo $this->translate('Not registered?') ?>

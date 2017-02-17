@@ -38,6 +38,7 @@ return [
             'js/datatables-responsive.js'   => 'https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.js',
             'js/datatables-bootstrap.js'    => 'http://cdn.datatables.net/plug-ins/' . $dataTablesVersion . '/integration/bootstrap/3/dataTables.bootstrap.js',
             'js/admin-global.js'            => __DIR__ . '/../assets/js/admin-global.js',
+            'js/login.js'                   => __DIR__ . '/../assets/js/login.js',
         ],
     ],
 ];
