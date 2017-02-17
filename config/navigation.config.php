@@ -53,6 +53,7 @@ return [
                 'logout'      => [
                     'label'      => 'Logout',
                     'route'      => 'zfcuser/logout',
+                    'class'      => 'no-ajax',
                     'icon'       => 'off',
                     'divider'    => true,
                     'permission' => 'member',

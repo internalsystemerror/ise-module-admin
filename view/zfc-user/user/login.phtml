@@ -10,7 +10,7 @@ $credential = $loginForm->get('credential');
 $submit     = $loginForm->get('submit');
 
 // Setup elements
-$submit->setAttribute('class', 'btn btn-primary pull-right');
+$submit->setAttribute('class', 'btn btn-primary pull-right no-ajax');
 
 // Start form
 echo $this->form()->openTag($loginForm);
