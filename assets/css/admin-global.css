@@ -184,7 +184,7 @@ tr > td:last-child
     border-bottom: 3px solid #e74c3c;
 }
 
-.navbar-nav.navbar-right > li
+.navbar-nav.navbar-right > li:last-child
 {
     border-bottom: 3px solid #e74c3c;
 }
