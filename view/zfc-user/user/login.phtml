@@ -1,6 +1,12 @@
 <?php
 // Prepare form
 $loginForm->setAttribute('action', $this->url('zfcuser/login'));
+$class = $loginForm->getAttribute('class');
+if ($class) {
+    $class .= ' ';
+}
+$class .= 'no-ajax';
+$loginForm->setAttribute('class', $class);
 $loginForm->setAttribute('method', 'post');
 $loginForm->prepare();
 
@@ -10,7 +16,7 @@ $credential = $loginForm->get('credential');
 $submit     = $loginForm->get('submit');
 
 // Setup elements
-$submit->setAttribute('class', 'btn btn-primary pull-right no-ajax');
+$submit->setAttribute('class', 'btn btn-primary pull-right');
 
 // Start form
 echo $this->form()->openTag($loginForm);

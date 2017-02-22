@@ -7,7 +7,7 @@
         load: 'ise:load'
     }, selectors = {
         body: 'body',
-        table: '.data-table',
+        table: '.data-table:not(.dataTable)',
         cancel: '.btn.cancel',
         collapse: '[data-toggle="collapse"][value!="Cancel"]'
     };
