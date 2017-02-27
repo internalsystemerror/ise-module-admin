@@ -1,59 +1,79 @@
-(function ($)
-{
-    var constants = {
-        notification: {
-            show: {
-                duration: 'slow',
-                delay: 500
-            },
-            hide: {
-                duration: 'slow',
-                delay: 5000
-            }
+(function ($, document, window, undefined) {
+    
+    'use strict';
+    
+    var $document = $(document), $window = $(window), eventNames = {
+        ready: 'ise:ready',
+        load: 'ise:load'
+    }, selectors = {
+        body: 'body',
+        table: '.data-table:not(.dataTable)',
+        cancel: '.btn.cancel',
+        collapse: '[data-toggle="collapse"][value!="Cancel"]'
+    };
+    
+    /**
+     * Initialise
+     */
+    function initialise() {
+        $document.ready(documentReady).on(eventNames.ready, iseReady);
+        $window.load(windowLoad);
+    }
+    
+    /**
+     * One time document ready event
+     */
+    function documentReady() {
+        $document.ajaxify();
+    }
+    
+    /**
+     * One time window load event
+     */
+    function windowLoad() {
+        $(selectors.body).addClass('loaded');
+    }
+    
+    /**
+     * Custom ready event
+     */
+    function iseReady() {
+        $(selectors.table).dataTable();
+        $(selectors.collapse).each(prepareCollapse);
+    }
+    
+    /**
+     * Prepare a collapse element
+     */
+    function prepareCollapse() {
+        var $button = $(this), $target = $($button.attr('data-target')), template = '<span class="glyphicon glyphicon-minus" aria-hidden="true" /> Hide';
+        
+        /**
+         * On collapse hidden
+         */
+        function collapseHidden() {
+            $button.html($button.data('originalTitle'));
         }
-    },
-    properties = {
-    },
-            methods = {
-                init: function ()
-                {
-                    $(window).load(methods.loaded);
-                    $('.table').dataTable();
-                    $('.modal').on('hide.bs.modal', methods.hideModal);
-                    $('.alert-notifications .alert').each(methods.showNotification);
-                },
-                loaded: function ()
-                {
-                    $('body').addClass('loaded');
-                },
-                hideModal: function ()
-                {
-                    var href = $('.btn-cancel', this).attr('data-href');
-                    if (href) {
-                        window.location.href = href;
-                    }
-                },
-                showNotification: function ()
-                {
-                    $(this).delay(constants.notification.show.delay).fadeIn(
-                            constants.notification.show.duration,
-                            methods.hideNotification
-                            ).hover(
-                            methods.hoverNotification,
-                            methods.hideNotification
-                            );
-                },
-                hideNotification: function ()
-                {
-                    $(this).delay(constants.notification.hide.delay).fadeOut(
-                            constants.notification.hide.duration
-                            );
-                },
-                hoverNotification: function ()
-                {
-                    $(this).stop(true).show();
-                }
-            };
-
-    $(document).ready(methods.init);
-})(jQuery);
+        
+        /**
+         * On collapse shown
+         */
+        function collapseShown() {
+            $button.html(template);
+        }
+        
+        $button.data('originalTitle', $button.html());
+        $target.on({
+            'hidden.bs.collapse': collapseHidden,
+            'shown.bs.collapse': collapseShown
+        });
+        if ($target.hasClass('in')) {
+            $button.data('originalTitle', $button.html());
+            $button.html(template);
+        }
+    }
+    
+    // Initialise
+    initialise();
+    
+})(jQuery, document, window);

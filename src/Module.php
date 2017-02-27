@@ -1,22 +1,18 @@
 <?php
 
-namespace IseAdmin;
+namespace Ise\Admin;
 
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use ZfcRbac\View\Strategy\RedirectStrategy;
+use ZfcRbac\View\Strategy\UnauthorizedStrategy;
 
 class Module implements
     BootstrapListenerInterface,
     ConfigProviderInterface,
-    ControllerProviderInterface,
-    DependencyIndicatorInterface,
-    ServiceProviderInterface,
-    ViewHelperProviderInterface
+    DependencyIndicatorInterface
 {
 
     /**
@@ -30,16 +26,19 @@ class Module implements
         $serviceManager = $target->getServiceManager();
 
         // Attach listeners
-        $eventManager->attachAggregate(new Listener\AdminRouteListener);
-        $eventManager->getSharedManager()->attachAggregate(new Listener\RbacNavigationListener);
+        $adminRouteListener = $serviceManager->get(Listener\AdminRouteListener::class);
+        $adminRouteListener->attach($eventManager);
+        
+        $rbacNavigationListener = $serviceManager->get(Listener\RbacNavigationListener::class);
+        $rbacNavigationListener->attachShared($eventManager->getSharedManager());
 
         // Attach ZfcRbac redirect strategy
-        $redirectStrategy = $serviceManager->get('ZfcRbac\View\Strategy\RedirectStrategy');
-        $eventManager->attach($redirectStrategy);
+        $redirectStrategy = $serviceManager->get(RedirectStrategy::class);
+        $redirectStrategy->attach($eventManager);
         
         // Attach ZfcRbac unauthorised strategy
-        $unauthorisedStrategy = $serviceManager->get('ZfcRbac\View\Strategy\UnauthorizedStrategy');
-        $eventManager->attach($unauthorisedStrategy);
+        $unauthorisedStrategy = $serviceManager->get(UnauthorizedStrategy::class);
+        $unauthorisedStrategy->attach($eventManager);
     }
 
     /**
@@ -47,45 +46,7 @@ class Module implements
      */
     public function getConfig()
     {
-        return include __DIR__ . '/../config/module.config.php';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getControllerConfig()
-    {
-        return include __DIR__ . '/../config/controllers.config.php';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getServiceConfig()
-    {
-        return include __DIR__ . '/../config/services.config.php';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getViewHelperConfig()
-    {
-        return include __DIR__ . '/../config/helpers.config.php';
-    }
-
-    /**
-     * Get diagnostics
-     *
-     * @return array
-     */
-    public function getDiagnostics()
-    {
-        return [
-            'Datatables CDN is available' => [
-                'HttpService', 'cdn.datatables.net'
-            ],
-        ];
+        return include realpath(__DIR__ . '/../config/module.config.php');
     }
 
     /**
@@ -94,8 +55,8 @@ class Module implements
     public function getModuleDependencies()
     {
         return [
-            'IseBootstrap',
-            'IseBread',
+            'Ise\Bootstrap',
+            'Ise\Bread',
             'ZfcBase',
             'ZfcRbac',
             'ZfcUser',

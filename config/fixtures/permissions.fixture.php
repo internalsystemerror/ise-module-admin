@@ -1,48 +1,44 @@
 <?php
+
+use Ise\Bread\Router\Http\Bread;
+
 return [
     'admin'  => [
         'description' => 'Administration access',
         'children'    => [
-            'diagnostics' => 'Run site diagnostics',
-            'users'       => [
+            'user' => [
                 'description' => 'User administration access',
                 'children'    => [
-                    'browse'  => 'Browse list of users',
-                    'read'    => 'Read an existing users data',
-                    'add'     => 'Add a new user',
-                    'edit'    => 'Edit an existing user',
-                    'delete'  => 'Delete an existing user',
-                    'enable'  => 'Enable a user',
-                    'disable' => 'Disable a user',
-                    'ban'     => 'Ban a user',
-                    'unban'   => 'Unban a user',
+                    Bread::ACTION_CREATE  => 'Add a new user',
+                    Bread::ACTION_UPDATE  => 'Edit an existing user',
+                    Bread::ACTION_DELETE  => 'Delete an existing user',
+                    Bread::ACTION_ENABLE  => 'Enable a user',
+                    Bread::ACTION_DISABLE => 'Disable a user',
+                    'ban'                 => 'Ban a user',
+                    'unban'               => 'Unban a user',
                 ],
             ],
-            'rbac'        => [
+            'rbac'  => [
                 'description' => 'Role based access control',
                 'children'    => [
-                    'roles'       => [
+                    'role'       => [
                         'description' => 'Role administration access',
                         'children'    => [
-                            'browse'  => 'Browse list of roles',
-                            'read'    => 'Read an existing roles data',
-                            'add'     => 'Add a new role',
-                            'edit'    => 'Edit an existing role',
-                            'delete'  => 'Delete an existing role',
-                            'enable'  => 'Enable a role',
-                            'disable' => 'Disable a role',
+                            Bread::ACTION_CREATE  => 'Add a new role',
+                            Bread::ACTION_UPDATE  => 'Edit an existing role',
+                            Bread::ACTION_DELETE  => 'Delete an existing role',
+                            Bread::ACTION_ENABLE  => 'Enable a role',
+                            Bread::ACTION_DISABLE => 'Disable a role',
                         ],
                     ],
-                    'permissions' => [
+                    'permission' => [
                         'description' => 'Permission administration access',
                         'children'    => [
-                            'browse'  => 'Browse list of permissions',
-                            'read'    => 'Read an existing permissions data',
-                            'add'     => 'Add a new permission',
-                            'edit'    => 'Edit an existing permission',
-                            'delete'  => 'Delete an existing permission',
-                            'enable'  => 'Enable a permission',
-                            'disable' => 'Disable a permission',
+                            Bread::ACTION_CREATE  => 'Add a new permission',
+                            Bread::ACTION_UPDATE  => 'Edit an existing permission',
+                            Bread::ACTION_DELETE  => 'Delete an existing permission',
+                            Bread::ACTION_ENABLE  => 'Enable a permission',
+                            Bread::ACTION_DISABLE => 'Disable a permission',
                         ],
                     ],
                 ],

@@ -1,39 +1,19 @@
 <?php
 
-namespace IseAdmin\Controller;
-
-use IseBread\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+namespace Ise\Admin\Controller;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class UserController extends AbstractActionController
+class UserController extends AdminBreadActionController
 {
-
-    /**
-     * @var string
-     */
-    protected $indexRoute = 'admin/users';
-
-    /**
-     * @var string
-     */
-    protected $basePermission = 'admin.users';
-
-    /**
-     * @var string
-     */
-    protected $entityType = 'user';
     
     /**
      * {@inheritDoc}
      */
-    public function browseAction()
+    public function readAction()
     {
-        $viewModel = parent::browseAction();
-        $viewModel->setTemplate('ise-admin/user/browse');
-        return $viewModel;
+        return $this->redirect()->toRoute('zfcuser/profile/view', [], null, true);
     }
 
     /**
@@ -51,7 +31,7 @@ class UserController extends AbstractActionController
      */
     public function banAction()
     {
-        return $this->bread('ban', 'ise-admin/user/ban');
+        return $this->dialogAction('ban');
     }
 
     /**
@@ -61,6 +41,6 @@ class UserController extends AbstractActionController
      */
     public function unbanAction()
     {
-        return $this->bread('unban', 'ise-admin/user/unban');
+        return $this->dialogAction('unban');
     }
 }

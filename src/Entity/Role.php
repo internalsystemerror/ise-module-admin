@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -20,13 +20,12 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      * @ORM\Id
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
-     * @ZF\Exclude()
      * @var string
      */
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="IseAdmin\Entity\Role", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Ise\Admin\Entity\Role", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ZF\Options({"label": "Parent Role"})
      * @var Role
@@ -34,13 +33,13 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     protected $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="IseAdmin\Entity\Role", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="parent")
      * @var Role[]|Collection
      */
     protected $children;
 
     /**
-     * @ORM\ManyToMany(targetEntity="IseAdmin\Entity\Permission", mappedBy="")
+     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Permission", mappedBy="")
      * @ZF\Options({"label": "Permissions"})
      * @ZF\Type("DoctrineORMModule\Form\Element\EntityMultiCheckbox")
      * @var Permission[]|Collection
@@ -122,6 +121,20 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     {
         return !$this->children->isEmpty();
     }
+    
+    /**
+     * Add permissions
+     *
+     * @param Collection $permissions
+     * @return self
+     */
+    public function addPermissions(Collection $permissions)
+    {
+        foreach ($permissions as $permission) {
+            $this->addPermission($permission);
+        }
+        return $this;
+    }
 
     /**
      * Add permission
@@ -135,6 +148,20 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
         return $this;
     }
 
+    /**
+     * Remove permissions
+     *
+     * @param Collection $permissions
+     * @return self
+     */
+    public function removePermissions(Collection $permissions)
+    {
+        foreach ($permissions as $permission) {
+            $this->removePermission($permission);
+        }
+        return $this;
+    }
+    
     /**
      * Remove permission
      *

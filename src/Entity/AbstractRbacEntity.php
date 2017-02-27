@@ -1,9 +1,9 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use IseBread\Entity\AbstractBasicEntity;
+use Ise\Bread\Entity\AbstractBasicEntity;
 use Zend\Form\Annotation as ZF;
 
 /**
@@ -11,6 +11,13 @@ use Zend\Form\Annotation as ZF;
  */
 class AbstractRbacEntity extends AbstractBasicEntity
 {
+    /**
+     * @ORM\Column(type="string", unique=true, length=128, nullable=false)
+     * @ZF\Flags({"priority": 100})
+     * @ZF\Options({"label": "Name"})
+     * @var string
+     */
+    protected $name;
 
     /**
      * @ORM\Column(type="boolean", nullable=false)

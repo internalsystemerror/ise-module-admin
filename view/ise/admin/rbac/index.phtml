@@ -1,0 +1,149 @@
+<?php
+
+use Ise\Bread\Router\Http\Bread;
+
+$basePermission        = 'admin.rbac';
+$rolesPermission       = $basePermission . '.role';
+$permissionsPermission = $basePermission . '.permission';
+
+$baseRoute        = 'admin/rbac';
+$rolesRoute       = $baseRoute . '/role';
+$permissionsRoute = $baseRoute . '/permission';
+?>
+<h1 class="page-header">
+    Roles & Permissions
+</h1>
+<?php if ($this->isGranted($rolesPermission)): ?>
+    <h3 class="page-header">
+        Roles
+    </h3>
+    <table class="data-table table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Last Modified</th>
+                <th>Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($roles as $role):
+                if (!$this->isGranted($rolesPermission, $role)) {
+                    continue;
+                }
+                ?>
+            <tr<?php echo $role->isDisabled() ? ' class="danger"' : ($role->isPermanent() ? ' class="warning"' : null) ?>>
+                <td><?php echo $this->escapeHtml($role->getId()) ?></td>
+                <td><?php echo $this->escapeHtml($role->getName()) ?></td>
+                <td><?php echo $this->escapeHtml($role->getDescription()) ?></td>
+                <td><?php echo $this->time($role->getLastModified()) ?></td>
+                <td><?php echo $this->time($role->getCreated()) ?></td>
+                <td>
+                    <?php if ($role->isDisabled() && $this->isGranted($rolesPermission . '.' . Bread::ACTION_ENABLE, $role)): ?>
+                    <a class="btn btn-success" role="button" title="Enable"
+                       href="<?php echo $this->url($rolesRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                        <span class="glyphicon glyphicon-off"></span>
+                    </a>
+                    <?php else: ?>
+                    <div class="btn-group" role="group" aria-label="Actions">
+                        <a class="btn btn-primary" role="button" title="View"
+                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_READ, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <?php if ($this->isGranted($rolesPermission . '.' . Bread::ACTION_UPDATE, $role)): ?>
+                        <a class="btn btn-info" role="button" title="Edit"
+                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_UPDATE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <?php endif ?>
+                        <?php if (!$role->isPermanent() && $this->isGranted($rolesPermission . '.' . Bread::ACTION_DELETE, $role)): ?>
+                        <a class="btn btn-danger" role="button" title="Delete"
+                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_DELETE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                        <?php endif ?>
+                        <?php if ($this->isGranted($rolesPermission . '.' . Bread::ACTION_DISABLE, $role)): ?>
+                        <a class="btn btn-warning" role="button" title="Disable"
+                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                            <span class="glyphicon glyphicon-off"></span>
+                        </a>
+                        <?php endif ?>
+                    </div>
+                    <?php endif ?>
+                </td>
+            </tr>
+                <?php
+            endforeach
+            ?>
+        </tbody>
+    </table>
+<?php endif ?>
+<?php if ($this->isGranted($permissionsPermission)): ?>
+    <h3 class="page-header">
+        Permissions
+    </h3>
+    <table class="data-table table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Last Modified</th>
+                <th>Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($permissions as $permission):
+                if (!$this->isGranted($permissionsPermission, $permission)) {
+                    continue;
+                }
+                ?>
+            <tr<?php echo $permission->isDisabled() ? ' class="danger"' : ($permission->isPermanent() ? ' class="warning"' : null) ?>>
+                <td><?php echo $this->escapeHtml($permission->getId()) ?></td>
+                <td><?php echo $this->escapeHtml($permission->getName()) ?></td>
+                <td><?php echo $this->escapeHtml($permission->getDescription()) ?></td>
+                <td><?php echo $this->time($permission->getLastModified()) ?></td>
+                <td><?php echo $this->time($permission->getCreated()) ?></td>
+                <td>
+                    <?php if ($permission->isDisabled() && $this->isGranted($permissionsPermission . '.' . Bread::ACTION_ENABLE, $permission)): ?>
+                        <a class="btn btn-success" role="button" title="Enable"
+                           href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                            <span class="glyphicon glyphicon-off"></span>
+                        </a>
+                    <?php else: ?>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <a class="btn btn-primary" role="button" title="View"
+                               href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_READ, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
+                            <?php if ($this->isGranted($permissionsPermission . '.' . Bread::ACTION_UPDATE, $permission)): ?>
+                            <a class="btn btn-info" role="button" title="Edit"
+                               href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_UPDATE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <?php endif ?>
+                            <?php if (!$permission->isPermanent() && $this->isGranted($permissionsPermission . '.' . Bread::ACTION_DELETE, $permission)): ?>
+                                <a class="btn btn-danger" role="button" title="Delete"
+                                   href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_DELETE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            <?php endif ?>
+                            <?php if ($this->isGranted($permissionsPermission . '.' . Bread::ACTION_DISABLE, $permission)): ?>
+                            <a class="btn btn-warning" role="button" title="Disable"
+                               href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                                <span class="glyphicon glyphicon-off"></span>
+                            </a>
+                            <?php endif ?>
+                        </div>
+                    <?php endif ?>
+                </td>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+<?php endif ?>
