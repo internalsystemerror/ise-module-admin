@@ -5,20 +5,14 @@ namespace Ise\Admin;
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use ZfcRbac\View\Strategy\RedirectStrategy;
 use ZfcRbac\View\Strategy\UnauthorizedStrategy;
 
 class Module implements
     BootstrapListenerInterface,
     ConfigProviderInterface,
-    ControllerProviderInterface,
-    DependencyIndicatorInterface,
-    ServiceProviderInterface,
-    ViewHelperProviderInterface
+    DependencyIndicatorInterface
 {
 
     /**
@@ -52,31 +46,7 @@ class Module implements
      */
     public function getConfig()
     {
-        return include __DIR__ . '/../config/module.config.php';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getControllerConfig()
-    {
-        return include __DIR__ . '/../config/controllers.config.php';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getServiceConfig()
-    {
-        return include __DIR__ . '/../config/services.config.php';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getViewHelperConfig()
-    {
-        return include __DIR__ . '/../config/helpers.config.php';
+        return include realpath(__DIR__ . '/../config/module.config.php');
     }
 
     /**

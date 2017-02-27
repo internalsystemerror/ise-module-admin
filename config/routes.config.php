@@ -2,6 +2,7 @@
 
 namespace Ise\Admin;
 
+use Ise\Bread\Router\Http\Bread;
 use Zend\Validator\Uuid;
 
 $uuidRegex = trim(Uuid::REGEX_UUID, '/^$');
@@ -17,32 +18,47 @@ return [
         ],
         'may_terminate' => true,
         'child_routes'  => [
-            'rbac'        => [
-                'type'    => 'literal',
-                'options' => [
+            'rbac' => [
+                'type'          => 'literal',
+                'options'       => [
                     'route'    => '/rbac',
                     'defaults' => [
                         'controller' => __NAMESPACE__ . '\Controller\Rbac',
                         'action'     => 'index',
                     ],
                 ],
+                'may_terminate' => true,
+                'child_routes'  => [
+                    'role'       => [
+                        'type'    => 'bread',
+                        'options' => [
+                            'route'  => '/role',
+                            'entity' => Entity\Role::class,
+                        ],
+                    ],
+                    'permission' => [
+                        'type'    => 'bread',
+                        'options' => [
+                            'route'  => '/permission',
+                            'entity' => Entity\Permission::class,
+                        ],
+                    ],
+                ],
             ],
-            'users'       => [
+            'user' => [
                 'type'          => 'bread',
                 'options'       => [
-                    'route'    => '/users',
-                    'defaults' => [
-                        'controller' => __NAMESPACE__ . '\Controller\User',
-                    ],
+                    'route'  => '/user',
+                    'entity' => Entity\User::class,
                 ],
                 'may_terminate' => true,
                 'child_routes'  => [
                     'ban'   => [
                         'type'    => 'segment',
                         'options' => [
-                            'route'       => '/ban/:id',
+                            'route'       => '/:id/ban',
                             'constraints' => [
-                                'id' => $uuidRegex,
+                                Bread::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
                                 'action' => 'ban'
@@ -52,32 +68,14 @@ return [
                     'unban' => [
                         'type'    => 'segment',
                         'options' => [
-                            'route'       => '/unban/:id',
+                            'route'       => '/:id/unban',
                             'constraints' => [
-                                'id' => $uuidRegex,
+                                Bread::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
                                 'action' => 'unban'
                             ],
                         ],
-                    ],
-                ],
-            ],
-            'roles'       => [
-                'type'    => 'bread',
-                'options' => [
-                    'route'    => '/roles',
-                    'defaults' => [
-                        'controller' => __NAMESPACE__ . '\Controller\Role',
-                    ],
-                ],
-            ],
-            'permissions' => [
-                'type'    => 'bread',
-                'options' => [
-                    'route'    => '/permissions',
-                    'defaults' => [
-                        'controller' => __NAMESPACE__ . '\Controller\Permission',
                     ],
                 ],
             ],
@@ -113,9 +111,9 @@ return [
                     'view'     => [
                         'type'    => 'segment',
                         'options' => [
-                            'route'       => '/view/:id',
+                            'route'       => '/:id/view',
                             'constraints' => [
-                                'id' => $uuidRegex,
+                                Bread::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
                                 'action' => 'view'

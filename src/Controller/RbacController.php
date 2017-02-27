@@ -2,8 +2,7 @@
 
 namespace Ise\Admin\Controller;
 
-use Ise\Admin\Service\RoleService;
-use Ise\Admin\Service\PermissionService;
+use Ise\Bread\Service\BreadService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -23,10 +22,10 @@ class RbacController extends AbstractActionController
     /**
      * Constructor
      *
-     * @param RoleService       $roleService
-     * @param PermissionService $permissionService
+     * @param BreadService $roleService
+     * @param BreadService $permissionService
      */
-    public function __construct(RoleService $roleService, PermissionService $permissionService)
+    public function __construct(BreadService $roleService, BreadService $permissionService)
     {
         $this->roleService       = $roleService;
         $this->permissionService = $permissionService;

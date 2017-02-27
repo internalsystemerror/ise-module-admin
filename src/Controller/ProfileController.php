@@ -50,7 +50,7 @@ class ProfileController extends AbstractActionController
             throw new UnauthorizedException();
         }
 
-        $form = $this->userService->getForm(Bread::ACTION_UPDATE);
+        $form = $this->userService->getForm(Bread::FORM_UPDATE);
         $form->bind($user);
         $prg  = $this->prg();
 
@@ -59,7 +59,7 @@ class ProfileController extends AbstractActionController
         } elseif ($prg !== false) {
             
             // Set id
-            $prg['id'] = $user->getId();
+            $prg[Bread::IDENTIFIER] = $user->getId();
             
             // Remove password
             unset($prg['password']);
@@ -86,7 +86,7 @@ class ProfileController extends AbstractActionController
      */
     public function viewAction()
     {
-        $id   = (string) $this->params('id', '');
+        $id   = (string) $this->params(Bread::IDENTIFIER, '');
         $user = $this->userService->read($id);
         if (!$user) {
             return $this->notFoundAction();

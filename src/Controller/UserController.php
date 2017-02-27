@@ -2,44 +2,11 @@
 
 namespace Ise\Admin\Controller;
 
-use Ise\Admin\Service\UserService;
-use Zend\View\Model\ViewModel;
-
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class UserController extends AbstractActionController
+class UserController extends AdminBreadActionController
 {
-    
-    /**
-     * @var string
-     */
-    protected static $serviceClass = UserService::class;
-
-    /**
-     * @var string
-     */
-    protected static $indexRoute = 'admin/users';
-
-    /**
-     * @var string
-     */
-    protected static $basePermission = 'admin.users';
-
-    /**
-     * @var string
-     */
-    protected static $entityType = 'user';
-    
-    /**
-     * {@inheritDoc}
-     */
-    public function browseAction()
-    {
-        $viewModel = parent::browseAction();
-        $viewModel->setTemplate('ise/admin/user/browse');
-        return $viewModel;
-    }
     
     /**
      * {@inheritDoc}
@@ -64,7 +31,7 @@ class UserController extends AbstractActionController
      */
     public function banAction()
     {
-        return $this->dialogueAction('ban', 'ise/admin/user/ban');
+        return $this->dialogAction('ban');
     }
 
     /**
@@ -74,6 +41,6 @@ class UserController extends AbstractActionController
      */
     public function unbanAction()
     {
-        return $this->dialogueAction('unban', 'ise/admin/user/unban');
+        return $this->dialogAction('unban');
     }
 }

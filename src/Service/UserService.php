@@ -4,28 +4,10 @@ namespace Ise\Admin\Service;
 
 use DateTime;
 use Ise\Bread\Router\Http\Bread;
-use Ise\Bread\Service\AbstractService;
+use Ise\Bread\Service\BreadService;
 
-class UserService extends AbstractService
+class UserService extends BreadService
 {
-
-    /**
-     * @var string
-     */
-    protected static $mapperClass = 'Ise\Admin\Mapper\User';
-
-    /**
-     * @var string[]
-     */
-    protected static $form = [
-        Bread::ACTION_CREATE  => 'Ise\Admin\Form\User\Add',
-        Bread::ACTION_UPDATE  => 'Ise\Admin\Form\User\Edit',
-        Bread::ACTION_DELETE  => 'Ise\Admin\Form\User\Delete',
-        Bread::ACTION_ENABLE  => 'Ise\Admin\Form\User\Enable',
-        Bread::ACTION_DISABLE => 'Ise\Admin\Form\User\Disable',
-        'ban'                 => 'Ise\Admin\Form\User\Ban',
-        'unban'               => 'Ise\Admin\Form\User\Delete',
-    ];
 
     /**
      * Ban user
@@ -36,15 +18,15 @@ class UserService extends AbstractService
     public function ban(array $data)
     {
         // Validate form
-        $entity = $this->validateForm('ban', $data);
-        if (!$entity) {
+        $user = $this->validateForm(Bread::FORM_DIALOG, $data);
+        if (!$user) {
             return false;
         }
 
         // Save entity
-        $entity->setBanned(true);
-        $entity->setLastModified(new DateTime);
-        return $this->mapper->edit($entity);
+        $user->setBanned(true);
+        $user->setLastModified(new DateTime);
+        return $this->mapper->edit($user);
     }
 
     /**
@@ -56,14 +38,14 @@ class UserService extends AbstractService
     public function unban(array $data)
     {
         // Validate form
-        $entity = $this->validateForm('unban', $data);
-        if (!$entity) {
+        $user = $this->validateForm(Bread::FORM_DIALOG, $data);
+        if (!$user) {
             return false;
         }
 
         // Save entity
-        $entity->setBanned(false);
-        $entity->setLastModified(new DateTime);
-        return $this->mapper->edit($entity);
+        $user->setBanned(false);
+        $user->setLastModified(new DateTime);
+        return $this->mapper->edit($user);
     }
 }

@@ -2,13 +2,13 @@
 
 namespace Ise\Admin\Controller;
 
-use Ise\Bread\Controller\AbstractActionController as BreadAbstractActionController;
+use Ise\Bread\Controller\BreadActionController;
 use ZfcRbac\Exception\UnauthorizedException;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-abstract class AbstractActionController extends BreadAbstractActionController
+class AdminBreadActionController extends BreadActionController
 {
     
     /**
@@ -17,10 +17,11 @@ abstract class AbstractActionController extends BreadAbstractActionController
      */
     protected function checkPermission($actionType = null, $context = null)
     {
-        $permission = static::$basePermission;
+        $permission = $this->basePermission;
         if ($actionType) {
             $permission .= '.' . $actionType;
         }
+        
         if (!$this->isGranted($permission, $context)) {
             throw new UnauthorizedException;
         }

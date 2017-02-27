@@ -6,7 +6,7 @@ return [
     'admin'  => [
         'description' => 'Administration access',
         'children'    => [
-            'users' => [
+            'user' => [
                 'description' => 'User administration access',
                 'children'    => [
                     Bread::ACTION_CREATE  => 'Add a new user',
@@ -21,7 +21,7 @@ return [
             'rbac'  => [
                 'description' => 'Role based access control',
                 'children'    => [
-                    'roles'       => [
+                    'role'       => [
                         'description' => 'Role administration access',
                         'children'    => [
                             Bread::ACTION_CREATE  => 'Add a new role',
@@ -31,7 +31,7 @@ return [
                             Bread::ACTION_DISABLE => 'Disable a role',
                         ],
                     ],
-                    'permissions' => [
+                    'permission' => [
                         'description' => 'Permission administration access',
                         'children'    => [
                             Bread::ACTION_CREATE  => 'Add a new permission',

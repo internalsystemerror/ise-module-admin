@@ -4,13 +4,8 @@ namespace Ise\Admin\Controller;
 
 use Ise\Bread\Router\Http\Bread;
 
-abstract class AbstractRbacActionController extends AbstractActionController
+class RbacBreadActionController extends AdminBreadActionController
 {
-
-    /**
-     * @var string
-     */
-    protected static $indexRoute = 'admin/rbac';
 
     /**
      * {@inheritDoc}
@@ -23,7 +18,7 @@ abstract class AbstractRbacActionController extends AbstractActionController
     /**
      * {@inheritDoc}
      */
-    public function editAction($viewTemplate = null)
+    public function editAction()
     {
         // PRG wrapper
         $prg = $this->prg();
@@ -39,7 +34,7 @@ abstract class AbstractRbacActionController extends AbstractActionController
         $this->checkPermission(Bread::ACTION_UPDATE, $entity);
 
         // Setup form
-        $form = $this->service->getForm(Bread::ACTION_UPDATE);
+        $form = $this->service->getForm(Bread::FORM_UPDATE);
         if ($entity->isPermanent()) {
             $form->setValidationGroup(['description']);
         }
@@ -54,9 +49,9 @@ abstract class AbstractRbacActionController extends AbstractActionController
         // Return view
         $this->setupFormForView($form);
         return $this->createActionViewModel(Bread::ACTION_UPDATE, [
-                'entity' => $entity,
-                'form'   => $form,
-        ], $viewTemplate);
+            'entity' => $entity,
+            'form'   => $form,
+        ]);
     }
 
     /**
@@ -78,7 +73,7 @@ abstract class AbstractRbacActionController extends AbstractActionController
         $this->checkPermission(Bread::ACTION_DELETE, $entity);
         
         // Setup form
-        $form = $this->service->getForm(Bread::ACTION_DELETE);
+        $form = $this->service->getForm(Bread::FORM_DIALOG);
         $form->bind($entity);
         
         // Perform action
@@ -92,24 +87,7 @@ abstract class AbstractRbacActionController extends AbstractActionController
         return $this->createDialogueViewModelWrapper(
             Bread::ACTION_DELETE,
             $form,
-            $entity,
-            'ise/admin/rbac/dialogue'
+            $entity
         );
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-    public function enableAction()
-    {
-        return parent::enableAction('ise/admin/rbac/dialogue');
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-    public function disableAction()
-    {
-        return parent::disableAction('ise/admin/rbac/dialogue');
     }
 }

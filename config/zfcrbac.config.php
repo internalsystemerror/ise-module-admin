@@ -4,12 +4,12 @@ namespace Ise\Admin;
 
 return [
     'assertion_map'         => [
-        'admin.users.edit'    => Assertion\IsCurrentUserAssertion::class,
-        'admin.users.delete'  => Assertion\NotCurrentUserAssertion::class,
-        'admin.users.enable'  => Assertion\NotCurrentUserAssertion::class,
-        'admin.users.disable' => Assertion\NotCurrentUserAssertion::class,
-        'admin.users.ban'     => Assertion\NotCurrentUserAssertion::class,
-        'admin.users.unban'   => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.edit'    => Assertion\IsCurrentUserAssertion::class,
+        'admin.user.delete'  => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.enable'  => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.disable' => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.ban'     => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.unban'   => Assertion\NotCurrentUserAssertion::class,
     ],
     'redirect_strategy'     => [
         'redirect_when_connected'        => false,
@@ -30,7 +30,7 @@ return [
             'admin'            => ['member'],
             'admin/*'          => ['member'],
             'admin/rbac'       => ['admin'],
-            'admin/users'      => ['admin'],
+            'admin/user'       => ['admin'],
         ],
     ],
     'role_provider'         => [
