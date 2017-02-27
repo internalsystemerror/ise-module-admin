@@ -57,7 +57,6 @@ class ProfileController extends AbstractActionController
         if ($prg instanceof ResponseInterface) {
             return $prg;
         } elseif ($prg !== false) {
-            
             // Set id
             $prg[Bread::IDENTIFIER] = $user->getId();
             
@@ -81,7 +80,7 @@ class ProfileController extends AbstractActionController
 
     /**
      * View a profile
-     * 
+     *
      * @return ViewModel
      */
     public function viewAction()
@@ -97,7 +96,7 @@ class ProfileController extends AbstractActionController
 
     /**
      * Users settings
-     * 
+     *
      * @return ViewModel
      */
     public function settingsAction()
