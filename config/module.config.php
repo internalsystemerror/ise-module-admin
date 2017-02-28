@@ -8,13 +8,18 @@ use Ise\Bread\Router\Http\Bread;
 return [
     'ise'             => [
         'bread' => [
-            'entities' => [
+            'entity_defaults' => [
+                'controller' => [
+                    'baseClass' => Controller\AdminBreadActionController::class,
+                ],
+            ],
+            'entities'        => [
                 Entity\Permission::class => [
                     'controller' => [
                         'baseClass'      => Controller\RbacBreadActionController::class,
                         'indexRoute'     => 'admin/rbac',
                         'basePermission' => 'admin.rbac.permission',
-                        'templates'  => [
+                        'templates'      => [
                             Bread::ACTION_UPDATE => 'ise/admin/permission/edit',
                             Bread::FORM_DIALOG   => 'ise/admin/rbac/dialog',
                         ],
@@ -25,7 +30,7 @@ return [
                         'baseClass'      => Controller\RbacBreadActionController::class,
                         'indexRoute'     => 'admin/rbac',
                         'basePermission' => 'admin.rbac.role',
-                        'templates'  => [
+                        'templates'      => [
                             Bread::ACTION_UPDATE => 'ise/admin/role/edit',
                             Bread::FORM_DIALOG   => 'ise/admin/rbac/dialog',
                         ],
@@ -36,7 +41,7 @@ return [
                         'class'          => Controller\UserController::class,
                         'indexRoute'     => 'admin/user',
                         'basePermission' => 'admin.user',
-                        'templates'  => [
+                        'templates'      => [
                             Bread::ACTION_INDEX => 'ise/admin/user/browse',
                         ],
                     ],
