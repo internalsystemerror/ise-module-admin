@@ -9,7 +9,8 @@
         body: 'body',
         table: '.data-table:not(.dataTable)',
         cancel: '.btn.cancel',
-        collapse: '[data-toggle="collapse"][value!="Cancel"]'
+        collapse: '[data-toggle="collapse"][value!="Cancel"]',
+        title: '[title]'
     };
     
     /**
@@ -24,7 +25,7 @@
      * One time document ready event
      */
     function documentReady() {
-        $document.ajaxify();
+//        $document.ajaxify();
     }
     
     /**
