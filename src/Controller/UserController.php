@@ -33,7 +33,7 @@ class UserController extends AdminActionController
      */
     public function banAction()
     {
-        return $this->triggerActionEvent('ban', BreadEvent::FORM_DIALOG);
+        return $this->triggerActionEvent(BreadEvent::EVENT_DIALOG, 'ban', BreadEvent::FORM_DIALOG);
     }
 
     /**
@@ -43,6 +43,6 @@ class UserController extends AdminActionController
      */
     public function unbanAction()
     {
-        return $this->triggerActionEvent('unban', BreadEvent::FORM_DIALOG);
+        return $this->triggerActionEvent(BreadEvent::EVENT_DIALOG, 'unban', BreadEvent::FORM_DIALOG);
     }
 }
