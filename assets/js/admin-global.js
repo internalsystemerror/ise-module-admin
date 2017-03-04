@@ -75,8 +75,6 @@
         });
         if ($target.hasClass('in')) {
             collapseShown();
-        } else {
-            collapseHidden();
         }
     }
     
