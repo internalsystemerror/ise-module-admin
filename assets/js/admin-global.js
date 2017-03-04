@@ -7,7 +7,8 @@
         load: 'ise:load'
     }, selectors = {
         body: 'body',
-        table: '.data-table:not(.dataTable)',
+        newTable: '.data-table:not(.dataTable)',
+        oldTable: '.data-table.dataTable',
         cancel: '.btn.cancel',
         collapse: '[data-toggle="collapse"][value!="Cancel"]',
         title: '[title]'
@@ -18,14 +19,14 @@
      */
     function initialise() {
         $document.ready(documentReady).on(eventNames.ready, iseReady);
-        $window.load(windowLoad);
+        $window.load(windowLoad).on(eventNames.load, iseLoad);
     }
     
     /**
      * One time document ready event
      */
     function documentReady() {
-//        $document.ajaxify();
+        $document.ajaxify();
     }
     
     /**
@@ -39,8 +40,12 @@
      * Custom ready event
      */
     function iseReady() {
-        $(selectors.table).dataTable();
+        $(selectors.newTable).DataTable({responsive: true});
         $(selectors.collapse).each(prepareCollapse);
+    }
+    
+    function iseLoad() {
+        $(selectors.oldTable).dataTable().api().columns.adjust();
     }
     
     /**

@@ -231,5 +231,6 @@ tr > td:last-child
 
 .data-table thead th:last-child
 {
-    min-width: 200px;
+    width: 230px;
+    white-space: nowrap;
 }

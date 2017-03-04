@@ -41,6 +41,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="parent")
+     * @ZF\Exclude()
      * @var Role[]|Collection
      */
     protected $children;
@@ -52,6 +53,8 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *     joinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=false)},
      *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)}
      * )
+     * @ZF\Options({"label": "Users"})
+     * @ZF\Type("DoctrineORMModule\Form\Element\EntityMultiCheckbox")
      * @var User[]|Collection
      */
     protected $users;
@@ -63,8 +66,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *     indexBy="name",
      *     cascade={"persist","remove"}
      * )
-     * @ZF\Options({"label": "Permissions"})
-     * @ZF\Type("DoctrineORMModule\Form\Element\EntityMultiCheckbox")
+     * @ZF\Exclude()
      * @var Permission[]|Collection
      */
     protected $permissions;
@@ -215,6 +217,11 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
         $this->users->removeElement($user);
         $user->removeRole($this);
         return $this;
+    }
+    
+    public function getUsers()
+    {
+        return $this->users;
     }
     
     /**

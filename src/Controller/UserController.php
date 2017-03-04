@@ -2,10 +2,12 @@
 
 namespace Ise\Admin\Controller;
 
+use Ise\Bread\EventManager\BreadEvent;
+
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class UserController extends AdminBreadActionController
+class UserController extends AdminActionController
 {
     
     /**
@@ -17,30 +19,22 @@ class UserController extends AdminBreadActionController
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function editAction()
-    {
-        return $this->notFoundAction();
-    }
-
-    /**
      * Ban action
      *
-     * @return ViewModel
+     * @return ViewModel|ResponseInterface
      */
     public function banAction()
     {
-        return $this->dialogAction('ban');
+        return $this->triggerActionEvent('ban', BreadEvent::FORM_DIALOG);
     }
 
     /**
      * Unban action
      *
-     * @return ViewModel
+     * @return ViewModel|ResponseInterface
      */
     public function unbanAction()
     {
-        return $this->dialogAction('unban');
+        return $this->triggerActionEvent('unban', BreadEvent::FORM_DIALOG);
     }
 }

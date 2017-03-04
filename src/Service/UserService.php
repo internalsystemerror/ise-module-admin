@@ -3,7 +3,7 @@
 namespace Ise\Admin\Service;
 
 use DateTime;
-use Ise\Bread\Router\Http\Bread;
+use Ise\Bread\EventManager\BreadEvent;
 use Ise\Bread\Service\BreadService;
 
 class UserService extends BreadService
@@ -18,7 +18,7 @@ class UserService extends BreadService
     public function ban(array $data)
     {
         // Validate form
-        $user = $this->validateForm(Bread::FORM_DIALOG, $data);
+        $user = $this->validateForm(BreadEvent::FORM_DIALOG, $data);
         if (!$user) {
             return false;
         }
@@ -38,7 +38,7 @@ class UserService extends BreadService
     public function unban(array $data)
     {
         // Validate form
-        $user = $this->validateForm(Bread::FORM_DIALOG, $data);
+        $user = $this->validateForm(BreadEvent::FORM_DIALOG, $data);
         if (!$user) {
             return false;
         }

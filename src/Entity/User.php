@@ -96,7 +96,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function __toString()
     {
-        return $this->getDisplayName();
+        return $this->getUsername();
     }
 
     /**

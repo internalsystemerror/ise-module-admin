@@ -17,9 +17,9 @@ return [
             'pages'      => [
                 'users' => [
                     'label'      => 'User Accounts',
-                    'route'      => 'admin/users',
+                    'route'      => 'admin/user',
                     'icon'       => 'user',
-                    'permission' => 'admin.users',
+                    'permission' => 'admin.user',
                 ],
                 'rbac'  => [
                     'label'      => 'Role Based Access Control',

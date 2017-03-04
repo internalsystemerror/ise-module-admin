@@ -1,6 +1,6 @@
 <?php
 
-use Ise\Bread\Router\Http\Bread;
+use Ise\Bread\EventManager\BreadEvent;
 
 $basePermission        = 'admin.rbac';
 $rolesPermission       = $basePermission . '.role';
@@ -42,32 +42,32 @@ $permissionsRoute = $baseRoute . '/permission';
                 <td><?php echo $this->time($role->getLastModified()) ?></td>
                 <td><?php echo $this->time($role->getCreated()) ?></td>
                 <td>
-                    <?php if ($role->isDisabled() && $this->isGranted($rolesPermission . '.' . Bread::ACTION_ENABLE, $role)): ?>
+                    <?php if ($role->isDisabled() && $this->isGranted($rolesPermission . '.' . BreadEvent::ACTION_ENABLE, $role)): ?>
                     <a class="btn btn-success" role="button" title="Enable role"
-                       href="<?php echo $this->url($rolesRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                       href="<?php echo $this->url($rolesRoute . '/' . BreadEvent::ACTION_ENABLE, [BreadEvent::IDENTIFIER => $role->getId()]) ?>">
                         <span class="glyphicon glyphicon-off"></span>
                     </a>
                     <?php else: ?>
                     <div class="btn-group" role="group" aria-label="Actions">
                         <a class="btn btn-primary" role="button" title="View role"
-                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_READ, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                           href="<?php echo $this->url($rolesRoute. '/' . BreadEvent::ACTION_READ, [BreadEvent::IDENTIFIER => $role->getId()]) ?>">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
-                        <?php if ($this->isGranted($rolesPermission . '.' . Bread::ACTION_UPDATE, $role)): ?>
+                        <?php if ($this->isGranted($rolesPermission . '.' . BreadEvent::ACTION_UPDATE, $role)): ?>
                         <a class="btn btn-info" role="button" title="Edit role"
-                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_UPDATE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                           href="<?php echo $this->url($rolesRoute. '/' . BreadEvent::ACTION_UPDATE, [BreadEvent::IDENTIFIER => $role->getId()]) ?>">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         <?php endif ?>
-                        <?php if (!$role->isPermanent() && $this->isGranted($rolesPermission . '.' . Bread::ACTION_DELETE, $role)): ?>
+                        <?php if (!$role->isPermanent() && $this->isGranted($rolesPermission . '.' . BreadEvent::ACTION_DELETE, $role)): ?>
                         <a class="btn btn-danger" role="button" title="Delete role"
-                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_DELETE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                           href="<?php echo $this->url($rolesRoute. '/' . BreadEvent::ACTION_DELETE, [BreadEvent::IDENTIFIER => $role->getId()]) ?>">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                         <?php endif ?>
-                        <?php if ($this->isGranted($rolesPermission . '.' . Bread::ACTION_DISABLE, $role)): ?>
+                        <?php if ($this->isGranted($rolesPermission . '.' . BreadEvent::ACTION_DISABLE, $role)): ?>
                         <a class="btn btn-warning" role="button" title="Disable role"
-                           href="<?php echo $this->url($rolesRoute. '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFIER => $role->getId()]) ?>">
+                           href="<?php echo $this->url($rolesRoute. '/' . BreadEvent::ACTION_DISABLE, [BreadEvent::IDENTIFIER => $role->getId()]) ?>">
                             <span class="glyphicon glyphicon-off"></span>
                         </a>
                         <?php endif ?>
@@ -110,32 +110,32 @@ $permissionsRoute = $baseRoute . '/permission';
                 <td><?php echo $this->time($permission->getLastModified()) ?></td>
                 <td><?php echo $this->time($permission->getCreated()) ?></td>
                 <td>
-                    <?php if ($permission->isDisabled() && $this->isGranted($permissionsPermission . '.' . Bread::ACTION_ENABLE, $permission)): ?>
+                    <?php if ($permission->isDisabled() && $this->isGranted($permissionsPermission . '.' . BreadEvent::ACTION_ENABLE, $permission)): ?>
                         <a class="btn btn-success" role="button" title="Enable permission"
-                           href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                           href="<?php echo $this->url($permissionsRoute . '/' . BreadEvent::ACTION_ENABLE, [BreadEvent::IDENTIFIER => $permission->getId()]) ?>">
                             <span class="glyphicon glyphicon-off"></span>
                         </a>
                     <?php else: ?>
                         <div class="btn-group" role="group" aria-label="Actions">
                             <a class="btn btn-primary" role="button" title="View permission"
-                               href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_READ, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                               href="<?php echo $this->url($permissionsRoute . '/' . BreadEvent::ACTION_READ, [BreadEvent::IDENTIFIER => $permission->getId()]) ?>">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-                            <?php if ($this->isGranted($permissionsPermission . '.' . Bread::ACTION_UPDATE, $permission)): ?>
+                            <?php if ($this->isGranted($permissionsPermission . '.' . BreadEvent::ACTION_UPDATE, $permission)): ?>
                             <a class="btn btn-info" role="button" title="Edit permission"
-                               href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_UPDATE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                               href="<?php echo $this->url($permissionsRoute . '/' . BreadEvent::ACTION_UPDATE, [BreadEvent::IDENTIFIER => $permission->getId()]) ?>">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                             <?php endif ?>
-                            <?php if (!$permission->isPermanent() && $this->isGranted($permissionsPermission . '.' . Bread::ACTION_DELETE, $permission)): ?>
+                            <?php if (!$permission->isPermanent() && $this->isGranted($permissionsPermission . '.' . BreadEvent::ACTION_DELETE, $permission)): ?>
                                 <a class="btn btn-danger" role="button" title="Delete permission"
-                                   href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_DELETE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                                   href="<?php echo $this->url($permissionsRoute . '/' . BreadEvent::ACTION_DELETE, [BreadEvent::IDENTIFIER => $permission->getId()]) ?>">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             <?php endif ?>
-                            <?php if ($this->isGranted($permissionsPermission . '.' . Bread::ACTION_DISABLE, $permission)): ?>
+                            <?php if ($this->isGranted($permissionsPermission . '.' . BreadEvent::ACTION_DISABLE, $permission)): ?>
                             <a class="btn btn-warning" role="button" title="Disable permission"
-                               href="<?php echo $this->url($permissionsRoute . '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFIER => $permission->getId()]) ?>">
+                               href="<?php echo $this->url($permissionsRoute . '/' . BreadEvent::ACTION_DISABLE, [BreadEvent::IDENTIFIER => $permission->getId()]) ?>">
                                 <span class="glyphicon glyphicon-off"></span>
                             </a>
                             <?php endif ?>

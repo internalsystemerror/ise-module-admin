@@ -38,6 +38,9 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      *     joinColumns={@ORM\JoinColumn(name="permission_id", referencedColumnName="id", nullable=false)},
      *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=false)}
      * )
+     * @ZF\Options({"label": "Roles"})
+     * @ZF\Type("DoctrineORMModule\Form\Element\EntityMultiCheckbox")
+     * @var Permission[]|Collection
      */
     protected $roles;
 

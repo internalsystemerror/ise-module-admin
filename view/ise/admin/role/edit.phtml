@@ -16,15 +16,6 @@ echo $this->alert()->danger(
     . 'adverse effects.'
 );
 
-function roleInheritsPermission($role, $permission) {
-    foreach ($role->getChildren() as $childRole) {
-        if ($childRole->hasPermission($permission) || roleInheritsPermission($childRole, $permission)) {
-            return true;
-        }
-    }
-    return false;
-};
-
 // Prepare form
 $staticTemplate = '<p class="form-control-static">%s</p>';
 $form->prepare();
@@ -41,18 +32,6 @@ foreach ($form as $element) {
         case 'parent':
             $parent        = $entity->getParent();
             $elementString = sprintf($staticTemplate, $parent ? $parent->getName() : 'None');
-            echo $this->formRow()->renderGroup($element, $elementString);
-            break;
-        case 'permissions':
-            $options = [];
-            foreach ($element->getValueOptions() as $option) {
-                if ($entity->hasPermission($option['label'])) {
-                    $options[] = $option['label'];
-                } elseif (roleInheritsPermission($entity, $option['label'])) {
-                    $options[] = $option['label'] . ' (inherited)';
-                }
-            }
-            $elementString = sprintf($staticTemplate, implode('<br>', $options));
             echo $this->formRow()->renderGroup($element, $elementString);
             break;
         default:

@@ -1,4 +1,4 @@
-<?php use Ise\Bread\Router\Http\Bread ?>
+<?php use Ise\Bread\EventManager\BreadEvent ?>
 <h1 class="page-header">
     Browsing User Accounts
 </h1>
@@ -31,9 +31,9 @@
                 <td><?php echo $this->time($user->getCreated()) ?></td>
                 <td>
                     <?php if ($user->isDisabled()): ?>
-                        <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_ENABLE, $user)): ?>
+                        <?php if ($this->isGranted($basePermission . '.' . BreadEvent::ACTION_ENABLE, $user)): ?>
                     <a class="btn btn-success" role="button" title="Enable user"
-                       href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_ENABLE, [Bread::IDENTIFIER => $user->getId()]) ?>">
+                       href="<?php echo $this->url($indexRoute . '/' . BreadEvent::ACTION_ENABLE, [BreadEvent::IDENTIFIER => $user->getId()]) ?>">
                         <span class="glyphicon glyphicon-off"></span>
                     </a>
                         <?php endif ?>
@@ -41,28 +41,28 @@
                     <div class="btn-group" role="group" aria-label="Actions">
                         <?php if ($user->isBanned() && $this->isGranted($basePermission . '.unban', $user)): ?>
                         <a class="btn btn-success" role="button" title="Unban user"
-                           href="<?php echo $this->url($indexRoute . '/unban', [Bread::IDENTIFIER => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/unban', [BreadEvent::IDENTIFIER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
                         <?php elseif ($this->isGranted($basePermission . '.ban', $user)): ?>
                         <a class="btn btn-warning" role="button" title="Ban user"
-                           href="<?php echo $this->url($indexRoute . '/ban', [Bread::IDENTIFIER => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/ban', [BreadEvent::IDENTIFIER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-ban-circle"></span>
                         </a>
                         <?php endif ?>
                         <a class="btn btn-primary" role="button" title="View user"
-                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_READ, [Bread::IDENTIFIER => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . BreadEvent::ACTION_READ, [BreadEvent::IDENTIFIER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
-                        <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_DELETE, $user)): ?>
+                        <?php if ($this->isGranted($basePermission . '.' . BreadEvent::ACTION_DELETE, $user)): ?>
                         <a class="btn btn-danger" role="button" title="Delete user"
-                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DELETE, [Bread::IDENTIFIER => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . BreadEvent::ACTION_DELETE, [BreadEvent::IDENTIFIER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                         <?php endif ?>
-                        <?php if ($this->isGranted($basePermission . '.' . Bread::ACTION_DISABLE, $user)): ?>
+                        <?php if ($this->isGranted($basePermission . '.' . BreadEvent::ACTION_DISABLE, $user)): ?>
                         <a class="btn btn-warning" role="button" title="Disable user"
-                           href="<?php echo $this->url($indexRoute . '/' . Bread::ACTION_DISABLE, [Bread::IDENTIFIER => $user->getId()]) ?>">
+                           href="<?php echo $this->url($indexRoute . '/' . BreadEvent::ACTION_DISABLE, [BreadEvent::IDENTIFIER => $user->getId()]) ?>">
                             <span class="glyphicon glyphicon-off"></span>
                         </a>
                         <?php endif ?>

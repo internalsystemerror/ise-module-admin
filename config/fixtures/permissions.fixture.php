@@ -1,6 +1,6 @@
 <?php
 
-use Ise\Bread\Router\Http\Bread;
+use Ise\Bread\EventManager\BreadEvent;
 
 return [
     'admin'  => [
@@ -9,11 +9,11 @@ return [
             'user' => [
                 'description' => 'User administration access',
                 'children'    => [
-                    Bread::ACTION_CREATE  => 'Add a new user',
-                    Bread::ACTION_UPDATE  => 'Edit an existing user',
-                    Bread::ACTION_DELETE  => 'Delete an existing user',
-                    Bread::ACTION_ENABLE  => 'Enable a user',
-                    Bread::ACTION_DISABLE => 'Disable a user',
+                    BreadEvent::ACTION_CREATE  => 'Add a new user',
+                    BreadEvent::ACTION_UPDATE  => 'Edit an existing user',
+                    BreadEvent::ACTION_DELETE  => 'Delete an existing user',
+                    BreadEvent::ACTION_ENABLE  => 'Enable a user',
+                    BreadEvent::ACTION_DISABLE => 'Disable a user',
                     'ban'                 => 'Ban a user',
                     'unban'               => 'Unban a user',
                 ],
@@ -24,21 +24,21 @@ return [
                     'role'       => [
                         'description' => 'Role administration access',
                         'children'    => [
-                            Bread::ACTION_CREATE  => 'Add a new role',
-                            Bread::ACTION_UPDATE  => 'Edit an existing role',
-                            Bread::ACTION_DELETE  => 'Delete an existing role',
-                            Bread::ACTION_ENABLE  => 'Enable a role',
-                            Bread::ACTION_DISABLE => 'Disable a role',
+                            BreadEvent::ACTION_CREATE  => 'Add a new role',
+                            BreadEvent::ACTION_UPDATE  => 'Edit an existing role',
+                            BreadEvent::ACTION_DELETE  => 'Delete an existing role',
+                            BreadEvent::ACTION_ENABLE  => 'Enable a role',
+                            BreadEvent::ACTION_DISABLE => 'Disable a role',
                         ],
                     ],
                     'permission' => [
                         'description' => 'Permission administration access',
                         'children'    => [
-                            Bread::ACTION_CREATE  => 'Add a new permission',
-                            Bread::ACTION_UPDATE  => 'Edit an existing permission',
-                            Bread::ACTION_DELETE  => 'Delete an existing permission',
-                            Bread::ACTION_ENABLE  => 'Enable a permission',
-                            Bread::ACTION_DISABLE => 'Disable a permission',
+                            BreadEvent::ACTION_CREATE  => 'Add a new permission',
+                            BreadEvent::ACTION_UPDATE  => 'Edit an existing permission',
+                            BreadEvent::ACTION_DELETE  => 'Delete an existing permission',
+                            BreadEvent::ACTION_ENABLE  => 'Enable a permission',
+                            BreadEvent::ACTION_DISABLE => 'Disable a permission',
                         ],
                     ],
                 ],

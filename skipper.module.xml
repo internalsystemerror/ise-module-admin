@@ -78,11 +78,11 @@
       <many-to-many-entity name="\Ise\Admin\Entity\User" owning-side="false" alias="users" uuid="b766fe32-4bff-4d9f-aa52-082a78198851">
         <many-to-many-field from="user_id" to="id"/>
         <orm-attributes>
-          <attribute name="index-by">name</attribute>
           <attribute name="cascade">
             <attribute name="cascade-persist">true</attribute>
             <attribute name="cascade-remove">true</attribute>
           </attribute>
+          <attribute name="index-by">name</attribute>
         </orm-attributes>
       </many-to-many-entity>
     </many-to-many>
@@ -129,6 +129,7 @@
     <inheritance-child uuid="e182b053-06d5-4b7a-863c-e8da9243f519" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696" split="1"/>
     <many-to-many-association uuid="15224e92-fdba-4a6d-8841-f6d22d0a4090" color="#969696"/>
     <many-to-many-association uuid="f9c6348a-21ac-4a43-9cd4-47eb4cc7c4ec" color="#969696"/>
+    <many-to-many-association-entity uuid="a62ad5d6-24bc-46f5-a335-a2fe624cb1d2" center-position-x="0" center-position-y="1"/>
     <module uuid="cd690b66-fdf3-41b8-a47b-eadda2a4124b" bg-color="#FEEFE3" size-x="0" size-x2="429" size-y="-122" size-y2="548"/>
   </visual-data>
 </skipper>
