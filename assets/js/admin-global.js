@@ -12,7 +12,7 @@
         cancel: '.btn.cancel',
         collapse: '[data-toggle="collapse"][value!="Cancel"]',
         title: '[title]'
-    };
+    }, collapseTitle = 'collapsableTitle';
     
     /**
      * Initialise
@@ -54,7 +54,7 @@
          * On collapse hidden
          */
         function collapseHidden() {
-            $button.html($button.data('originalTitle'));
+            $button.html($button.data(collapseTitle));
         }
         
         /**
@@ -64,11 +64,11 @@
             $button.html(template);
         }
         
-        if ($button.data('originalTitle')) {
+        if ($button.data(collapseTitle)) {
             return;
         }
         
-        $button.data('originalTitle', $button.html());
+        $button.data(collapseTitle, $button.html());
         $target.on({
             'hidden.bs.collapse': collapseHidden,
             'shown.bs.collapse': collapseShown
