@@ -8,7 +8,7 @@
     }, selectors = {
         body: 'body',
         newTable: '.data-table:not(.dataTable)',
-        oldTable: '.data-table.dataTable',
+        oldTable: '.data-table',
         cancel: '.btn.cancel',
         collapse: '[data-toggle="collapse"][value!="Cancel"]',
         title: '[title]'
@@ -19,7 +19,7 @@
      */
     function initialise() {
         $document.ready(documentReady).on(eventNames.ready, iseReady);
-        $window.load(windowLoad).on(eventNames.load, iseLoad);
+        $window.load(windowLoad);
     }
     
     /**
@@ -40,12 +40,8 @@
      * Custom ready event
      */
     function iseReady() {
-        $(selectors.newTable).DataTable({responsive: true});
+        $(selectors.newTable).dataTable();
         $(selectors.collapse).each(prepareCollapse);
-    }
-    
-    function iseLoad() {
-        $(selectors.oldTable).dataTable().api().columns.adjust();
     }
     
     /**
