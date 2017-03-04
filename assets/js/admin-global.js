@@ -64,14 +64,19 @@
             $button.html(template);
         }
         
+        if ($button.data('originalTitle')) {
+            return;
+        }
+        
         $button.data('originalTitle', $button.html());
         $target.on({
             'hidden.bs.collapse': collapseHidden,
             'shown.bs.collapse': collapseShown
         });
         if ($target.hasClass('in')) {
-            $button.data('originalTitle', $button.html());
-            $button.html(template);
+            collapseShown();
+        } else {
+            collapseHidden();
         }
     }
     
