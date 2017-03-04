@@ -19,6 +19,14 @@ class UserController extends AdminActionController
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function editAction()
+    {
+        return $this->notFoundAction();
+    }
+
+    /**
      * Ban action
      *
      * @return ViewModel|ResponseInterface

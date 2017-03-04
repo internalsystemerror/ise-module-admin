@@ -84,13 +84,13 @@ class AdminActionController extends BreadActionController
     /**
      * {@inheritDoc}
      */
-//    protected function attachDefaultBreadListeners()
-//    {
-//        parent::attachDefaultBreadListeners();
-//        $this->breadEventManager->attach(BreadEvent::EVENT_INDEX, [$this, 'checkIndexPermission'], 850);
-//        $this->breadEventManager->attach(BreadEvent::EVENT_READ, [$this, 'checkReadPermission'], 850);
-//        $this->breadEventManager->attach(BreadEvent::EVENT_CREATE, [$this, 'checkCreatePermission'], 850);
-//        $this->breadEventManager->attach(BreadEvent::EVENT_UPDATE, [$this, 'checkChangePermission'], 850);
-//        $this->breadEventManager->attach(BreadEvent::EVENT_DIALOG, [$this, 'checkChangePermission'], 850);
-//    }
+    protected function attachDefaultBreadListeners()
+    {
+        parent::attachDefaultBreadListeners();
+        $this->breadEventManager->attach(BreadEvent::EVENT_INDEX, [$this, 'checkIndexPermission'], 850);
+        $this->breadEventManager->attach(BreadEvent::EVENT_READ, [$this, 'checkReadPermission'], 850);
+        $this->breadEventManager->attach(BreadEvent::EVENT_CREATE, [$this, 'checkCreatePermission'], 850);
+        $this->breadEventManager->attach(BreadEvent::EVENT_UPDATE, [$this, 'checkChangePermission'], 850);
+        $this->breadEventManager->attach(BreadEvent::EVENT_DIALOG, [$this, 'checkChangePermission'], 850);
+    }
 }
