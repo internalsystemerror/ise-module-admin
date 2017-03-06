@@ -12,8 +12,8 @@ return [
         'admin.user.unban'   => Assertion\NotCurrentUserAssertion::class,
     ],
     'redirect_strategy'     => [
-        'redirect_when_connected'        => false,
-        'redirect_to_route_connected'    => 'admin',
+        'redirect_when_connected'        => true,
+        'redirect_to_route_connected'    => 'zfcuser/logout',
         'redirect_to_route_disconnected' => 'zfcuser/login',
         'append_previous_uri'            => true,
         'previous_uri_query_key'         => 'redirect',
@@ -23,6 +23,7 @@ return [
     ],
     'guards'                => [
         'ZfcRbac\Guard\RouteGuard' => [
+            'zfcuser/logout'   => ['guest'],
             'zfcuser/login'    => ['guest'],
             'zfcuser/register' => ['guest'],
             'zfcuser'          => ['member'],
