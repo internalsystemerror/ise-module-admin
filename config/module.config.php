@@ -3,31 +3,36 @@
 namespace Ise\Admin;
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use Ise\Bread\Router\Http\Bread;
+use Ise\Bread\EventManager\BreadEvent;
 
 return [
     'ise'             => [
         'bread' => [
-            'entities' => [
+            'entity_defaults' => [
+                'controller' => [
+                    'baseClass' => Controller\AdminActionController::class,
+                ],
+            ],
+            'entities'        => [
                 Entity\Permission::class => [
                     'controller' => [
-                        'baseClass'      => Controller\RbacBreadActionController::class,
+                        'baseClass'      => Controller\PermissionController::class,
                         'indexRoute'     => 'admin/rbac',
                         'basePermission' => 'admin.rbac.permission',
-                        'templates'  => [
-                            Bread::ACTION_UPDATE => 'ise/admin/permission/edit',
-                            Bread::FORM_DIALOG   => 'ise/admin/rbac/dialog',
+                        'templates'      => [
+                            BreadEvent::ACTION_UPDATE => 'ise/admin/permission/edit',
+                            BreadEvent::FORM_DIALOG   => 'ise/admin/rbac/dialog',
                         ],
                     ],
                 ],
                 Entity\Role::class       => [
                     'controller' => [
-                        'baseClass'      => Controller\RbacBreadActionController::class,
+                        'baseClass'      => Controller\RoleController::class,
                         'indexRoute'     => 'admin/rbac',
                         'basePermission' => 'admin.rbac.role',
-                        'templates'  => [
-                            Bread::ACTION_UPDATE => 'ise/admin/role/edit',
-                            Bread::FORM_DIALOG   => 'ise/admin/rbac/dialog',
+                        'templates'      => [
+                            BreadEvent::ACTION_UPDATE => 'ise/admin/role/edit',
+                            BreadEvent::FORM_DIALOG   => 'ise/admin/rbac/dialog',
                         ],
                     ],
                 ],
@@ -36,8 +41,8 @@ return [
                         'class'          => Controller\UserController::class,
                         'indexRoute'     => 'admin/user',
                         'basePermission' => 'admin.user',
-                        'templates'  => [
-                            Bread::ACTION_INDEX => 'ise/admin/user/browse',
+                        'templates'      => [
+                            BreadEvent::ACTION_INDEX => 'ise/admin/user/browse',
                         ],
                     ],
                     'service'    => Service\UserService::class,

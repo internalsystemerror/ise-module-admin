@@ -7,10 +7,12 @@
         load: 'ise:load'
     }, selectors = {
         body: 'body',
-        table: '.data-table:not(.dataTable)',
+        newTable: '.data-table:not(.dataTable)',
+        oldTable: '.data-table',
         cancel: '.btn.cancel',
-        collapse: '[data-toggle="collapse"][value!="Cancel"]'
-    };
+        collapse: '[data-toggle="collapse"][value!="Cancel"]',
+        title: '[title]'
+    }, collapseTitle = 'collapsableTitle';
     
     /**
      * Initialise
@@ -38,7 +40,7 @@
      * Custom ready event
      */
     function iseReady() {
-        $(selectors.table).dataTable();
+        $(selectors.newTable).dataTable();
         $(selectors.collapse).each(prepareCollapse);
     }
     
@@ -52,7 +54,7 @@
          * On collapse hidden
          */
         function collapseHidden() {
-            $button.html($button.data('originalTitle'));
+            $button.html($button.data(collapseTitle));
         }
         
         /**
@@ -62,14 +64,17 @@
             $button.html(template);
         }
         
-        $button.data('originalTitle', $button.html());
+        if ($button.data(collapseTitle)) {
+            return;
+        }
+        
+        $button.data(collapseTitle, $button.html());
         $target.on({
             'hidden.bs.collapse': collapseHidden,
             'shown.bs.collapse': collapseShown
         });
         if ($target.hasClass('in')) {
-            $button.data('originalTitle', $button.html());
-            $button.html(template);
+            collapseShown();
         }
     }
     

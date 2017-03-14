@@ -76,7 +76,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     protected $banned = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="")
+     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="users", indexBy="name", cascade={"persist","remove"})
      * @ZF\Exclude()
      * @var Role[]|Collection
      */
@@ -96,7 +96,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function __toString()
     {
-        return $this->getDisplayName();
+        return $this->getUsername();
     }
 
     /**
@@ -251,7 +251,12 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function addRole(Role $role)
     {
-        $this->roles[] = $role;
+        if ($this->roles->contains($role)) {
+            return $this;
+        }
+        
+        $this->roles[$role->getName()] = $role;
+        $role->addUser($this);
         return $this;
     }
 
@@ -263,7 +268,12 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function removeRole(Role $role)
     {
+        if (!$this->roles->contains($role)) {
+            return $this;
+        }
+        
         $this->roles->removeElement($role);
+        $role->removeUser($this);
         return $this;
     }
 

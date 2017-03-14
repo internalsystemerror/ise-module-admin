@@ -32,13 +32,13 @@ class Module implements
         $rbacNavigationListener = $serviceManager->get(Listener\RbacNavigationListener::class);
         $rbacNavigationListener->attachShared($eventManager->getSharedManager());
 
-        // Attach ZfcRbac redirect strategy
-        $redirectStrategy = $serviceManager->get(RedirectStrategy::class);
-        $redirectStrategy->attach($eventManager);
-        
         // Attach ZfcRbac unauthorised strategy
         $unauthorisedStrategy = $serviceManager->get(UnauthorizedStrategy::class);
         $unauthorisedStrategy->attach($eventManager);
+        
+        // Attach ZfcRbac redirect strategy
+        $redirectStrategy = $serviceManager->get(RedirectStrategy::class);
+        $redirectStrategy->attach($eventManager);
     }
 
     /**

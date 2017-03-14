@@ -3,7 +3,7 @@
 namespace Ise\Admin\Controller;
 
 use Ise\Admin\Service\UserService;
-use Ise\Bread\Router\Http\Bread;
+use Ise\Bread\EventManager\BreadEvent;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface;
 use Zend\View\Model\ViewModel;
@@ -50,7 +50,7 @@ class ProfileController extends AbstractActionController
             throw new UnauthorizedException();
         }
 
-        $form = $this->userService->getForm(Bread::FORM_UPDATE);
+        $form = $this->userService->getForm(BreadEvent::FORM_UPDATE);
         $form->bind($user);
         $prg  = $this->prg();
 
@@ -58,7 +58,7 @@ class ProfileController extends AbstractActionController
             return $prg;
         } elseif ($prg !== false) {
             // Set id
-            $prg[Bread::IDENTIFIER] = $user->getId();
+            $prg[BreadEvent::IDENTIFIER] = $user->getId();
             
             // Remove password
             unset($prg['password']);
@@ -85,7 +85,7 @@ class ProfileController extends AbstractActionController
      */
     public function viewAction()
     {
-        $id   = (string) $this->params(Bread::IDENTIFIER, '');
+        $id   = (string) $this->params(BreadEvent::IDENTIFIER, '');
         $user = $this->userService->read($id);
         if (!$user) {
             return $this->notFoundAction();

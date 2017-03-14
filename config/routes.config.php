@@ -2,7 +2,7 @@
 
 namespace Ise\Admin;
 
-use Ise\Bread\Router\Http\Bread;
+use Ise\Bread\EventManager\BreadEvent;
 use Zend\Validator\Uuid;
 
 $uuidRegex = trim(Uuid::REGEX_UUID, '/^$');
@@ -58,7 +58,7 @@ return [
                         'options' => [
                             'route'       => '/:id/ban',
                             'constraints' => [
-                                Bread::IDENTIFIER => $uuidRegex,
+                                BreadEvent::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
                                 'action' => 'ban'
@@ -70,7 +70,7 @@ return [
                         'options' => [
                             'route'       => '/:id/unban',
                             'constraints' => [
-                                Bread::IDENTIFIER => $uuidRegex,
+                                BreadEvent::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
                                 'action' => 'unban'
@@ -113,7 +113,7 @@ return [
                         'options' => [
                             'route'       => '/:id/view',
                             'constraints' => [
-                                Bread::IDENTIFIER => $uuidRegex,
+                                BreadEvent::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
                                 'action' => 'view'

@@ -4,7 +4,6 @@ namespace Ise\Admin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Rbac\Role\HierarchicalRoleInterface;
 use Zend\Form\Annotation as ZF;
@@ -25,6 +24,14 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     protected $id;
 
     /**
+     * @ORM\Column(type="string", unique=true, length=128, nullable=false)
+     * @ZF\Flags({"priority": 100})
+     * @ZF\Options({"label": "Name"})
+     * @var string
+     */
+    protected $name;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Ise\Admin\Entity\Role", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ZF\Options({"label": "Parent Role"})
@@ -34,14 +41,32 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="parent")
+     * @ZF\Exclude()
      * @var Role[]|Collection
      */
     protected $children;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Permission", mappedBy="")
-     * @ZF\Options({"label": "Permissions"})
+     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\User", inversedBy="roles", indexBy="username")
+     * @ORM\JoinTable(
+     *     name="admin_user_roles",
+     *     joinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=false)},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)}
+     * )
+     * @ZF\Options({"label": "Users"})
      * @ZF\Type("DoctrineORMModule\Form\Element\EntityMultiCheckbox")
+     * @var User[]|Collection
+     */
+    protected $users;
+
+    /**
+     * @ORM\ManyToMany(
+     *     targetEntity="Ise\Admin\Entity\Permission",
+     *     mappedBy="roles",
+     *     indexBy="name",
+     *     cascade={"persist","remove"}
+     * )
+     * @ZF\Exclude()
      * @var Permission[]|Collection
      */
     protected $permissions;
@@ -86,7 +111,12 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      */
     public function addChild(Role $child)
     {
-        $this->children[] = $child;
+        if ($this->children->contains($child)) {
+            return;
+        }
+        
+        $this->children[$child->getName()] = $child;
+        $child->setParent($this);
         return $this;
     }
 
@@ -98,7 +128,12 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      */
     public function removeChild(Role $child)
     {
+        if (!$this->children->contains($child)) {
+            return;
+        }
+        
         $this->children->removeElement($child);
+        $child->setParent(null);
         return $this;
     }
 
@@ -123,6 +158,73 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     }
     
     /**
+     * Add users
+     * 
+     * @param Collection $users
+     * @return self
+     */
+    public function addUsers(Collection $users)
+    {
+        foreach ($users as $user) {
+            $this->addUser($user);
+        }
+        return $this;
+    }
+    
+    /**
+     * Add user
+     * 
+     * @param ser $user
+     * @return self
+     */
+    public function addUser(User $user)
+    {
+        if ($this->users->contains($user)) {
+            return;
+        }
+        
+        $this->users[$user->getId()] = $user;
+        $user->addRole($this);
+        return $this;
+    }
+    
+    /**
+     * Remove users
+     * 
+     * @param Collection $users
+     * @return self
+     */
+    public function removeUsers(Collection $users)
+    {
+        foreach ($users as $user) {
+            $this->removeUser($user);
+        }
+        return $this;
+    }
+    
+    /**
+     * Remove user
+     * 
+     * @param User $user
+     * @return self
+     */
+    public function removeUser(User $user)
+    {
+        if (!$this->users->contains($user)) {
+            return;
+        }
+        
+        $this->users->removeElement($user);
+        $user->removeRole($this);
+        return $this;
+    }
+    
+    public function getUsers()
+    {
+        return $this->users;
+    }
+    
+    /**
      * Add permissions
      *
      * @param Collection $permissions
@@ -144,7 +246,12 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      */
     public function addPermission(Permission $permission)
     {
-        $this->permissions[] = $permission;
+        if ($this->permissions->contains($permission)) {
+            return;
+        }
+        
+        $this->permissions[$permission->getName()] = $permission;
+        $permission->addRole($this);
         return $this;
     }
 
@@ -170,7 +277,12 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      */
     public function removePermission(Permission $permission)
     {
+        if (!$this->permissions->contains($permission)) {
+            return;
+        }
+        
         $this->permissions->removeElement($permission);
+        $permission->removeRole($this);
         return $this;
     }
 
@@ -192,9 +304,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      */
     public function hasPermission($permission)
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq('name', (string) $permission));
-        $result   = $this->permissions->matching($criteria);
-
-        return count($result) > 0;
+        if ($permission instanceof Permission) {
+            return $this->permissions->contains($permission);
+        }
+        return $this->permissions->containsKey($permission);
     }
 }

@@ -12,7 +12,10 @@
         <div class="container-fluid">
             <div class="form-signin">
                 <main>
-                    <?php echo $content ?>
+                    <?php
+                    echo $this->flashMessenger();
+                    echo $content;
+                    ?>
                 </main>
                 <?php echo $this->partial('partial/footer') ?>
             </div>
