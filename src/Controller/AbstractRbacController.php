@@ -17,7 +17,7 @@ abstract class AbstractRbacController extends AdminActionController
 
     /**
      * Check if updating a permanent entity
-     * 
+     *
      * @param BreadEvent $event
      */
     abstract public function updatePermanentEntity(BreadEvent $event);

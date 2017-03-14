@@ -13,6 +13,8 @@
     "require-dev": {
         "ise/php-metapackage-development": "^1.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Ise\\Admin\\": "src"
@@ -25,7 +27,8 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.0.x-dev",
+            "dev-develop": "1.1.x-dev"
         }
     },
     "scripts": {

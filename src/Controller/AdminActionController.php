@@ -31,7 +31,7 @@ class AdminActionController extends BreadActionController
     
     /**
      * Check an index for permission
-     * 
+     *
      * @param BreadEvent $event
      * @throws UnauthorizedException
      */
@@ -44,7 +44,7 @@ class AdminActionController extends BreadActionController
     
     /**
      * Check a read for permission
-     * 
+     *
      * @param BreadEvent $event
      * @throws UnauthorizedException
      */
@@ -57,7 +57,7 @@ class AdminActionController extends BreadActionController
     
     /**
      * Check a create for permission
-     * 
+     *
      * @param BreadEvent $event
      * @throws UnauthorizedException
      */
@@ -70,7 +70,7 @@ class AdminActionController extends BreadActionController
     
     /**
      * Check a change for permission
-     * 
+     *
      * @param BreadEvent $event
      * @throws UnauthorizedException
      */
