@@ -26,6 +26,10 @@
      * One time document ready event
      */
     function documentReady() {
+        if ($document.ajaxify === undefined) {
+            return;
+        }
+        
         $document.ajaxify();
     }
     
