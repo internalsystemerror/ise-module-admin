@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Exception;
+namespace Ise\Admin\Exception;
 
 interface ExceptionInterface
 {

@@ -1,0 +1,20 @@
+<h1 class="page-header">
+    Editing Permission: <em><?php echo $entity ?></em>
+</h1>
+<?php
+// Check if permission is permanent
+if ($entity->isPermanent()) {
+
+    // Show alert
+    echo $this->alert()->danger(
+        'Please note, you are editing a permament permission. This can have '
+        . 'serious adverse effects.'
+    );
+
+    // Set up name
+    $name = $form->get('name');
+    $name->setAttribute('disabled', 'disabled');
+}
+
+// Display form
+echo $this->form($form);

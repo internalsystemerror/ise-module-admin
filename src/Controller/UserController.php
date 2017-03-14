@@ -1,39 +1,21 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
-use IseBread\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Ise\Bread\EventManager\BreadEvent;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class UserController extends AbstractActionController
+class UserController extends AdminActionController
 {
-
-    /**
-     * @var string
-     */
-    protected $indexRoute = 'admin/users';
-
-    /**
-     * @var string
-     */
-    protected $basePermission = 'admin.users';
-
-    /**
-     * @var string
-     */
-    protected $entityType = 'user';
     
     /**
      * {@inheritDoc}
      */
-    public function browseAction()
+    public function readAction()
     {
-        $viewModel = parent::browseAction();
-        $viewModel->setTemplate('ise-admin/user/browse');
-        return $viewModel;
+        return $this->redirect()->toRoute('zfcuser/profile/view', [], null, true);
     }
 
     /**
@@ -47,20 +29,20 @@ class UserController extends AbstractActionController
     /**
      * Ban action
      *
-     * @return ViewModel
+     * @return ViewModel|ResponseInterface
      */
     public function banAction()
     {
-        return $this->bread('ban', 'ise-admin/user/ban');
+        return $this->triggerActionEvent(BreadEvent::EVENT_DIALOG, 'ban', BreadEvent::FORM_DIALOG);
     }
 
     /**
      * Unban action
      *
-     * @return ViewModel
+     * @return ViewModel|ResponseInterface
      */
     public function unbanAction()
     {
-        return $this->bread('unban', 'ise-admin/user/unban');
+        return $this->triggerActionEvent(BreadEvent::EVENT_DIALOG, 'unban', BreadEvent::FORM_DIALOG);
     }
 }

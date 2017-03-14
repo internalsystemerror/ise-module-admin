@@ -1,9 +1,9 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use IseBread\Entity\AbstractBasicEntity;
+use Ise\Bread\Entity\AbstractBasicEntity;
 use Zend\Form\Annotation as ZF;
 
 /**

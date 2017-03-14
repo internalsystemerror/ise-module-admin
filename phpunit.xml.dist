@@ -13,7 +13,7 @@
 
     <testsuites>
         <testsuite name="ISE: Module (Admin)">
-            <directory>./tests</directory>
+            <directory>./test</directory>
         </testsuite>
     </testsuites>
     <groups>
@@ -30,11 +30,11 @@
         <ini name="date.timezone" value="UTC" />
     </php>
     <logging>
-        <log type="coverage-html" target="build/logs/coverage/html" charset="UTF-8"
+        <log type="coverage-html" target="build/coverage/html" charset="UTF-8"
              yui="true" highlight="true" lowUpperBound="90" highLowerBound="100" />
         <log type="coverage-clover" target="build/logs/clover.xml" />
         <log type="coverage-crap4j" target="build/logs/crap4j.xml" />
-        <log type="coverage-xml" target="build/logs/coverage/xml" />
+        <log type="coverage-xml" target="build/coverage/xml" />
         <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false" />
     </logging>
 </phpunit>

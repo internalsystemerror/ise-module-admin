@@ -1,6 +1,6 @@
 <?php
 
-namespace IseAdmin\Fixture;
+namespace Ise\Admin\Fixture;
 
 use Doctrine\Common\DataFixtures\AbstractFixture as AbstractDoctrineFixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,7 +20,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
     
     /**
      * Get list of modules
-     * 
+     *
      * @return array
      */
     private static function getModulesList()
@@ -63,7 +63,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
 
     /**
      * Get fixture configuration
-     * 
+     *
      * @param string $configName
      * @return array
      */
@@ -83,7 +83,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
     
     /**
      * Get description from value
-     * 
+     *
      * @param array|string $value
      * @return string
      */

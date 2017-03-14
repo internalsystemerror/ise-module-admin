@@ -1,8 +1,8 @@
 <?php
 
-namespace IseAdmin\Fixture;
+namespace Ise\Admin\Fixture;
 
-use IseAdmin\Entity\Role;
+use Ise\Admin\Entity\Role;
 
 class RoleFixture extends AbstractFixture
 {

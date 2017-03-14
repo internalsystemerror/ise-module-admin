@@ -1,35 +1,19 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
-/**
- * @SuppressWarnings(PHPMD.ShortVariableName)
- */
-class PermissionController extends AbstractRbacActionController
+use Ise\Bread\EventManager\BreadEvent;
+
+class PermissionController extends AbstractRbacController
 {
 
     /**
-     * @var string
+     * {@inheritDoc}
      */
-    protected $indexRoute = 'admin/permissions';
-
-    /**
-     * @var string
-     */
-    protected $basePermission = 'admin.rbac.permissions';
-
-    /**
-     * @var string
-     */
-    protected $entityType = 'permission';
-
-    /**
-     * Edit action
-     *
-     * @return ViewModel
-     */
-    public function editAction()
+    public function updatePermanentEntity(BreadEvent $event)
     {
-        return $this->bread('edit', 'ise-admin/permission/edit');
+        if ($event->getEntity()->isPermanent()) {
+            $event->getForm()->setValidationGroup(['description', 'roles']);
+        }
     }
 }

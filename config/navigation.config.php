@@ -1,9 +1,9 @@
 <?php
 return [
-    'admin'      => [
+    'default'      => [
         'index' => [
             'label'      => 'Dashboard',
-            'route'      => 'zfcuser/dashboard',
+            'route'      => 'admin',
             'icon'       => 'dashboard',
             'order'      => -1000,
             'permission' => 'member',
@@ -17,12 +17,12 @@ return [
             'pages'      => [
                 'users' => [
                     'label'      => 'User Accounts',
-                    'route'      => 'admin/users',
+                    'route'      => 'admin/user',
                     'icon'       => 'user',
-                    'permission' => 'admin.users',
+                    'permission' => 'admin.user',
                 ],
                 'rbac'  => [
-                    'label'      => 'Roles & Permissions',
+                    'label'      => 'Role Based Access Control',
                     'route'      => 'admin/rbac',
                     'icon'       => 'tower',
                     'permission' => 'admin.rbac',
@@ -30,7 +30,7 @@ return [
             ],
         ],
     ],
-    'admin_menu' => [
+    'user_menu' => [
         'menu' => [
             'label'      => '',
             'uri'        => '#',
@@ -50,15 +50,10 @@ return [
                     'icon'       => 'cog',
                     'permission' => 'member',
                 ],
-                'diagnostics' => [
-                    'label'      => 'Site Diagnostics',
-                    'route'      => 'admin/diagnostics',
-                    'icon'       => 'plus',
-                    'permission' => 'admin.diagnostics',
-                ],
                 'logout'      => [
                     'label'      => 'Logout',
                     'route'      => 'zfcuser/logout',
+                    'class'      => 'no-ajax',
                     'icon'       => 'off',
                     'divider'    => true,
                     'permission' => 'member',

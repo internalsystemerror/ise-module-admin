@@ -1,43 +1,43 @@
 <?php
 
-namespace IseAdmin;
-
-use IseAdmin\Assertion\NotCurrentUserAssertion;
-use IseAdmin\Entity\Role;
+namespace Ise\Admin;
 
 return [
-    'assertion_manager' => [
-        'factories' => [
-            'notCurrentUser' => NotCurrentUserAssertion::class,
-        ],
+    'assertion_map'         => [
+        'admin.user.edit'    => Assertion\IsCurrentUserAssertion::class,
+        'admin.user.delete'  => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.enable'  => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.disable' => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.ban'     => Assertion\NotCurrentUserAssertion::class,
+        'admin.user.unban'   => Assertion\NotCurrentUserAssertion::class,
     ],
-    'assertion_map'     => [
-        '' => 'notCurrentUser',
-    ],
-    'redirect_strategy' => [
-        'redirect_when_connected'        => false,
-        'redirect_to_route_connected'    => 'admin/index',
+    'redirect_strategy'     => [
+        'redirect_when_connected'        => true,
+        'redirect_to_route_connected'    => 'zfcuser/logout',
         'redirect_to_route_disconnected' => 'zfcuser/login',
         'append_previous_uri'            => true,
-        'previous_uri_query_key'         => 'redirectTo',
+        'previous_uri_query_key'         => 'redirect',
     ],
     'unauthorized_strategy' => [
         'template' => 'error/403'
     ],
-    'guards'            => [
+    'guards'                => [
         'ZfcRbac\Guard\RouteGuard' => [
+            'zfcuser/logout'   => ['guest'],
             'zfcuser/login'    => ['guest'],
             'zfcuser/register' => ['guest'],
+            'zfcuser'          => ['member'],
             'zfcuser/*'        => ['member'],
+            'admin'            => ['member'],
             'admin/*'          => ['member'],
             'admin/rbac'       => ['admin'],
-            'admin/users'      => ['admin'],
+            'admin/user'       => ['admin'],
         ],
     ],
-    'role_provider'     => [
+    'role_provider'         => [
         'ZfcRbac\Role\ObjectRepositoryRoleProvider' => [
             'object_manager'     => 'doctrine.entitymanager.orm_default',
-            'class_name'         => Role::class,
+            'class_name'         => Entity\Role::class,
             'role_name_property' => 'name',
         ],
     ],

@@ -1,25 +1,18 @@
 <?php
 
-namespace IseAdmin\Assertion;
+namespace Ise\Admin\Assertion;
 
-use ZfcRbac\Assertion\AssertionInterface;
+use Ise\Admin\Entity\User;
 use ZfcRbac\Service\AuthorizationService;
 
-class NotCurrentUserAssertion implements AssertionInterface
+class NotCurrentUserAssertion extends IsCurrentUserAssertion
 {
 
     /**
-     * Check if this assertion is true
-     *
-     * @param  AuthorizationService $authorization
-     * @param  mixed                $entity
-     *
-     * @return bool
+     * {@inheritDoc}
      */
-    public function assert(AuthorizationService $authorization, $user = null)
+    public function assert(AuthorizationService $authorization, User $user = null)
     {
-//        var_dump($authorization->getIdentity());
-//        exit;
-        return $authorization->getIdentity() === $user;
+        return !parent::assert($authorization, $user);
     }
 }

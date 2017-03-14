@@ -1,11 +1,11 @@
 <?php
 
-namespace IseAdmin\Entity;
+namespace Ise\Admin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use IseBread\Entity\AbstractEntity;
+use Ise\Bread\Entity\AbstractEntity;
 use Zend\Form\Annotation as ZF;
 use ZfcRbac\Identity\IdentityInterface;
 use ZfcUser\Entity\UserInterface;
@@ -21,7 +21,6 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * @ORM\Id
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
-     * @ZF\Exclude()
      * @var string
      */
     protected $id;
@@ -29,6 +28,9 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * @ORM\Column(type="string", unique=true, length=128, nullable=false)
      * @ZF\Options({"label": "Username"})
+     * @ZF\Filter({"name": "StripNewlines"})
+     * @ZF\Filter({"name": "StripTags"})
+     * @ZF\Validator({"name": "StringLength", "options": {"min": 3}})
      * @var string
      */
     protected $username;
@@ -45,6 +47,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * @ORM\Column(type="string", length=128, nullable=false)
      * @ZF\Options({"label": "Password"})
      * @ZF\Type("password")
+     * @ZF\Validator({"name": "StringLength", "options": {"min": 7}})
      * @var string
      */
     protected $password;
@@ -52,6 +55,8 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true, name="display_name")
      * @ZF\Options({"label": "Display Name"})
+     * @ZF\Filter({"name": "StripNewlines"})
+     * @ZF\Validator({"name": "StringLength", "options": {"min": 3}})
      * @var string
      */
     protected $displayName;
@@ -71,7 +76,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     protected $banned = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity="IseAdmin\Entity\Role", mappedBy="")
+     * @ORM\ManyToMany(targetEntity="Ise\Admin\Entity\Role", mappedBy="users", indexBy="name", cascade={"persist","remove"})
      * @ZF\Exclude()
      * @var Role[]|Collection
      */
@@ -91,12 +96,12 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function __toString()
     {
-        return $this->getDisplayName();
+        return $this->getUsername();
     }
 
     /**
      * Set id
-     * 
+     *
      * @param string $id
      * @return self
      */
@@ -246,7 +251,12 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function addRole(Role $role)
     {
-        $this->roles[] = $role;
+        if ($this->roles->contains($role)) {
+            return $this;
+        }
+        
+        $this->roles[$role->getName()] = $role;
+        $role->addUser($this);
         return $this;
     }
 
@@ -258,7 +268,12 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      */
     public function removeRole(Role $role)
     {
+        if (!$this->roles->contains($role)) {
+            return $this;
+        }
+        
         $this->roles->removeElement($role);
+        $role->removeUser($this);
         return $this;
     }
 

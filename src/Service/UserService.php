@@ -1,111 +1,51 @@
 <?php
 
-namespace IseAdmin\Service;
+namespace Ise\Admin\Service;
 
-use IseBread\Service\AbstractService;
-use ZfcRbac\Service\AuthorizationServiceAwareInterface;
-use ZfcRbac\Service\AuthorizationServiceAwareTrait;
+use DateTime;
+use Ise\Bread\EventManager\BreadEvent;
+use Ise\Bread\Service\BreadService;
 
-/**
- * @SuppressWarnings(PHPMD.ShortVariableName)
- */
-class UserService extends AbstractService implements AuthorizationServiceAwareInterface
+class UserService extends BreadService
 {
 
-    use AuthorizationServiceAwareTrait;
-
     /**
-     * @var string
+     * Ban user
+     *
+     * @param array $data
+     * @return boolean
      */
-    protected $entityClass = 'IseAdmin\Entity\User';
-
-    /**
-     * @var string
-     */
-    protected $mapperClass = 'IseAdmin\Mapper\User';
-
-    /**
-     * @var string[]
-     */
-    protected $form = [
-        'add'     => 'IseAdmin\Form\User\Add',
-        'edit'    => 'IseAdmin\Form\User\Edit',
-        'delete'  => 'IseAdmin\Form\User\Delete',
-        'enable'  => 'IseAdmin\Form\User\Enable',
-        'disable' => 'IseAdmin\Form\User\Disable',
-        'ban'     => 'IseAdmin\Form\User\Ban',
-        'unban'   => 'IseAdmin\Form\User\Delete',
-    ];
-
     public function ban(array $data)
     {
-        // Check for current user
-        if (!$this->getAuthorizationService()->isGranted('notCurrentUser')) {
-            $form = $this->getForm('ban');
-            $this->addFormMessage($form, [
-                'buttons' => [
-                    'submit' => [
-                        'You can not ban your own user.'
-                    ]
-                ]
-            ]);
-            return false;
-        }
-
         // Validate form
-        $form = $this->validateForm('ban', $data);
-        if (!$form) {
+        $user = $this->validateForm(BreadEvent::FORM_DIALOG, $data);
+        if (!$user) {
             return false;
         }
 
-        // Get entity
-        $validEntity = $form->getData();
-        $validEntity->setBanned(true);
-
-        // Trigger event
-        $this->getEventManager()->trigger('ban', $this, [
-            'entity' => $validEntity,
-            'form'   => $form,
-        ]);
-        $result = $this->getMapper()->edit($validEntity);
-        $this->getEventManager()->trigger('ban', $this, [
-            'entity' => $validEntity,
-            'form'   => $form,
-        ]);
-
-        return $result;
+        // Save entity
+        $user->setBanned(true);
+        $user->setLastModified(new DateTime);
+        return $this->mapper->edit($user);
     }
 
+    /**
+     * Unban user
+     *
+     * @param array $data
+     * @return boolean
+     */
     public function unban(array $data)
     {
-        // Check for current user
-        if (!$this->getAuthorizationService()->isGranted('notCurrentUser')) {
-            $form = $this->getForm('unban');
-            $this->addFormMessage($form, 'You can not unban your own user.');
-            return false;
-        }
-
         // Validate form
-        $form = $this->validateForm('unban', $data);
-        if (!$form) {
+        $user = $this->validateForm(BreadEvent::FORM_DIALOG, $data);
+        if (!$user) {
             return false;
         }
 
-        // Get entity
-        $validEntity = $form->getData();
-        $validEntity->setBanned(false);
-
-        // Trigger event
-        $this->getEventManager()->trigger('unban', $this, [
-            'entity' => $validEntity,
-            'form'   => $form,
-        ]);
-        $result = $this->getMapper()->edit($validEntity);
-        $this->getEventManager()->trigger('unban', $this, [
-            'entity' => $validEntity,
-            'form'   => $form,
-        ]);
-
-        return $result;
+        // Save entity
+        $user->setBanned(false);
+        $user->setLastModified(new DateTime);
+        return $this->mapper->edit($user);
     }
 }

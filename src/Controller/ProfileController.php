@@ -1,8 +1,9 @@
 <?php
 
-namespace IseAdmin\Controller;
+namespace Ise\Admin\Controller;
 
-use IseAdmin\Service\UserService;
+use Ise\Admin\Service\UserService;
+use Ise\Bread\EventManager\BreadEvent;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface;
 use Zend\View\Model\ViewModel;
@@ -49,30 +50,55 @@ class ProfileController extends AbstractActionController
             throw new UnauthorizedException();
         }
 
-        $form = $this->userService->getForm('edit');
+        $form = $this->userService->getForm(BreadEvent::FORM_UPDATE);
         $form->bind($user);
-        $form->getInputFilter()->remove('email');
-        $form->getInputFilter()->remove('password');
         $prg  = $this->prg();
 
         if ($prg instanceof ResponseInterface) {
             return $prg;
         } elseif ($prg !== false) {
-            $prg['id'] = $user->getId();
+            // Set id
+            $prg[BreadEvent::IDENTIFIER] = $user->getId();
+            
+            // Remove password
+            unset($prg['password']);
+            $form->remove('password');
+            $form->getInputFilter()->remove('password');
+            
+            // Remove email
+            unset($prg['email']);
+            $form->remove('email');
+            $form->getInputFilter()->remove('email');
+            
+            // Perform action
             if ($this->userService->edit($prg)) {
                 return $this->redirect()->toRoute('zfcuser/profile');
             }
         }
-        return new ViewModel([
-            'form' => $form,
-        ]);
+        return new ViewModel(['form' => $form,]);
     }
 
+    /**
+     * View a profile
+     *
+     * @return ViewModel
+     */
     public function viewAction()
     {
-        return new ViewModel;
+        $id   = (string) $this->params(BreadEvent::IDENTIFIER, '');
+        $user = $this->userService->read($id);
+        if (!$user) {
+            return $this->notFoundAction();
+        }
+
+        return new ViewModel(['user' => $user]);
     }
 
+    /**
+     * Users settings
+     *
+     * @return ViewModel
+     */
     public function settingsAction()
     {
         return new ViewModel;

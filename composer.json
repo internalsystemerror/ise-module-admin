@@ -5,53 +5,39 @@
     "homepage": "https://github.com/internalsystemerror/ise-module-admin",
     "require": {
         "php": "^5.6 || ^7.0",
-        "ise/ise-module-bootstrap": "dev-master",
-        "ise/ise-module-bread": "dev-master",
-        "ise/zf2-module-doctrinedatafixture": "dev-master",
-        "zendframework/zend-config": "^2.5",
-        "zendframework/zend-eventmanager": "^2.5",
-        "zendframework/zend-form": "^2.5",
-        "zendframework/zend-modulemanager": "^2.5",
-        "zendframework/zend-mvc": "^2.5",
-        "zendframework/zend-navigation": "^2.5",
-        "zendframework/zend-servicemanager": "^2.5",
-        "zendframework/zend-stdlib": "^2.5",
-        "zendframework/zend-view": "^2.5",
+        "ise/ise-module-bread": "dev-develop",
+        "ise/zf2-module-doctrinedatafixture": "dev-develop",
         "zf-commons/zfc-user-doctrine-orm": "^1.0",
         "zf-commons/zfc-rbac": "^2.5"
     },
     "require-dev": {
-        "zendframework/zend-console": "^2.5",
-        "zendframework/zftool": "^0.1 || ^1.0",
-        "zendframework/zenddiagnostics": "^1.0",
         "ise/php-metapackage-development": "^1.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "IseAdmin\\": "src"
+            "Ise\\Admin\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IseAdminTest\\": "tests"
+            "IseTest\\Admin\\": "test"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.0.x-dev",
+            "dev-develop": "1.1.x-dev"
         }
     },
     "scripts": {
-        "test": [
-            "@phpunit",
-            "@phpcs",
-            "@phpmd",
-            "@phpcpd"
-        ],
-        "phpunit": "phpunit -c ./phpunit.xml.dist",
-        "phpcs": "phpcs",
-        "phpcbf": "phpcbf",
-        "phpmd": "phpmd . html --reportfile ./build/logs/phpmd.html --suffixes php,phtml --exclude vendor,build ./phpmd.xml.dist",
-        "phpcpd": "phpcpd . --exclude=vendor --exclude=data"
+        "test": "phpunit -c ./phpunit.xml.dist",
+        "cs-fix": "phpcbf",
+        "cs-check": [
+            "phpcs",
+            "phpmd ./config,./src,./test html --reportfile ./build/logs/phpmd.html --suffixes php,phtml ./phpmd.xml.dist",
+            "phpcpd . --exclude=assets --exclude=build --exclude=vendor "
+        ]
     }
 }

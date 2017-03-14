@@ -1,0 +1,43 @@
+<h1 class="page-header">
+    Editing Role: <em><?php echo $entity ?></em>
+</h1>
+<?php
+// Check if role is permanent
+if (!$entity->isPermanent()) {
+
+    // Display form
+    echo $this->form($form);
+    return;
+}
+
+// Show alert
+echo $this->alert()->danger(
+    'Please note, you are editing a permament role. This can have serious '
+    . 'adverse effects.'
+);
+
+// Prepare form
+$staticTemplate = '<p class="form-control-static">%s</p>';
+$form->prepare();
+echo $this->form()->openTag($form);
+foreach ($form as $element) {
+    switch ($element->getName()) {
+        case $element instanceof \Zend\Form\FieldsetInterface:
+            echo $this->formCollection($element);
+            break;
+        case 'name':
+            $elementString = sprintf($staticTemplate, $entity->getName());
+            echo $this->formRow()->renderGroup($element, $elementString);
+            break;
+        case 'parent':
+            $parent        = $entity->getParent();
+            $elementString = sprintf($staticTemplate, $parent ? $parent->getName() : 'None');
+            echo $this->formRow()->renderGroup($element, $elementString);
+            break;
+        default:
+            echo $this->formRow($element);
+            break;
+    }
+}
+
+echo $this->form()->closeTag();
