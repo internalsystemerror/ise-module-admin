@@ -931,12 +931,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/ise-module-bread.git",
-                "reference": "bc10b034191d136f5f69ac0e6ac396cba8f895a0"
+                "reference": "4a3b4b2abf5a72e9fb27dc7dd1e95d97d5603bc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bread/zipball/bc10b034191d136f5f69ac0e6ac396cba8f895a0",
-                "reference": "bc10b034191d136f5f69ac0e6ac396cba8f895a0",
+                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bread/zipball/4a3b4b2abf5a72e9fb27dc7dd1e95d97d5603bc5",
+                "reference": "4a3b4b2abf5a72e9fb27dc7dd1e95d97d5603bc5",
                 "shasum": ""
             },
             "require": {
@@ -969,7 +969,7 @@
             ],
             "description": "BREAD module for Zend Framework 2 used by Internalsystemerror Limited",
             "homepage": "https://github.com/internalsystemerror/ise-module-bread",
-            "time": "2017-03-14 16:00:54"
+            "time": "2017-03-14 23:23:02"
         },
         {
             "name": "ise/zf2-module-doctrinedatafixture",
@@ -3440,12 +3440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/php-metapackage-development.git",
-                "reference": "c2f8901c4a6c9dac7851543c70e06b0312fce983"
+                "reference": "db40594a4021afa45170e8ae04e46ed678d86ae6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/php-metapackage-development/zipball/c2f8901c4a6c9dac7851543c70e06b0312fce983",
-                "reference": "c2f8901c4a6c9dac7851543c70e06b0312fce983",
+                "url": "https://api.github.com/repos/internalsystemerror/php-metapackage-development/zipball/db40594a4021afa45170e8ae04e46ed678d86ae6",
+                "reference": "db40594a4021afa45170e8ae04e46ed678d86ae6",
                 "shasum": ""
             },
             "require": {
