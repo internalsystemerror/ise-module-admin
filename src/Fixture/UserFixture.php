@@ -14,7 +14,7 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            'Ise\Admin\Fixture\RoleFixture',
+            RoleFixture::class,
         ];
     }
 
