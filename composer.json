@@ -5,7 +5,6 @@
     "homepage": "https://github.com/internalsystemerror/ise-module-admin",
     "require": {
         "php": "^5.6 || ^7.0",
-        "ise/ise-module-bootstrap": "^1.0",
         "ise/ise-module-bread": "^1.0",
         "ise/zf2-module-doctrinedatafixture": "^1.0",
         "zf-commons/zfc-user-doctrine-orm": "^1.0",
