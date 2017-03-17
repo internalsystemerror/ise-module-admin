@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5c985bb34c01cafa27612eb01b2780e",
+    "content-hash": "db0bd399580f973f14c1bf9ae78caaa4",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -314,65 +314,6 @@
                 "spl"
             ],
             "time": "2017-01-13T14:02:13+00:00"
-        },
-        {
-            "name": "doctrine/data-fixtures",
-            "version": "v1.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "17fa5bfe6ff52e35cb3d9ec37c934a2f4bd1fa2e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/17fa5bfe6ff52e35cb3d9ec37c934a2f4bd1fa2e",
-                "reference": "17fa5bfe6ff52e35cb3d9ec37c934a2f4bd1fa2e",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": "~2.2",
-                "php": "^5.6 || ^7.0"
-            },
-            "conflict": {
-                "doctrine/orm": "< 2.4"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^2.5.4",
-                "doctrine/orm": "^2.5.4",
-                "phpunit/phpunit": "^5.4.6"
-            },
-            "suggest": {
-                "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
-                "doctrine/orm": "For loading ORM fixtures",
-                "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\DataFixtures": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                }
-            ],
-            "description": "Data Fixtures for all Doctrine Object Managers",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database"
-            ],
-            "time": "2016-09-20T10:07:57+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -877,63 +818,17 @@
             "time": "2016-12-18T15:42:34+00:00"
         },
         {
-            "name": "ise/ise-module-bootstrap",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/internalsystemerror/ise-module-bootstrap.git",
-                "reference": "d2ab7586b23dd68388917598f54a92c04b1dafc2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bootstrap/zipball/d2ab7586b23dd68388917598f54a92c04b1dafc2",
-                "reference": "d2ab7586b23dd68388917598f54a92c04b1dafc2",
-                "shasum": ""
-            },
-            "require": {
-                "nervo/yuicompressor": "2.4.7",
-                "php": "^5.6 || ^7.0",
-                "rwoverdijk/assetmanager": "^1.7",
-                "zendframework/zend-form": "^2.5 || ^3.0",
-                "zendframework/zend-navigation": "^2.5 || ^3.0",
-                "zendframework/zend-view": "^2.5 || ^3.0"
-            },
-            "require-dev": {
-                "ise/php-metapackage-development": "^1.0",
-                "zendframework/zend-i18n": "^2.6 || ^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev",
-                    "dev-develop": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ise\\Bootstrap\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Twitter Bootstrap module for Zend Framework used by Internalsystemerror Limited",
-            "homepage": "https://github.com/internalsystemerror/ise-module-bootstrap",
-            "time": "2017-03-17 11:41:07"
-        },
-        {
             "name": "ise/ise-module-bread",
             "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/ise-module-bread.git",
-                "reference": "00b355249d77d2e993d827ebba5b89697750bece"
+                "reference": "8ddbd80460eefd2655b94f2f4e1ebe6d6ddc39ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bread/zipball/00b355249d77d2e993d827ebba5b89697750bece",
-                "reference": "00b355249d77d2e993d827ebba5b89697750bece",
+                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bread/zipball/8ddbd80460eefd2655b94f2f4e1ebe6d6ddc39ce",
+                "reference": "8ddbd80460eefd2655b94f2f4e1ebe6d6ddc39ce",
                 "shasum": ""
             },
             "require": {
@@ -969,171 +864,7 @@
             ],
             "description": "BREAD module for Zend Framework 2 used by Internalsystemerror Limited",
             "homepage": "https://github.com/internalsystemerror/ise-module-bread",
-            "time": "2017-03-17 12:04:20"
-        },
-        {
-            "name": "ise/zf2-module-doctrinedatafixture",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/internalsystemerror/zf2-module-doctrinedatafixture.git",
-                "reference": "73b164a7858ebe79d0167a75fd8249b3c63d0e70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/zf2-module-doctrinedatafixture/zipball/73b164a7858ebe79d0167a75fd8249b3c63d0e70",
-                "reference": "73b164a7858ebe79d0167a75fd8249b3c63d0e70",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/data-fixtures": "^1.0",
-                "doctrine/doctrine-orm-module": "^1.0",
-                "zendframework/zend-eventmanager": "^2.5 || ^3.0",
-                "zendframework/zend-modulemanager": "^2.5",
-                "zendframework/zend-servicemanager": "^2.5 || ^3.0"
-            },
-            "require-dev": {
-                "ise/php-metapackage-development": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev",
-                    "dev-develop": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "DoctrineDataFixtureModule\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Martin Shwalbe",
-                    "email": "martin.shwalbe@gmail.com"
-                },
-                {
-                    "name": "ise",
-                    "email": "info@ise.me.uk"
-                }
-            ],
-            "description": "Zend Framework 2 Module that provides Doctrine Data-Fixture functionality",
-            "homepage": "https://github.com/internalsystemerror/zf2-module-doctrinedatafixture",
-            "keywords": [
-                "data-fixture",
-                "doctrine",
-                "module",
-                "zf2"
-            ],
-            "time": "2017-03-17 12:26:07"
-        },
-        {
-            "name": "kriswallsmith/assetic",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1",
-                "reference": "e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.1",
-                "symfony/process": "~2.1|~3.0"
-            },
-            "conflict": {
-                "twig/twig": "<1.27"
-            },
-            "require-dev": {
-                "leafo/lessphp": "^0.3.7",
-                "leafo/scssphp": "~0.1",
-                "meenie/javascript-packer": "^1.1",
-                "mrclay/minify": "<2.3",
-                "natxet/cssmin": "3.0.4",
-                "patchwork/jsqueeze": "~1.0|~2.0",
-                "phpunit/phpunit": "~4.8 || ^5.6",
-                "psr/log": "~1.0",
-                "ptachoire/cssembed": "~1.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
-                "twig/twig": "~1.23|~2.0",
-                "yfix/packager": "dev-master"
-            },
-            "suggest": {
-                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
-                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
-                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
-                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
-                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
-                "twig/twig": "Assetic provides the integration with the Twig templating engine"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Assetic": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Asset Management for PHP",
-            "homepage": "https://github.com/kriswallsmith/assetic",
-            "keywords": [
-                "assets",
-                "compression",
-                "minification"
-            ],
-            "time": "2016-11-11T18:43:20+00:00"
-        },
-        {
-            "name": "nervo/yuicompressor",
-            "version": "2.4.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nervo/yuicompressor.git",
-                "reference": "57e188ab59b02bf5c57a5362c3c507ef62365f65"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nervo/yuicompressor/zipball/57e188ab59b02bf5c57a5362c3c507ef62365f65",
-                "reference": "57e188ab59b02bf5c57a5362c3c507ef62365f65",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "description": "YUI Compressor is an open source tool that supports the compression of both JavaScript and CSS files. The JavaScript compression removes comments and white-spaces as well as obfuscates local variables using the smallest possible variable name. CSS compression is done using a regular-expression-based CSS minifier.",
-            "homepage": "https://github.com/yui/yuicompressor",
-            "keywords": [
-                "java",
-                "yui"
-            ],
-            "time": "2012-05-12T08:31:30+00:00"
+            "time": "2017-03-17 12:37:47"
         },
         {
             "name": "psr/container",
@@ -1280,73 +1011,6 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
-        },
-        {
-            "name": "rwoverdijk/assetmanager",
-            "version": "1.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RWOverdijk/AssetManager.git",
-                "reference": "e09fa3d4e426d72beaefefe6a9fe3f39a7572782"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RWOverdijk/AssetManager/zipball/e09fa3d4e426d72beaefefe6a9fe3f39a7572782",
-                "reference": "e09fa3d4e426d72beaefefe6a9fe3f39a7572782",
-                "shasum": ""
-            },
-            "require": {
-                "kriswallsmith/assetic": "^1.2.1",
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-eventmanager": "^2.6.3 || ^3.0.1",
-                "zendframework/zend-loader": "^2.5.1",
-                "zendframework/zend-modulemanager": "^2.7.2",
-                "zendframework/zend-mvc": "^2.7.9 || ^3.0.2",
-                "zendframework/zend-servicemanager": "^2.7.6 || ^3.1.1",
-                "zendframework/zend-stdlib": "^2.7.7 || ^3.0.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8",
-                "squizlabs/php_codesniffer": "~1.5.0",
-                "zendframework/zend-cache": "^2.7.1",
-                "zendframework/zend-console": "^2.6",
-                "zendframework/zend-http": "^2.5.4",
-                "zendframework/zend-view": "^2.8.1"
-            },
-            "suggest": {
-                "zendframework/zend-mvc-console": "zend-mvc-console provides the ability to expose zend-mvc as a console application"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "AssetManager": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Wesley Overdijk",
-                    "email": "r.w.overdijk@gmail.com",
-                    "homepage": "http://blog.spoonx.nl/"
-                },
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
-                }
-            ],
-            "description": "An assetmanager module for Zend Framework 2.",
-            "homepage": "https://github.com/RWOverdijk/AssetManager",
-            "keywords": [
-                "asset",
-                "asset manager",
-                "zend framework 2",
-                "zf2"
-            ],
-            "time": "2016-08-23T11:24:22+00:00"
         },
         {
             "name": "symfony/console",
@@ -1526,55 +1190,6 @@
                 "shim"
             ],
             "time": "2016-11-14T01:06:16+00:00"
-        },
-        {
-            "name": "symfony/process",
-            "version": "v3.2.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "68bfa8c83f24c0ac04ea7193bcdcda4519f41892"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/68bfa8c83f24c0ac04ea7193bcdcda4519f41892",
-                "reference": "68bfa8c83f24c0ac04ea7193bcdcda4519f41892",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Process Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-03-04T12:23:14+00:00"
         },
         {
             "name": "zendframework/zend-authentication",
@@ -2554,74 +2169,6 @@
                 "zf2"
             ],
             "time": "2016-06-13T16:52:36+00:00"
-        },
-        {
-            "name": "zendframework/zend-navigation",
-            "version": "2.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-navigation.git",
-                "reference": "353f5c31aeaaecc2c12e7f949c3feb3dc255019b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-navigation/zipball/353f5c31aeaaecc2c12e7f949c3feb3dc255019b",
-                "reference": "353f5c31aeaaecc2c12e7f949c3feb3dc255019b",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-stdlib": "^2.7 || ^3.0"
-            },
-            "require-dev": {
-                "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "^4.5",
-                "zendframework/zend-config": "^2.6",
-                "zendframework/zend-console": "^2.6",
-                "zendframework/zend-http": "^2.5.4",
-                "zendframework/zend-i18n": "^2.6",
-                "zendframework/zend-log": "^2.7.1",
-                "zendframework/zend-mvc": "^2.7.9 || ^3.0",
-                "zendframework/zend-permissions-acl": "^2.6",
-                "zendframework/zend-router": "^3.0",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
-                "zendframework/zend-uri": "^2.5",
-                "zendframework/zend-view": "^2.6.5"
-            },
-            "suggest": {
-                "zendframework/zend-config": "^2.6, to provide page configuration (optional, as arrays and Traversables are also allowed)",
-                "zendframework/zend-permissions-acl": "^2.6, to provide ACL-based access restrictions to pages",
-                "zendframework/zend-router": "^3.0, to use router-based URI generation with Mvc pages",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to use the navigation factories",
-                "zendframework/zend-view": "^2.6.5, to use the navigation view helpers"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev",
-                    "dev-develop": "2.9-dev"
-                },
-                "zf": {
-                    "component": "Zend\\Navigation",
-                    "config-provider": "Zend\\Navigation\\ConfigProvider"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Navigation\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "provides support for managing trees of pointers to web pages",
-            "homepage": "https://github.com/zendframework/zend-navigation",
-            "keywords": [
-                "navigation",
-                "zf2"
-            ],
-            "time": "2016-06-12T14:12:33+00:00"
         },
         {
             "name": "zendframework/zend-paginator",
