@@ -3440,12 +3440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/php-metapackage-development.git",
-                "reference": "db40594a4021afa45170e8ae04e46ed678d86ae6"
+                "reference": "32f52547c4ae7be04242a758bb5b6bd2dc7a4c63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/php-metapackage-development/zipball/db40594a4021afa45170e8ae04e46ed678d86ae6",
-                "reference": "db40594a4021afa45170e8ae04e46ed678d86ae6",
+                "url": "https://api.github.com/repos/internalsystemerror/php-metapackage-development/zipball/32f52547c4ae7be04242a758bb5b6bd2dc7a4c63",
+                "reference": "32f52547c4ae7be04242a758bb5b6bd2dc7a4c63",
                 "shasum": ""
             },
             "require": {
