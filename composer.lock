@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "31fdebc307aefe521c4c97c4b2e18679",
+    "content-hash": "e5c985bb34c01cafa27612eb01b2780e",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -882,22 +882,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/ise-module-bootstrap.git",
-                "reference": "4709e81006474a25b48589b1d62dcf72b0b0bf40"
+                "reference": "d2ab7586b23dd68388917598f54a92c04b1dafc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bootstrap/zipball/4709e81006474a25b48589b1d62dcf72b0b0bf40",
-                "reference": "4709e81006474a25b48589b1d62dcf72b0b0bf40",
+                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bootstrap/zipball/d2ab7586b23dd68388917598f54a92c04b1dafc2",
+                "reference": "d2ab7586b23dd68388917598f54a92c04b1dafc2",
                 "shasum": ""
             },
             "require": {
                 "nervo/yuicompressor": "2.4.7",
                 "php": "^5.6 || ^7.0",
                 "rwoverdijk/assetmanager": "^1.7",
-                "zendframework/zend-eventmanager": "^2.5 || ^3.0",
                 "zendframework/zend-form": "^2.5 || ^3.0",
-                "zendframework/zend-modulemanager": "^2.5 || ^3.0",
-                "zendframework/zend-mvc": "^2.5 || ^3.0",
                 "zendframework/zend-navigation": "^2.5 || ^3.0",
                 "zendframework/zend-view": "^2.5 || ^3.0"
             },
@@ -923,7 +920,7 @@
             ],
             "description": "Twitter Bootstrap module for Zend Framework used by Internalsystemerror Limited",
             "homepage": "https://github.com/internalsystemerror/ise-module-bootstrap",
-            "time": "2017-03-14 15:18:27"
+            "time": "2017-03-17 11:41:07"
         },
         {
             "name": "ise/ise-module-bread",
@@ -931,25 +928,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/ise-module-bread.git",
-                "reference": "4a3b4b2abf5a72e9fb27dc7dd1e95d97d5603bc5"
+                "reference": "00b355249d77d2e993d827ebba5b89697750bece"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bread/zipball/4a3b4b2abf5a72e9fb27dc7dd1e95d97d5603bc5",
-                "reference": "4a3b4b2abf5a72e9fb27dc7dd1e95d97d5603bc5",
+                "url": "https://api.github.com/repos/internalsystemerror/ise-module-bread/zipball/00b355249d77d2e993d827ebba5b89697750bece",
+                "reference": "00b355249d77d2e993d827ebba5b89697750bece",
                 "shasum": ""
             },
             "require": {
-                "doctrine/doctrine-orm-module": "^1.0",
-                "ise/ise-module-bootstrap": "dev-develop",
                 "php": "^5.6 || ^7.0",
-                "zendframework/zend-http": "^2.5 || ^3.0",
-                "zendframework/zend-servicemanager": "^2.5 || ^3.0",
-                "zendframework/zend-stdlib": "^2.5 || ^3.0",
+                "zendframework/zend-form": "^2.5 || ^3.0",
+                "zendframework/zend-mvc": "^2.5 || ^3.0",
                 "zendframework/zend-validator": "^2.5 || ^3.0"
             },
             "require-dev": {
+                "doctrine/doctrine-orm-module": "^1.0",
+                "ise/ise-module-bootstrap": "^1.0",
                 "ise/php-metapackage-development": "^1.0"
+            },
+            "suggest": {
+                "doctrine/doctrine-orm-module": "To use the DoctrineORM adapter",
+                "ise/ise-module-bootstrap": "For use in MVC applications"
             },
             "type": "library",
             "extra": {
@@ -969,7 +969,7 @@
             ],
             "description": "BREAD module for Zend Framework 2 used by Internalsystemerror Limited",
             "homepage": "https://github.com/internalsystemerror/ise-module-bread",
-            "time": "2017-03-14 23:23:02"
+            "time": "2017-03-17 12:04:20"
         },
         {
             "name": "ise/zf2-module-doctrinedatafixture",
@@ -977,19 +977,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/internalsystemerror/zf2-module-doctrinedatafixture.git",
-                "reference": "fcc61ce66f154eca34b9c0aa9e14162291d1a583"
+                "reference": "73b164a7858ebe79d0167a75fd8249b3c63d0e70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/internalsystemerror/zf2-module-doctrinedatafixture/zipball/fcc61ce66f154eca34b9c0aa9e14162291d1a583",
-                "reference": "fcc61ce66f154eca34b9c0aa9e14162291d1a583",
+                "url": "https://api.github.com/repos/internalsystemerror/zf2-module-doctrinedatafixture/zipball/73b164a7858ebe79d0167a75fd8249b3c63d0e70",
+                "reference": "73b164a7858ebe79d0167a75fd8249b3c63d0e70",
                 "shasum": ""
             },
             "require": {
                 "doctrine/data-fixtures": "^1.0",
                 "doctrine/doctrine-orm-module": "^1.0",
                 "zendframework/zend-eventmanager": "^2.5 || ^3.0",
-                "zendframework/zend-modulemanager": "^2.5 || ^3.0",
+                "zendframework/zend-modulemanager": "^2.5",
                 "zendframework/zend-servicemanager": "^2.5 || ^3.0"
             },
             "require-dev": {
@@ -1029,7 +1029,7 @@
                 "module",
                 "zf2"
             ],
-            "time": "2017-03-01 10:30:47"
+            "time": "2017-03-17 12:26:07"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -2962,27 +2962,27 @@
         },
         {
             "name": "zendframework/zend-validator",
-            "version": "2.8.2",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-validator.git",
-                "reference": "99b528e01276054458da9553b587cfb959dfa436"
+                "reference": "b71641582297eab52753b72cd4eb45a5ded4485c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/99b528e01276054458da9553b587cfb959dfa436",
-                "reference": "99b528e01276054458da9553b587cfb959dfa436",
+                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/b71641582297eab52753b72cd4eb45a5ded4485c",
+                "reference": "b71641582297eab52753b72cd4eb45a5ded4485c",
                 "shasum": ""
             },
             "require": {
                 "container-interop/container-interop": "^1.1",
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-stdlib": "^2.7.6 || ^3.1"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "^4.0",
+                "phpunit/phpunit": "^6.0.8 || ^5.7.15",
                 "zendframework/zend-cache": "^2.6.1",
+                "zendframework/zend-coding-standard": "~1.0.0",
                 "zendframework/zend-config": "^2.6",
                 "zendframework/zend-db": "^2.7",
                 "zendframework/zend-filter": "^2.6",
@@ -2994,20 +2994,20 @@
                 "zendframework/zend-uri": "^2.5"
             },
             "suggest": {
-                "zendframework/zend-db": "Zend\\Db component",
+                "zendframework/zend-db": "Zend\\Db component, required by the (No)RecordExists validator",
                 "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
-                "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
+                "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages",
                 "zendframework/zend-i18n-resources": "Translations of validator messages",
-                "zendframework/zend-math": "Zend\\Math component",
+                "zendframework/zend-math": "Zend\\Math component, required by the Csrf validator",
                 "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
-                "zendframework/zend-session": "Zend\\Session component",
+                "zendframework/zend-session": "Zend\\Session component, required by the Csrf validator",
                 "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev",
-                    "dev-develop": "2.9-dev"
+                    "dev-master": "2.9-dev",
+                    "dev-develop": "2.10-dev"
                 },
                 "zf": {
                     "component": "Zend\\Validator",
@@ -3029,7 +3029,7 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2017-01-29T17:24:24+00:00"
+            "time": "2017-03-17T10:15:50+00:00"
         },
         {
             "name": "zendframework/zend-view",
@@ -4179,16 +4179,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.15",
+            "version": "5.7.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5"
+                "reference": "dafc78e2a7d12139b0e97078d1082326bd09363d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b99112aecc01f62acf3d81a3f59646700a1849e5",
-                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dafc78e2a7d12139b0e97078d1082326bd09363d",
+                "reference": "dafc78e2a7d12139b0e97078d1082326bd09363d",
                 "shasum": ""
             },
             "require": {
@@ -4257,7 +4257,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-02T15:22:43+00:00"
+            "time": "2017-03-15T13:02:34+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -5591,10 +5591,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "ise/ise-module-bread": 20,
-        "ise/zf2-module-doctrinedatafixture": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
