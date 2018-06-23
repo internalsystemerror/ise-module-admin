@@ -8,7 +8,7 @@ namespace Ise\Admin\Controller;
 
 use Ise\Bread\EventManager\BreadEvent;
 
-abstract class AbstractRbacController extends AdminActionController
+abstract class AbstractRbacController extends AdminController
 {
 
     /**

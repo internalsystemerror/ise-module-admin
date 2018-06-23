@@ -14,7 +14,7 @@ return [
         'bread' => [
             'entity_defaults' => [
                 'controller' => [
-                    'baseClass' => Controller\AdminActionController::class,
+                    'baseClass' => Controller\AdminController::class,
                 ],
             ],
             'entities'        => [

@@ -68,14 +68,14 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * @ORM\Column(type="smallint", nullable=true, options={"unsigned":true})
      * @ZF\Exclude()
-     * @var integer
+     * @var int
      */
     protected $state;
 
     /**
-     * @ORM\Column(type="boolean", nullable=false)
+     * @ORM\Column(type="bool", nullable=false)
      * @ZF\Exclude()
-     * @var boolean
+     * @var bool
      */
     protected $banned = false;
 
@@ -211,7 +211,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Get state
      *
-     * @return integer
+     * @return int
      */
     public function getState()
     {
@@ -221,20 +221,20 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set state
      *
-     * @param integer $state
+     * @param int $state
      *
      * @return self
      */
     public function setState($state)
     {
-        $this->state = (integer)$state;
+        $this->state = (int)$state;
         return $this;
     }
 
     /**
      * Is banned
      *
-     * @return boolean
+     * @return bool
      */
     public function isBanned()
     {
@@ -244,13 +244,13 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set banned
      *
-     * @param boolean $banned
+     * @param bool $banned
      *
      * @return self
      */
     public function setBanned($banned)
     {
-        $this->banned = (boolean)$banned;
+        $this->banned = (bool)$banned;
         return $this;
     }
 

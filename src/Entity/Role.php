@@ -157,7 +157,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     /**
      * Does role have children?
      *
-     * @return boolean
+     * @return bool
      */
     public function hasChildren()
     {
@@ -316,7 +316,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param  string|Permission $permission
      *
-     * @return boolean
+     * @return bool
      */
     public function hasPermission($permission)
     {

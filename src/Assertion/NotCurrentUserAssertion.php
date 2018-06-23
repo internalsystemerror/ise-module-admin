@@ -15,7 +15,7 @@ class NotCurrentUserAssertion extends IsCurrentUserAssertion
     /**
      * {@inheritDoc}
      */
-    public function assert(AuthorizationService $authorization, User $user = null)
+    public function assert(AuthorizationService $authorization, User $user = null): bool
     {
         return !parent::assert($authorization, $user);
     }

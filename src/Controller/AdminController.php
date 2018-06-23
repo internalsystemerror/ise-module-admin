@@ -16,7 +16,7 @@ use ZfcRbac\Exception\UnauthorizedException;
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class AdminActionController extends BreadActionController
+class AdminController extends BreadActionController
 {
 
     /**

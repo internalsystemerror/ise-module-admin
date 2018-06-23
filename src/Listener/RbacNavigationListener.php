@@ -48,7 +48,7 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
      *
      * @param  EventInterface $event
      *
-     * @return boolean
+     * @return bool
      */
     public function accept(EventInterface $event)
     {

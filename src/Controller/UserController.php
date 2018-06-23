@@ -11,7 +11,7 @@ use Ise\Bread\EventManager\BreadEvent;
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
  */
-class UserController extends AdminActionController
+class UserController extends AdminController
 {
 
     /**

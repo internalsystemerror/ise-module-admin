@@ -17,16 +17,16 @@ class AbstractRbacEntity extends AbstractBasicEntity
 {
 
     /**
-     * @ORM\Column(type="boolean", nullable=false)
+     * @ORM\Column(type="bool", nullable=false)
      * @ZF\Exclude()
-     * @var boolean
+     * @var bool
      */
     protected $permanent = false;
 
     /**
      * Is permanent
      *
-     * @return boolean
+     * @return bool
      */
     public function isPermanent()
     {
@@ -36,13 +36,13 @@ class AbstractRbacEntity extends AbstractBasicEntity
     /**
      * Set permanent
      *
-     * @param boolean $permanent
+     * @param bool $permanent
      *
      * @return self
      */
     public function setPermanent($permanent)
     {
-        $this->permanent = (boolean)$permanent;
+        $this->permanent = (bool)$permanent;
         return $this;
     }
 }
