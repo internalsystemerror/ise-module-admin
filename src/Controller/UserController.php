@@ -21,7 +21,7 @@ class UserController extends AdminController
      */
     public function readAction(): Response
     {
-        return $this->redirect()->toRoute('zfcuser/profile/view', [], null, true);
+        return $this->redirect()->toRoute('zfcuser/profile/view', [], [], true);
     }
 
     /**

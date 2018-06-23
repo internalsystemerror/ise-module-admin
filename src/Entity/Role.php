@@ -39,7 +39,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      * @ORM\ManyToOne(targetEntity="Ise\Admin\Entity\Role", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ZF\Options({"label": "Parent Role"})
-     * @var Role
+     * @var Role|null
      */
     protected $parent;
 
@@ -88,9 +88,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     /**
      * Get parent
      *
-     * @return Role
+     * @return Role|null
      */
-    public function getParent(): Role
+    public function getParent(): ?Role
     {
         return $this->parent;
     }
@@ -197,7 +197,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param iterable $users
      *
-     * @return self
+     * @return void
      */
     public function removeUsers(iterable $users): void
     {

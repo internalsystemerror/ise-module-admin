@@ -61,8 +61,11 @@ class RoleFixture extends AbstractFixture
 
         // Set parent
         if ($parent) {
-            echo ', a child of "', $parent, '"';
-            $role->setParent($this->getReference('role-' . $parent));
+            $parent = $this->getReference('role-' . $parent);
+            if ($parent instanceof Role) {
+                echo ', a child of "', $parent, '"';
+                $role->setParent($parent);
+            }
         }
 
         // Set values
@@ -71,7 +74,7 @@ class RoleFixture extends AbstractFixture
         $role->setPermanent(true);
 
         // Check for permissions
-        if (isset($value['permissions'])) {
+        if ($value['permissions']) {
             $this->addPermissionsToRole($role, $value['permissions']);
         }
 
@@ -83,7 +86,7 @@ class RoleFixture extends AbstractFixture
         echo PHP_EOL;
 
         // Check for children
-        if (isset($value['children'])) {
+        if ($value['children']) {
             $this->createRoles($value['children'], $name);
         }
     }

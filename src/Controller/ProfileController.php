@@ -56,7 +56,7 @@ class ProfileController extends AbstractActionController
     public function editAction()
     {
         $user = $this->identity();
-        if (!$user) {
+        if (!$user instanceof User) {
             throw new UnauthorizedException;
         }
 
@@ -66,7 +66,7 @@ class ProfileController extends AbstractActionController
 
         if ($prg instanceof Response) {
             return $prg;
-        } elseif ($prg !== false) {
+        } elseif (is_array($prg)) {
             // Set id
             $prg[BreadEvent::IDENTIFIER] = $user->getId();
 

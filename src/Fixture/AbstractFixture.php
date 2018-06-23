@@ -8,6 +8,7 @@ namespace Ise\Admin\Fixture;
 
 use Doctrine\Common\DataFixtures\AbstractFixture as AbstractDoctrineFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Zend\Config\Config;
 use Zend\Config\Factory;
 
 abstract class AbstractFixture extends AbstractDoctrineFixture
@@ -33,7 +34,11 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
         if (!self::$modulesList) {
             // Load application config
             $applicationConfig = Factory::fromFile('config/application.config.php', true);
-            foreach ($applicationConfig->modules as $module) {
+            if (!$applicationConfig instanceof Config) {
+                return [];
+            }
+
+            foreach ($applicationConfig->get('modules') as $module) {
                 $className = $module . '\\Module';
                 if (!class_exists($className)) {
                     continue;
@@ -87,7 +92,12 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
             }
             $configFiles[] = realpath($filePath);
         }
-        return Factory::fromFiles($configFiles);
+        $config = Factory::fromFiles($configFiles);
+        if ($config instanceof Config) {
+            return $config->toArray();
+        }
+
+        return $config;
     }
 
     /**

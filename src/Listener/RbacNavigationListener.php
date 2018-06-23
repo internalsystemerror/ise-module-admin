@@ -6,8 +6,9 @@ declare(strict_types=1);
 
 namespace Ise\Admin\Listener;
 
-use Zend\EventManager\EventInterface;
 use Zend\EventManager\SharedEventManagerInterface;
+use Zend\Mvc\Application;
+use Zend\Mvc\MvcEvent;
 use Zend\View\Helper\Navigation\AbstractHelper;
 use ZfcRbac\Service\AuthorizationService;
 
@@ -46,20 +47,24 @@ class RbacNavigationListener
     /**
      * Check navigation page for permission
      *
-     * @param  EventInterface $event
+     * @param  MvcEvent $event
      *
      * @return bool
      */
-    public function accept(EventInterface $event): bool
+    public function accept(MvcEvent $event): bool
     {
+        $application = $event->getTarget();
+        if (!$application instanceof Application) {
+            return true;
+        }
+
         // Set variables
         $event->stopPropagation();
         $accepted = true;
         $page     = $event->getParam('page');
+
         /** @var AuthorizationService $rbac */
-        $rbac = $event->getTarget()
-                      ->getServiceLocator()
-                      ->get(AuthorizationService::class);
+        $rbac = $application->getServiceManager()->get(AuthorizationService::class);
 
         // Check permission
         $permission = $page->getPermission();

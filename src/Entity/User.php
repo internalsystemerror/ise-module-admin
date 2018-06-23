@@ -106,7 +106,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set id
      *
-     * @param string $id
+     * @param mixed $id
      *
      * @return void
      */
@@ -128,7 +128,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set username
      *
-     * @param string $username
+     * @param mixed $username
      *
      * @return void
      */
@@ -150,7 +150,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set email
      *
-     * @param string $email
+     * @param mixed $email
      *
      * @return void
      */
@@ -172,7 +172,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set password
      *
-     * @param string $password
+     * @param mixed $password
      *
      * @return void
      */
@@ -194,7 +194,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set displayName
      *
-     * @param string $displayName
+     * @param mixed $displayName
      *
      * @return void
      */
@@ -216,7 +216,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * Set state
      *
-     * @param int $state
+     * @param mixed $state
      *
      * @return void
      */

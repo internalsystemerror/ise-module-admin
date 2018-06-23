@@ -113,7 +113,7 @@ class AdminRouteListener implements ListenerAggregateInterface
     {
         $basePath = $renderer->basePath();
         $renderer->headTitle('Admin');
-        $renderer->headLink()->appendStylesheet($basePath . '/css/admin.css');
+        $renderer->headLink()->__call('appendStylesheet', [$basePath . '/css/admin.css']);
         $renderer->headScript()->appendScript('(function(){document.getElementById("html").className="js";})();');
         $renderer->inlineScript()->appendFile($basePath . '/js/admin.js');
     }
@@ -129,7 +129,7 @@ class AdminRouteListener implements ListenerAggregateInterface
     {
         $basePath = $renderer->basePath();
         $renderer->headTitle('Login');
-        $renderer->headLink()->appendStylesheet($basePath . '/css/login.css');
+        $renderer->headLink()->__call('appendStylesheet', [$basePath . '/css/login.css']);
         $renderer->inlineScript()->appendFile($basePath . '/js/login.js');
     }
 }
