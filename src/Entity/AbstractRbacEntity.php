@@ -28,7 +28,7 @@ class AbstractRbacEntity extends AbstractBasicEntity
      *
      * @return bool
      */
-    public function isPermanent()
+    public function isPermanent(): bool
     {
         return $this->permanent;
     }
@@ -38,11 +38,10 @@ class AbstractRbacEntity extends AbstractBasicEntity
      *
      * @param bool $permanent
      *
-     * @return self
+     * @return void
      */
-    public function setPermanent($permanent)
+    public function setPermanent(bool $permanent): void
     {
-        $this->permanent = (bool)$permanent;
-        return $this;
+        $this->permanent = $permanent;
     }
 }

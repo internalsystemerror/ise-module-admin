@@ -7,6 +7,8 @@ declare(strict_types=1);
 namespace Ise\Admin\Controller;
 
 use Ise\Bread\EventManager\BreadEvent;
+use Zend\Http\Response;
+use Zend\View\Model\ViewModel;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
@@ -17,7 +19,7 @@ class UserController extends AdminController
     /**
      * {@inheritDoc}
      */
-    public function readAction()
+    public function readAction(): Response
     {
         return $this->redirect()->toRoute('zfcuser/profile/view', [], null, true);
     }
@@ -25,7 +27,7 @@ class UserController extends AdminController
     /**
      * {@inheritDoc}
      */
-    public function editAction()
+    public function editAction(): ViewModel
     {
         return $this->notFoundAction();
     }
@@ -33,7 +35,7 @@ class UserController extends AdminController
     /**
      * Ban action
      *
-     * @return ViewModel|ResponseInterface
+     * @return ViewModel|Response
      */
     public function banAction()
     {
@@ -43,7 +45,7 @@ class UserController extends AdminController
     /**
      * Unban action
      *
-     * @return ViewModel|ResponseInterface
+     * @return ViewModel|Response
      */
     public function unbanAction()
     {

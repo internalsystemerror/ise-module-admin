@@ -12,9 +12,11 @@ class UserMenuNavigationFactory extends AbstractNavigationFactory
 {
 
     /**
+     * Get name
+     *
      * @return string
      */
-    protected function getName()
+    protected function getName(): string
     {
         return 'user_menu';
     }

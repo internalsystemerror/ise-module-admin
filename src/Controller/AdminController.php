@@ -12,9 +12,11 @@ use Ise\Bread\EventManager\BreadEventManager;
 use Ise\Bread\Options\ControllerOptions;
 use Ise\Bread\Service\ServiceInterface;
 use ZfcRbac\Exception\UnauthorizedException;
+use ZfcRbac\Mvc\Controller\Plugin\IsGranted;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
+ * @method IsGranted isGranted($permission, $context = null)
  */
 class AdminController extends BreadActionController
 {
@@ -39,11 +41,9 @@ class AdminController extends BreadActionController
     /**
      * Check an index for permission
      *
-     * @param BreadEvent $event
-     *
      * @throws UnauthorizedException
      */
-    public function checkIndexPermission(BreadEvent $event)
+    public function checkIndexPermission(): void
     {
         if (!$this->isGranted($this->basePermission)) {
             throw new UnauthorizedException;
@@ -57,7 +57,7 @@ class AdminController extends BreadActionController
      *
      * @throws UnauthorizedException
      */
-    public function checkReadPermission(BreadEvent $event)
+    public function checkReadPermission(BreadEvent $event): void
     {
         if (!$this->isGranted($this->basePermission, $event->getEntity())) {
             throw new UnauthorizedException;
@@ -71,7 +71,7 @@ class AdminController extends BreadActionController
      *
      * @throws UnauthorizedException
      */
-    public function checkCreatePermission(BreadEvent $event)
+    public function checkCreatePermission(BreadEvent $event): void
     {
         if (!$this->isGranted($this->basePermission . '.' . $event->getAction())) {
             throw new UnauthorizedException;
@@ -85,7 +85,7 @@ class AdminController extends BreadActionController
      *
      * @throws UnauthorizedException
      */
-    public function checkChangePermission(BreadEvent $event)
+    public function checkChangePermission(BreadEvent $event): void
     {
         if (!$this->isGranted($this->basePermission . '.' . $event->getAction(), $event->getEntity())) {
             throw new UnauthorizedException;
@@ -95,7 +95,7 @@ class AdminController extends BreadActionController
     /**
      * {@inheritDoc}
      */
-    protected function attachDefaultIndexListeners()
+    protected function attachDefaultIndexListeners(): void
     {
         parent::attachDefaultIndexListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_INDEX, [$this, 'checkIndexPermission'], 850);
@@ -104,7 +104,7 @@ class AdminController extends BreadActionController
     /**
      * {@inheritDoc}
      */
-    protected function attachDefaultReadListeners()
+    protected function attachDefaultReadListeners(): void
     {
         parent::attachDefaultReadListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_READ, [$this, 'checkReadPermission'], 850);
@@ -113,7 +113,7 @@ class AdminController extends BreadActionController
     /**
      * {@inheritDoc}
      */
-    protected function attachDefaultCreateListeners()
+    protected function attachDefaultCreateListeners(): void
     {
         parent::attachDefaultCreateListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_CREATE, [$this, 'checkCreatePermission'], 850);
@@ -122,7 +122,7 @@ class AdminController extends BreadActionController
     /**
      * {@inheritDoc}
      */
-    protected function attachDefaultUpdateListeners()
+    protected function attachDefaultUpdateListeners(): void
     {
         parent::attachDefaultUpdateListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_UPDATE, [$this, 'checkChangePermission'], 850);
@@ -131,7 +131,7 @@ class AdminController extends BreadActionController
     /**
      * {@inheritDoc}
      */
-    protected function attachDefaultDialogListeners()
+    protected function attachDefaultDialogListeners(): void
     {
         parent::attachDefaultDialogListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_DIALOG, [$this, 'checkChangePermission'], 850);

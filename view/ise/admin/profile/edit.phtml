@@ -4,6 +4,14 @@
  */
 declare(strict_types=1);
 
+use Zend\Form\Fieldset;
+use Zend\Form\Form;
+
+/**
+ * @var Form     $form
+ * @var Fieldset $buttons
+ */
+
 // Prepare form
 $form->setAttribute('action', $this->url(null, [], null, true));
 $form->setAttribute('class', 'form-horizontal');
@@ -14,7 +22,8 @@ $form->setAttribute('class', 'form-horizontal');
     </h1>
 <?php
 // Prepare form
-$cancel = $form->get('buttons')->get('cancel');
+$buttons = $form->get('buttons');
+$cancel  = $buttons->get('cancel');
 $cancel->setAttribute('href', $this->url('zfcuser/profile'));
 $form->prepare();
 

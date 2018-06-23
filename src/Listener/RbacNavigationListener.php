@@ -8,10 +8,10 @@ namespace Ise\Admin\Listener;
 
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\SharedEventManagerInterface;
-use Zend\EventManager\SharedListenerAggregateInterface;
 use Zend\View\Helper\Navigation\AbstractHelper;
+use ZfcRbac\Service\AuthorizationService;
 
-class RbacNavigationListener implements SharedListenerAggregateInterface
+class RbacNavigationListener
 {
 
     /**
@@ -22,7 +22,7 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
     /**
      * {@inheritDoc}
      */
-    public function attachShared(SharedEventManagerInterface $eventManager)
+    public function attachShared(SharedEventManagerInterface $eventManager): void
     {
         $this->listeners[] = $eventManager->attach(
             AbstractHelper::class,
@@ -34,7 +34,7 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
     /**
      * {@inheritDoc}
      */
-    public function detachShared(SharedEventManagerInterface $eventManager)
+    public function detachShared(SharedEventManagerInterface $eventManager): void
     {
         foreach ($this->listeners as $index => $listener) {
             if ($eventManager->detach($listener)) {
@@ -50,15 +50,16 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
      *
      * @return bool
      */
-    public function accept(EventInterface $event)
+    public function accept(EventInterface $event): bool
     {
         // Set variables
         $event->stopPropagation();
         $accepted = true;
         $page     = $event->getParam('page');
-        $rbac     = $event->getTarget()
-                          ->getServiceLocator()
-                          ->get('ZfcRbac\Service\AuthorizationService');
+        /** @var AuthorizationService $rbac */
+        $rbac = $event->getTarget()
+                      ->getServiceLocator()
+                      ->get(AuthorizationService::class);
 
         // Check permission
         $permission = $page->getPermission();

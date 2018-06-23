@@ -6,7 +6,9 @@ declare(strict_types=1);
 
 namespace Ise\Admin\Controller;
 
+use Ise\Admin\Entity\AbstractRbacEntity;
 use Ise\Bread\EventManager\BreadEvent;
+use Zend\Http\Response;
 
 abstract class AbstractRbacController extends AdminController
 {
@@ -14,7 +16,7 @@ abstract class AbstractRbacController extends AdminController
     /**
      * {@inheritDoc}
      */
-    public function browseAction()
+    public function browseAction(): Response
     {
         return $this->redirectBrowse();
     }
@@ -23,18 +25,21 @@ abstract class AbstractRbacController extends AdminController
      * Check if updating a permanent entity
      *
      * @param BreadEvent $event
+     *
+     * @return void
      */
-    abstract public function updatePermanentEntity(BreadEvent $event);
+    abstract public function updatePermanentEntity(BreadEvent $event): void;
 
     /**
      * {@inheritDoc}
      */
-    public function checkDialogueNotAllowed(BreadEvent $event)
+    public function checkDialogueNotAllowed(BreadEvent $event): ?Response
     {
         switch ($event->getAction()) {
             case BreadEvent::ACTION_DELETE:
-                if (!$event->getEntity()->isPermanent()) {
-                    return;
+                $entity = $event->getEntity();
+                if ($entity instanceof AbstractRbacEntity && !$entity->isPermanent()) {
+                    return null;
                 }
                 // Set warning message
                 $this->flashMessenger()->addWarningMessage(sprintf(
@@ -44,13 +49,13 @@ abstract class AbstractRbacController extends AdminController
                 return $this->redirect()->toRoute($this->indexRoute);
         }
 
-        return parent::checkDialogueNotAllowed($event);
+        return parent::checkDialogNotAllowed($event);
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function attachDefaultBreadListeners()
+    protected function attachDefaultBreadListeners(): void
     {
         parent::attachDefaultBreadListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_UPDATE, [$this, 'updatePermanentEntity'], 590);

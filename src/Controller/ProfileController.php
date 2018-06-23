@@ -6,15 +6,20 @@ declare(strict_types=1);
 
 namespace Ise\Admin\Controller;
 
+use Ise\Admin\Entity\User;
 use Ise\Admin\Service\UserService;
 use Ise\Bread\EventManager\BreadEvent;
+use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Stdlib\ResponseInterface;
+use Zend\Mvc\Plugin\Prg\PostRedirectGet;
 use Zend\View\Model\ViewModel;
 use ZfcRbac\Exception\UnauthorizedException;
+use ZfcUser\View\Helper\ZfcUserIdentity;
 
 /**
  * @SuppressWarnings(PHPMD.ShortVariableName)
+ * @method ZfcUserIdentity|User identity()
+ * @method PostRedirectGet|Response|array|bool|null prg()
  */
 class ProfileController extends AbstractActionController
 {
@@ -37,7 +42,7 @@ class ProfileController extends AbstractActionController
      *
      * @return ViewModel
      */
-    public function indexAction()
+    public function indexAction(): ViewModel
     {
         return new ViewModel(['user' => $this->identity()]);
     }
@@ -46,6 +51,7 @@ class ProfileController extends AbstractActionController
      * Edit profile action
      *
      * @return Response|ViewModel
+     * @throws \Exception
      */
     public function editAction()
     {
@@ -58,7 +64,7 @@ class ProfileController extends AbstractActionController
         $form->bind($user);
         $prg = $this->prg();
 
-        if ($prg instanceof ResponseInterface) {
+        if ($prg instanceof Response) {
             return $prg;
         } elseif ($prg !== false) {
             // Set id
@@ -87,7 +93,7 @@ class ProfileController extends AbstractActionController
      *
      * @return ViewModel
      */
-    public function viewAction()
+    public function viewAction(): ViewModel
     {
         $id   = (string)$this->params(BreadEvent::IDENTIFIER, '');
         $user = $this->userService->read($id);
@@ -103,7 +109,7 @@ class ProfileController extends AbstractActionController
      *
      * @return ViewModel
      */
-    public function settingsAction()
+    public function settingsAction(): ViewModel
     {
         return new ViewModel;
     }

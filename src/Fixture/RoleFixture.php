@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace Ise\Admin\Fixture;
 
+use Ise\Admin\Entity\Permission;
 use Ise\Admin\Entity\Role;
 
 class RoleFixture extends AbstractFixture
@@ -13,8 +14,9 @@ class RoleFixture extends AbstractFixture
 
     /**
      * {@inheritDoc}
+     * @throws \ReflectionException
      */
-    protected function run()
+    protected function run(): void
     {
         // Create roles from array
         echo '*************************', PHP_EOL;
@@ -30,8 +32,10 @@ class RoleFixture extends AbstractFixture
      *
      * @param array       $data
      * @param null|string $parent
+     *
+     * @return void
      */
-    protected function createRoles($data, $parent = null)
+    protected function createRoles(array $data, string $parent = null): void
     {
         // Loop through data
         foreach ($data as $key => $value) {
@@ -45,8 +49,10 @@ class RoleFixture extends AbstractFixture
      * @param string       $name
      * @param array|string $value
      * @param null|string  $parent
+     *
+     * @return void
      */
-    protected function createRole($name, $value, $parent)
+    protected function createRole(string $name, $value, string $parent = null): void
     {
         // Create role
         echo 'Creating role "', $name, '"';
@@ -87,13 +93,20 @@ class RoleFixture extends AbstractFixture
      *
      * @param Role  $role
      * @param array $permissions
+     *
+     * @return void
      */
-    protected function addPermissionsToRole(Role $role, array $permissions)
+    protected function addPermissionsToRole(Role $role, array $permissions): void
     {
         echo ', with permissions...', PHP_EOL;
         foreach ($permissions as $permission) {
-            echo "\t", '- ', $permission, PHP_EOL;
-            $role->addPermission($this->getReference('permission-' . $permission));
+            $permission = $this->getReference('permission-' . $permission);
+            if (!$permission instanceof Permission) {
+                continue;
+            }
+
+            echo "\t", '- ', $permission->getName(), PHP_EOL;
+            $role->addPermission($permission);
         }
     }
 }

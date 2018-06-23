@@ -60,16 +60,15 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
     /**
      * Add roles
      *
-     * @param Collection $roles
+     * @param iterable $roles
      *
-     * @return self
+     * @return void
      */
-    public function addRoles(Collection $roles)
+    public function addRoles(iterable $roles): void
     {
         foreach ($roles as $role) {
             $this->addRole($role);
         }
-        return $this;
     }
 
     /**
@@ -77,31 +76,29 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      *
      * @param Role $role
      *
-     * @return self
+     * @return void
      */
-    public function addRole(Role $role)
+    public function addRole(Role $role): void
     {
         if ($this->roles->contains($role)) {
-            return $this;
+            return;
         }
 
         $this->roles[$role->getName()] = $role;
-        return $this;
     }
 
     /**
      * Remove roles
      *
-     * @param Collection $roles
+     * @param iterable $roles
      *
-     * @return self
+     * @return void
      */
-    public function removeRoles(Collection $roles)
+    public function removeRoles(iterable $roles): void
     {
         foreach ($roles as $role) {
             $this->removeRole($role);
         }
-        return $this;
     }
 
     /**
@@ -109,24 +106,23 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      *
      * @param Role $role
      *
-     * @return self
+     * @return void
      */
-    public function removeRole(Role $role)
+    public function removeRole(Role $role): void
     {
         if (!$this->roles->contains($role)) {
-            return $this;
+            return;
         }
 
         $this->roles->removeElement($role);
-        return $this;
     }
 
     /**
      * Get permissions
      *
-     * @return Collection
+     * @return Permission[]|Collection
      */
-    public function getRoles()
+    public function getRoles(): iterable
     {
         return $this->roles;
     }

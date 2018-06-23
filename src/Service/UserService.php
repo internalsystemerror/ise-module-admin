@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace Ise\Admin\Service;
 
 use DateTime;
+use Ise\Admin\Entity\User;
 use Ise\Bread\EventManager\BreadEvent;
 use Ise\Bread\Service\BreadService;
 
@@ -18,20 +19,22 @@ class UserService extends BreadService
      *
      * @param array $data
      *
-     * @return bool
+     * @return User|null
+     * @throws \Exception
      */
-    public function ban(array $data)
+    public function ban(array $data): ?User
     {
         // Validate form
         $user = $this->validateForm(BreadEvent::FORM_DIALOG, $data);
-        if (!$user) {
-            return false;
+        if (!$user instanceof User) {
+            return null;
         }
 
         // Save entity
         $user->setBanned(true);
         $user->setLastModified(new DateTime);
-        return $this->mapper->edit($user);
+        $this->mapper->edit($user);
+        return $user;
     }
 
     /**
@@ -39,19 +42,21 @@ class UserService extends BreadService
      *
      * @param array $data
      *
-     * @return bool
+     * @return User|null
+     * @throws \Exception
      */
-    public function unban(array $data)
+    public function unBan(array $data): ?User
     {
         // Validate form
         $user = $this->validateForm(BreadEvent::FORM_DIALOG, $data);
-        if (!$user) {
-            return false;
+        if (!$user instanceof User) {
+            return null;
         }
 
         // Save entity
         $user->setBanned(false);
         $user->setLastModified(new DateTime);
-        return $this->mapper->edit($user);
+        $this->mapper->edit($user);
+        return $user;
     }
 }

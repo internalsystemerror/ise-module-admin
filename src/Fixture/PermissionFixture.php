@@ -13,8 +13,9 @@ class PermissionFixture extends AbstractFixture
 
     /**
      * {@inheritDoc}
+     * @throws \ReflectionException
      */
-    protected function run()
+    protected function run(): void
     {
         // Create permissions from array
         echo '*************************', PHP_EOL;
@@ -28,10 +29,12 @@ class PermissionFixture extends AbstractFixture
     /**
      * Create permissions from array
      *
-     * @param array  $data
-     * @param string $prefix
+     * @param array       $data
+     * @param string|null $prefix
+     *
+     * @return void
      */
-    protected function createPermissions(array $data, $prefix = '')
+    protected function createPermissions(array $data, string $prefix = null): void
     {
         // Loop through data
         foreach ($data as $key => $value) {
@@ -45,8 +48,10 @@ class PermissionFixture extends AbstractFixture
      *
      * @param string       $name
      * @param array|string $value
+     *
+     * @return void
      */
-    protected function createPermission($name, $value)
+    protected function createPermission(string $name, $value): void
     {
         // Create permission
         echo 'Creating permission "', $name, '"', PHP_EOL;

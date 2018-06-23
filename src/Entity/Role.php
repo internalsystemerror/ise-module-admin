@@ -90,7 +90,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @return Role
      */
-    public function getParent()
+    public function getParent(): Role
     {
         return $this->parent;
     }
@@ -100,12 +100,11 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param Role|null $parent
      *
-     * @return self
+     * @return void
      */
-    public function setParent(Role $parent = null)
+    public function setParent(Role $parent = null): void
     {
         $this->parent = $parent;
-        return $this;
     }
 
     /**
@@ -113,9 +112,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param Role $child
      *
-     * @return self
+     * @return void
      */
-    public function addChild(Role $child)
+    public function addChild(Role $child): void
     {
         if ($this->children->contains($child)) {
             return;
@@ -123,7 +122,6 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
         $this->children[$child->getName()] = $child;
         $child->setParent($this);
-        return $this;
     }
 
     /**
@@ -131,9 +129,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param Role $child
      *
-     * @return self
+     * @return void
      */
-    public function removeChild(Role $child)
+    public function removeChild(Role $child): void
     {
         if (!$this->children->contains($child)) {
             return;
@@ -141,17 +139,6 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
         $this->children->removeElement($child);
         $child->setParent(null);
-        return $this;
-    }
-
-    /**
-     * Get children
-     *
-     * @return Collection
-     */
-    public function getChildren()
-    {
-        return $this->children;
     }
 
     /**
@@ -159,34 +146,43 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @return bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return !$this->children->isEmpty();
     }
 
     /**
+     * Get children
+     *
+     * @return Role[]|Collection
+     */
+    public function getChildren(): iterable
+    {
+        return $this->children;
+    }
+
+    /**
      * Add users
      *
-     * @param Collection $users
+     * @param iterable $users
      *
-     * @return self
+     * @return void
      */
-    public function addUsers(Collection $users)
+    public function addUsers(iterable $users): void
     {
         foreach ($users as $user) {
             $this->addUser($user);
         }
-        return $this;
     }
 
     /**
      * Add user
      *
-     * @param ser $user
+     * @param User $user
      *
-     * @return self
+     * @return void
      */
-    public function addUser(User $user)
+    public function addUser(User $user): void
     {
         if ($this->users->contains($user)) {
             return;
@@ -194,22 +190,20 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
         $this->users[$user->getId()] = $user;
         $user->addRole($this);
-        return $this;
     }
 
     /**
      * Remove users
      *
-     * @param Collection $users
+     * @param iterable $users
      *
      * @return self
      */
-    public function removeUsers(Collection $users)
+    public function removeUsers(iterable $users): void
     {
         foreach ($users as $user) {
             $this->removeUser($user);
         }
-        return $this;
     }
 
     /**
@@ -217,9 +211,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param User $user
      *
-     * @return self
+     * @return void
      */
-    public function removeUser(User $user)
+    public function removeUser(User $user): void
     {
         if (!$this->users->contains($user)) {
             return;
@@ -227,10 +221,15 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
         $this->users->removeElement($user);
         $user->removeRole($this);
-        return $this;
     }
 
-    public function getUsers()
+
+    /**
+     * Get users
+     *
+     * @return User[]|Collection
+     */
+    public function getUsers(): iterable
     {
         return $this->users;
     }
@@ -238,16 +237,15 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
     /**
      * Add permissions
      *
-     * @param Collection $permissions
+     * @param iterable $permissions
      *
-     * @return self
+     * @return void
      */
-    public function addPermissions(Collection $permissions)
+    public function addPermissions(iterable $permissions): void
     {
         foreach ($permissions as $permission) {
             $this->addPermission($permission);
         }
-        return $this;
     }
 
     /**
@@ -255,9 +253,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param Permission $permission
      *
-     * @return self
+     * @return void
      */
-    public function addPermission(Permission $permission)
+    public function addPermission(Permission $permission): void
     {
         if ($this->permissions->contains($permission)) {
             return;
@@ -265,22 +263,20 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
         $this->permissions[$permission->getName()] = $permission;
         $permission->addRole($this);
-        return $this;
     }
 
     /**
      * Remove permissions
      *
-     * @param Collection $permissions
+     * @param iterable $permissions
      *
-     * @return self
+     * @return void
      */
-    public function removePermissions(Collection $permissions)
+    public function removePermissions(iterable $permissions): void
     {
         foreach ($permissions as $permission) {
             $this->removePermission($permission);
         }
-        return $this;
     }
 
     /**
@@ -288,9 +284,9 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @param Permission $permission
      *
-     * @return self
+     * @return void
      */
-    public function removePermission(Permission $permission)
+    public function removePermission(Permission $permission): void
     {
         if (!$this->permissions->contains($permission)) {
             return;
@@ -298,15 +294,14 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
 
         $this->permissions->removeElement($permission);
         $permission->removeRole($this);
-        return $this;
     }
 
     /**
      * Get permissions
      *
-     * @return Collection
+     * @return Permission[]|Collection
      */
-    public function getPermissions()
+    public function getPermissions(): iterable
     {
         return $this->permissions;
     }
@@ -318,7 +313,7 @@ class Role extends AbstractRbacEntity implements HierarchicalRoleInterface
      *
      * @return bool
      */
-    public function hasPermission($permission)
+    public function hasPermission($permission): bool
     {
         if ($permission instanceof Permission) {
             return $this->permissions->contains($permission);

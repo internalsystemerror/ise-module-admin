@@ -98,7 +98,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     /**
      * {@inheritDoc}
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getUsername();
     }
@@ -108,12 +108,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param string $id
      *
-     * @return self
+     * @return void
      */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = (string)$id;
-        return $this;
     }
 
     /**
@@ -121,7 +120,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -131,12 +130,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param string $username
      *
-     * @return self
+     * @return void
      */
-    public function setUsername($username)
+    public function setUsername($username): void
     {
         $this->username = (string)$username;
-        return $this;
     }
 
     /**
@@ -144,7 +142,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -154,12 +152,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param string $email
      *
-     * @return self
+     * @return void
      */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = (string)$email;
-        return $this;
     }
 
     /**
@@ -167,7 +164,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @return string
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -177,12 +174,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param string $password
      *
-     * @return self
+     * @return void
      */
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = (string)$password;
-        return $this;
     }
 
     /**
@@ -190,7 +186,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): string
     {
         return $this->displayName;
     }
@@ -200,12 +196,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param string $displayName
      *
-     * @return self
+     * @return void
      */
-    public function setDisplayName($displayName)
+    public function setDisplayName($displayName): void
     {
         $this->displayName = (string)$displayName;
-        return $this;
     }
 
     /**
@@ -213,7 +208,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @return int
      */
-    public function getState()
+    public function getState(): int
     {
         return $this->state;
     }
@@ -223,12 +218,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param int $state
      *
-     * @return self
+     * @return void
      */
-    public function setState($state)
+    public function setState($state): void
     {
         $this->state = (int)$state;
-        return $this;
     }
 
     /**
@@ -236,7 +230,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @return bool
      */
-    public function isBanned()
+    public function isBanned(): bool
     {
         return $this->banned;
     }
@@ -246,12 +240,11 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param bool $banned
      *
-     * @return self
+     * @return void
      */
-    public function setBanned($banned)
+    public function setBanned(bool $banned): void
     {
-        $this->banned = (bool)$banned;
-        return $this;
+        $this->banned = $banned;
     }
 
     /**
@@ -259,17 +252,16 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param Role $role
      *
-     * @return self
+     * @return void
      */
-    public function addRole(Role $role)
+    public function addRole(Role $role): void
     {
         if ($this->roles->contains($role)) {
-            return $this;
+            return;
         }
 
         $this->roles[$role->getName()] = $role;
         $role->addUser($this);
-        return $this;
     }
 
     /**
@@ -277,25 +269,24 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      *
      * @param Role $role
      *
-     * @return self
+     * @return void
      */
-    public function removeRole(Role $role)
+    public function removeRole(Role $role): void
     {
         if (!$this->roles->contains($role)) {
-            return $this;
+            return;
         }
 
         $this->roles->removeElement($role);
         $role->removeUser($this);
-        return $this;
     }
 
     /**
      * Get roles
      *
-     * @return Collection
+     * @return Role[]|Collection
      */
-    public function getRoles()
+    public function getRoles(): iterable
     {
         return $this->roles;
     }

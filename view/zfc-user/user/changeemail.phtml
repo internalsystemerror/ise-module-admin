@@ -4,6 +4,14 @@
  */
 declare(strict_types=1);
 
+use Zend\Form\Fieldset;
+use Zend\Form\Form;
+
+/**
+ * @var Form     $changeEmailForm
+ * @var Fieldset $buttons
+ */
+
 // Add buttons
 $factory = new \Ise\Bread\Factory\FormAbstractFactory;
 $factory->addButtonsToForm($changeEmailForm, 'Confirm');
@@ -15,7 +23,8 @@ $verifyEmail = $changeEmailForm->get('newIdentityVerify');
 $verifyEmail->setAttribute('type', 'email');
 
 // Set up cancel button
-$cancel = $changeEmailForm->get('buttons')->get('cancel');
+$buttons = $changeEmailForm->get('buttons');
+$cancel  = $buttons->get('cancel');
 $cancel->setAttribute('href', $this->url('zfcuser/profile'));
 
 // Prepare form

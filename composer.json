@@ -13,18 +13,26 @@
         "process-timeout": 5000,
         "sort-packages": true
     },
+    "repositories": [
+        {
+            "type": "github",
+            "url": "git@github.com:internalsystemerror/zf-doctrine-data-fixture.git"
+        }
+    ],
     "require": {
         "php": "^7.1",
-        "ise/ise-module-bread": "^1.0.0",
-        "zendframework/zend-navigation": "^2.9.0 ",
+        "ise/ise-module-bootstrap": "dev-develop",
+        "ise/ise-module-bread": "dev-develop",
+        "zendframework/zend-navigation": "^2.9.0",
         "zf-commons/zfc-rbac": "^2.6.3",
         "zf-commons/zfc-user-doctrine-orm": "^2.0.0"
     },
     "require-dev": {
+        "api-skeletons/zf-doctrine-data-fixture": "dev-feature/symfony-cli",
         "ise/php-metapackage-development": "^2.0.2"
     },
     "suggest": {
-        "ise/zf2-module-doctrinedatafixture": "To use doctrine fixtures"
+        "api-skeletons/zf-doctrine-data-fixture": "To use doctrine fixtures"
     },
     "autoload": {
         "psr-4": {

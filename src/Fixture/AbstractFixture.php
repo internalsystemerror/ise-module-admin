@@ -26,8 +26,9 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
      * Get list of modules
      *
      * @return array
+     * @throws \ReflectionException
      */
-    private static function getModulesList()
+    private static function getModulesList(): array
     {
         if (!self::$modulesList) {
             // Load application config
@@ -47,7 +48,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
     /**
      * {@inheritDoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         // Set manager
         $this->manager = $manager;
@@ -61,8 +62,10 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
 
     /**
      * Run the fixture
+     *
+     * @return void
      */
-    abstract protected function run();
+    abstract protected function run(): void;
 
 
     /**
@@ -71,8 +74,9 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
      * @param string $configName
      *
      * @return array
+     * @throws \ReflectionException
      */
-    protected function getFixtureConfig($configName)
+    protected function getFixtureConfig($configName): array
     {
         $modules     = self::getModulesList();
         $configFiles = [];
@@ -93,15 +97,8 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
      *
      * @return string
      */
-    protected function getDescriptionFromValue($value)
+    protected function getDescriptionFromValue($value): string
     {
-        if (is_array($value)) {
-            if (isset($value['description'])) {
-                return (string)$value['description'];
-            }
-            return '';
-        }
-
-        return (string)$value;
+        return (string)(is_array($value) ? $value['description'] : $value);
     }
 }

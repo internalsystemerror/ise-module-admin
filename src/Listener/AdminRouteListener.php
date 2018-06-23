@@ -6,13 +6,13 @@ declare(strict_types=1);
 
 namespace Ise\Admin\Listener;
 
-use Zend\EventManager\EventInterface;
+use Ise\Admin\Entity\User;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
 use Zend\EventManager\ListenerAggregateTrait;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Router\Http\RouteMatch;
+use Zend\Router\Http\RouteMatch;
 use Zend\View\Model\ViewModel;
 use Zend\View\Renderer\PhpRenderer;
 
@@ -24,26 +24,36 @@ class AdminRouteListener implements ListenerAggregateInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(EventManagerInterface $eventManager)
+    public function attach(EventManagerInterface $eventManager, $priority = 1): void
     {
-        $this->listeners[] = $eventManager->attach(MvcEvent::EVENT_DISPATCH, [$this, 'selectLayoutBasedOnRoute']);
+        $this->listeners[] = $eventManager->attach(
+            MvcEvent::EVENT_DISPATCH,
+            [$this, 'selectLayoutBasedOnRoute'],
+            $priority
+        );
     }
 
     /**
      * Select the admin layout based on route name
      *
-     * @param EventInterface $event
+     * @param MvcEvent $event
+     *
+     * @return void
      */
-    public function selectLayoutBasedOnRoute(EventInterface $event)
+    public function selectLayoutBasedOnRoute(MvcEvent $event): void
     {
-        $match          = $event->getRouteMatch();
+        $match = $event->getRouteMatch();
+        if (!$match instanceof RouteMatch) {
+            return;
+        }
+
         $serviceManager = $event->getApplication()->getServiceManager();
-        $viewModel      = $event->getResult();
-        if (!$match instanceof RouteMatch
-            || !$viewModel instanceof ViewModel
-            || $viewModel->terminate()
-            || !$serviceManager->has('ViewRenderer')
-        ) {
+        if (!$serviceManager->has('ViewRenderer')) {
+            return;
+        }
+
+        $viewModel = $event->getResult();
+        if (!$viewModel instanceof ViewModel || $viewModel->terminate()) {
             return;
         }
 
@@ -52,7 +62,13 @@ class AdminRouteListener implements ListenerAggregateInterface
         if (!$renderer instanceof PhpRenderer) {
             return;
         }
-        $this->setupLayoutBasedOnRoute($event->getTarget(), $match->getMatchedRouteName(), $renderer);
+
+        $controller = $event->getTarget();
+        if (!$controller instanceof AbstractController) {
+            return;
+        }
+
+        $this->setupLayoutBasedOnRoute($controller, $match->getMatchedRouteName(), $renderer);
     }
 
     /**
@@ -61,12 +77,19 @@ class AdminRouteListener implements ListenerAggregateInterface
      * @param AbstractController $controller
      * @param string             $matchedRouteName
      * @param PhpRenderer        $renderer
+     *
+     * @return void
      */
-    protected function setupLayoutBasedOnRoute(AbstractController $controller, $matchedRouteName, PhpRenderer $renderer)
-    {
-        if ($controller->identity()) {
+    protected function setupLayoutBasedOnRoute(
+        AbstractController $controller,
+        string $matchedRouteName,
+        PhpRenderer $renderer
+    ): void {
+        $user = $controller->plugin('identity')();
+        if ($user instanceof User) {
             $controller->layout('layout/admin');
-            return $this->configureViewForAdminLayout($renderer);
+            $this->configureViewForAdminLayout($renderer);
+            return;
         }
 
         if ($matchedRouteName === 'zfcuser/login'
@@ -74,7 +97,8 @@ class AdminRouteListener implements ListenerAggregateInterface
             || $matchedRouteName === 'zfcuser/authenticate'
         ) {
             $controller->layout('layout/login');
-            return $this->configureViewForLoginLayout($renderer);
+            $this->configureViewForLoginLayout($renderer);
+            return;
         }
     }
 
@@ -82,8 +106,10 @@ class AdminRouteListener implements ListenerAggregateInterface
      * Configure view for admin layout
      *
      * @param PhpRenderer $renderer
+     *
+     * @return void
      */
-    protected function configureViewForAdminLayout(PhpRenderer $renderer)
+    protected function configureViewForAdminLayout(PhpRenderer $renderer): void
     {
         $basePath = $renderer->basePath();
         $renderer->headTitle('Admin');
@@ -96,8 +122,10 @@ class AdminRouteListener implements ListenerAggregateInterface
      * Configure view for login layout
      *
      * @param PhpRenderer $renderer
+     *
+     * @return void
      */
-    protected function configureViewForLoginLayout(PhpRenderer $renderer)
+    protected function configureViewForLoginLayout(PhpRenderer $renderer): void
     {
         $basePath = $renderer->basePath();
         $renderer->headTitle('Login');

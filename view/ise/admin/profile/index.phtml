@@ -4,12 +4,20 @@
  */
 declare(strict_types=1);
 
+use Ise\Admin\Entity\User;
+use Zend\View\Helper\Gravatar;
+
+/**
+ * @var Gravatar $gravatar
+ * @var User     $user
+ */
+
 // Set up gravatar
 $gravatar = $this->gravatar();
 $gravatar->setEmail($user->getEmail());
 $gravatar->setImgSize(300);
 $gravatar->setDefaultImg(Zend\View\Helper\Gravatar::DEFAULT_IDENTICON);
-$gravatar->setAttribs(['class' => 'img-responsive img-thumbnail center-block']);
+$gravatar->setAttributes(['class' => 'img-responsive img-thumbnail center-block']);
 
 ?>
 <h1 class="page-header">

@@ -6,7 +6,9 @@ declare(strict_types=1);
 
 namespace Ise\Admin\Controller;
 
+use Ise\Admin\Entity\Role;
 use Ise\Bread\EventManager\BreadEvent;
+use Zend\Form\Form;
 
 class RoleController extends AbstractRbacController
 {
@@ -14,10 +16,12 @@ class RoleController extends AbstractRbacController
     /**
      * {@inheritDoc}
      */
-    public function updatePermanentEntity(BreadEvent $event)
+    public function updatePermanentEntity(BreadEvent $event): void
     {
-        if ($event->getEntity()->isPermanent()) {
-            $event->getForm()->setValidationGroup(['description', 'users']);
+        $entity = $event->getEntity();
+        $form   = $event->getForm();
+        if ($entity instanceof Role && $entity->isPermanent() && $form instanceof Form) {
+            $form->setValidationGroup(['description', 'users']);
         }
     }
 }

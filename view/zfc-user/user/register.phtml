@@ -4,6 +4,14 @@
  */
 declare(strict_types=1);
 
+use Zend\Form\Element;
+use Zend\Form\Form;
+
+/**
+ * @var Form    $registerForm ;
+ * @var Element $element      ;
+ */
+
 // Dont render if disabled
 if (!$this->enableRegistration) {
     return;

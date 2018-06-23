@@ -14,12 +14,12 @@ class RbacController extends AbstractActionController
 {
 
     /**
-     * @var RoleService
+     * @var BreadService
      */
     protected $roleService;
 
     /**
-     * @var PermissionService
+     * @var BreadService
      */
     protected $permissionService;
 
@@ -38,7 +38,7 @@ class RbacController extends AbstractActionController
     /**
      * {@inheritDoc}
      */
-    public function indexAction()
+    public function indexAction(): ViewModel
     {
         // Return view
         return new ViewModel([

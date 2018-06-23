@@ -4,10 +4,23 @@
  */
 declare(strict_types=1);
 
-function echoRoles($roles)
+use Ise\Admin\Entity\Role;
+
+/**
+ * Display the roles
+ *
+ * @param iterable $roles
+ *
+ * @return void
+ */
+function echoRoles(iterable $roles): void
 {
     echo '<ul>';
     foreach ($roles as $role) {
+        if (!$role instanceof Role) {
+            continue;
+        }
+
         echo '<li>', $role->getName(), '</li>';
         if (!$role->hasChildren()) {
             continue;
@@ -17,8 +30,6 @@ function echoRoles($roles)
     echo '</ul>';
 }
 
-;
-
 ?>
     <h1 class="page-header">
         Your dashboard
@@ -26,4 +37,4 @@ function echoRoles($roles)
     <p>
         You currently have access to the following roles:
     </p>
-<?php echo echoRoles($this->identity()->getRoles()) ?>
+<?php echoRoles($this->identity()->getRoles()) ?>

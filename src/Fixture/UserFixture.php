@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace Ise\Admin\Fixture;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Ise\Admin\Entity\Role;
 use Ise\Admin\Entity\User;
 
 class UserFixture extends AbstractFixture implements DependentFixtureInterface
@@ -24,8 +25,9 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * {@inheritDoc}
+     * @throws \ReflectionException
      */
-    protected function run()
+    protected function run(): void
     {
         // Create users from array
         echo '*************************', PHP_EOL;
@@ -40,8 +42,10 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
      * Create users from array
      *
      * @param array $data
+     *
+     * @return void
      */
-    protected function createUsers($data)
+    protected function createUsers($data): void
     {
         // Loop through data
         foreach ($data as $key => $value) {
@@ -54,8 +58,10 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
      *
      * @param string $name
      * @param array  $data
+     *
+     * @return void
      */
-    protected function createUser($name, array $data)
+    protected function createUser(string $name, array $data): void
     {
         // Create user
         echo 'Creating user "', $name, '"';
@@ -66,12 +72,15 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
         $user->setDisplayName($data['display_name']);
 
         // Add roles
-        if (isset($data['role'])) {
+        if ($data['role']) {
             echo ', with assigned roles:', PHP_EOL;
             $roles = array_merge([], (array)$data['role']);
             foreach ($roles as $role) {
-                echo "\t", '- ', $role, PHP_EOL;
-                $user->addRole($this->getReference('role-' . $role));
+                if (!$role instanceof Role) {
+                    continue;
+                }
+                echo "\t", '- ', $role->getName(), PHP_EOL;
+                $user->addRole($role);
             }
         }
 

@@ -4,6 +4,12 @@
  */
 declare(strict_types=1);
 
+use Zend\Form\Form;
+
+/**
+ * @var Form $loginForm
+ */
+
 // Prepare form
 $loginForm->setAttribute('action', $this->url('zfcuser/login'));
 $class = $loginForm->getAttribute('class');

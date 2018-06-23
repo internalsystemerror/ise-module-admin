@@ -4,7 +4,14 @@
  */
 declare(strict_types=1);
 
+use Doctrine\Common\Collections\Collection;
+use Ise\Admin\Entity\Role;
 use Ise\Bread\EventManager\BreadEvent;
+
+/**
+ * @var Role[]|Collection       $roles
+ * @var Permission[]|Collection $permissions
+ */
 
 $basePermission        = 'admin.rbac';
 $rolesPermission       = $basePermission . '.role';

@@ -10,6 +10,7 @@ use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
+use Zend\Mvc\Application;
 use ZfcRbac\View\Strategy\RedirectStrategy;
 use ZfcRbac\View\Strategy\UnauthorizedStrategy;
 
@@ -22,12 +23,16 @@ class Module implements
     /**
      * {@inheritDoc}
      */
-    public function onBootstrap(EventInterface $event)
+    public function onBootstrap(EventInterface $event): void
     {
+        $application = $event->getTarget();
+        if (!$application instanceof Application) {
+            return;
+        }
+
         // Get event manager
-        $target         = $event->getTarget();
-        $eventManager   = $target->getEventManager();
-        $serviceManager = $target->getServiceManager();
+        $eventManager   = $application->getEventManager();
+        $serviceManager = $application->getServiceManager();
 
         // Attach listeners
         $adminRouteListener = $serviceManager->get(Listener\AdminRouteListener::class);
@@ -48,15 +53,15 @@ class Module implements
     /**
      * {@inheritDoc}
      */
-    public function getConfig()
+    public function getConfig(): array
     {
-        return include realpath(__DIR__ . '/../config/module.config.php');
+        return require __DIR__ . '/../config/module.config.php';
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getModuleDependencies()
+    public function getModuleDependencies(): array
     {
         return [
             'Ise\Bootstrap',
