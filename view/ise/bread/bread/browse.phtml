@@ -1,4 +1,12 @@
-<?php use Ise\Bread\EventManager\BreadEvent ?>
+<?php
+/**
+ * @copyright 2018 Internalsystemerror Limited
+ */
+declare(strict_types=1);
+
+use Ise\Bread\EventManager\BreadEvent;
+
+?>
 <h1 class="page-header">
     Browsing <?php echo $entityTitle, substr($entityTitle, -1, 1) !== 's' ? 's' : null ?>
     <?php if ($this->isGranted($basePermission . '.' . BreadEvent::ACTION_CREATE)): ?>

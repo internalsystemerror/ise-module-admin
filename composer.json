@@ -3,6 +3,16 @@
     "description": "Administration module for Zend Framework 2 used by Internalsystemerror Limited",
     "license": "BSD-3-Clause",
     "homepage": "https://github.com/internalsystemerror/ise-module-admin",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "classmap-authoritative": true,
+        "discard-changes": true,
+        "optimize-autoloader": true,
+        "prepend-autoloader": true,
+        "process-timeout": 5000,
+        "sort-packages": true
+    },
     "require": {
         "php": "^7.1",
         "ise/ise-module-bread": "^1.0.0",
@@ -15,8 +25,6 @@
     "suggest": {
         "ise/zf2-module-doctrinedatafixture": "To use doctrine fixtures"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Ise\\Admin\\": "src"
@@ -34,12 +42,13 @@
         }
     },
     "scripts": {
-        "test": "phpunit -c ./phpunit.xml.dist",
-        "cs-fix": "phpcbf",
+        "analyse": "phpstan analyse -l 7 -c phpstan.neon config src",
         "cs-check": [
             "phpcs",
-            "phpmd ./config,./src,./test html --reportfile ./build/logs/phpmd.html --suffixes php,phtml ./phpmd.xml.dist",
-            "phpcpd . --exclude=assets --exclude=build --exclude=vendor "
-        ]
+            "phpmd ./config,./src,./test,./view html --reportfile ./build/logs/phpmd.html --suffixes php,phtml ./phpmd.xml.dist",
+            "phpcpd . --exclude=build --exclude=vendor"
+        ],
+        "cs-fix": "phpcbf",
+        "test": "phpunit -c ./phpunit.xml.dist"
     }
 }

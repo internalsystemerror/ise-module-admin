@@ -1,6 +1,12 @@
-<h1 class="page-header">
-    Editing Role: <em><?php echo $entity ?></em>
-</h1>
+<?php
+/**
+ * @copyright 2018 Internalsystemerror Limited
+ */
+declare(strict_types=1);
+?>
+    <h1 class="page-header">
+        Editing Role: <em><?php echo $entity ?></em>
+    </h1>
 <?php
 // Check if role is permanent
 if (!$entity->isPermanent()) {

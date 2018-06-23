@@ -1,6 +1,12 @@
-<h1 class="page-header">
-    Editing Permission: <em><?php echo $entity ?></em>
-</h1>
+<?php
+/**
+ * @copyright 2018 Internalsystemerror Limited
+ */
+declare(strict_types=1);
+?>
+    <h1 class="page-header">
+        Editing Permission: <em><?php echo $entity ?></em>
+    </h1>
 <?php
 // Check if permission is permanent
 if ($entity->isPermanent()) {

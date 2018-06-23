@@ -1,4 +1,9 @@
 <?php
+/**
+ * @copyright 2018 Internalsystemerror Limited
+ */
+declare(strict_types=1);
+
 $versionDatatables           = '1.10.13';
 $versionDatatablesResponsive = '2.1.1';
 
