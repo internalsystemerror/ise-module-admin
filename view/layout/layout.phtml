@@ -1,25 +1,25 @@
 <?php echo $this->doctype() ?>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <?php echo $this->headTitle('Internalsystemerror Limited') ?>
-        <?php echo $this->headMeta() ?>
-        <?php echo $this->headLink() ?>
-        <?php echo $this->headStyle() ?>
-        <?php echo $this->headScript() ?>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row">
-                <main class="col-sm-12">
-                    <?php
-                    echo $this->flashMessenger();
-                    echo $content;
-                    ?>
-                </main>
-            </div>
-            <?php echo $this->partial('partial/footer') ?>
-        </div>
-        <?php echo $this->inlineScript() ?>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('Internalsystemerror Limited') ?>
+    <?php echo $this->headMeta() ?>
+    <?php echo $this->headLink() ?>
+    <?php echo $this->headStyle() ?>
+    <?php echo $this->headScript() ?>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <main class="col-sm-12">
+            <?php
+            echo $this->flashMessenger();
+            echo $content;
+            ?>
+        </main>
+    </div>
+    <?php echo $this->partial('partial/footer') ?>
+</div>
+<?php echo $this->inlineScript() ?>
+</body>
 </html>

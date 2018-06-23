@@ -8,17 +8,17 @@ use Zend\View\Model\ViewModel;
 
 class RbacController extends AbstractActionController
 {
-    
+
     /**
      * @var RoleService
      */
     protected $roleService;
-    
+
     /**
      * @var PermissionService
      */
     protected $permissionService;
-    
+
     /**
      * Constructor
      *

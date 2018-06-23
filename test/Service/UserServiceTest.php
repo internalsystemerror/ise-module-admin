@@ -13,14 +13,6 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
     protected $object;
 
     /**
-     * Sets up the fixture
-     */
-    protected function setUp()
-    {
-        $this->object = new UserService;
-    }
-
-    /**
      * @covers Ise\Admin\Service\UserService::ban
      * @todo   Implement testBan().
      */
@@ -66,5 +58,13 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * Sets up the fixture
+     */
+    protected function setUp()
+    {
+        $this->object = new UserService;
     }
 }

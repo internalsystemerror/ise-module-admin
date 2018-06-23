@@ -19,20 +19,24 @@ class AdminActionController extends BreadActionController
      * @var string
      */
     protected $basePermission;
-    
+
     /**
      * {@inheritDoc}
      */
-    public function __construct(BreadEventManager $breadEventManager, ServiceInterface $service, ControllerOptions $options)
-    {
+    public function __construct(
+        BreadEventManager $breadEventManager,
+        ServiceInterface $service,
+        ControllerOptions $options
+    ) {
         parent::__construct($breadEventManager, $service, $options);
         $this->basePermission = $options->getBasePermission();
     }
-    
+
     /**
      * Check an index for permission
      *
      * @param BreadEvent $event
+     *
      * @throws UnauthorizedException
      */
     public function checkIndexPermission(BreadEvent $event)
@@ -41,11 +45,12 @@ class AdminActionController extends BreadActionController
             throw new UnauthorizedException;
         }
     }
-    
+
     /**
      * Check a read for permission
      *
      * @param BreadEvent $event
+     *
      * @throws UnauthorizedException
      */
     public function checkReadPermission(BreadEvent $event)
@@ -54,11 +59,12 @@ class AdminActionController extends BreadActionController
             throw new UnauthorizedException;
         }
     }
-    
+
     /**
      * Check a create for permission
      *
      * @param BreadEvent $event
+     *
      * @throws UnauthorizedException
      */
     public function checkCreatePermission(BreadEvent $event)
@@ -67,11 +73,12 @@ class AdminActionController extends BreadActionController
             throw new UnauthorizedException;
         }
     }
-    
+
     /**
      * Check a change for permission
      *
      * @param BreadEvent $event
+     *
      * @throws UnauthorizedException
      */
     public function checkChangePermission(BreadEvent $event)
@@ -80,7 +87,7 @@ class AdminActionController extends BreadActionController
             throw new UnauthorizedException;
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -89,7 +96,7 @@ class AdminActionController extends BreadActionController
         parent::attachDefaultIndexListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_INDEX, [$this, 'checkIndexPermission'], 850);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -98,7 +105,7 @@ class AdminActionController extends BreadActionController
         parent::attachDefaultReadListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_READ, [$this, 'checkReadPermission'], 850);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -107,7 +114,7 @@ class AdminActionController extends BreadActionController
         parent::attachDefaultCreateListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_CREATE, [$this, 'checkCreatePermission'], 850);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -116,7 +123,7 @@ class AdminActionController extends BreadActionController
         parent::attachDefaultUpdateListeners();
         $this->breadEventManager->attach(BreadEvent::EVENT_UPDATE, [$this, 'checkChangePermission'], 850);
     }
-    
+
     /**
      * {@inheritDoc}
      */

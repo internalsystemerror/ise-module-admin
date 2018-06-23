@@ -2,9 +2,9 @@
 
 namespace Ise\Admin\Listener;
 
+use Zend\EventManager\EventInterface;
 use Zend\EventManager\SharedEventManagerInterface;
 use Zend\EventManager\SharedListenerAggregateInterface;
-use Zend\EventManager\EventInterface;
 use Zend\View\Helper\Navigation\AbstractHelper;
 
 class RbacNavigationListener implements SharedListenerAggregateInterface
@@ -43,6 +43,7 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
      * Check navigation page for permission
      *
      * @param  EventInterface $event
+     *
      * @return boolean
      */
     public function accept(EventInterface $event)
@@ -52,8 +53,8 @@ class RbacNavigationListener implements SharedListenerAggregateInterface
         $accepted = true;
         $page     = $event->getParam('page');
         $rbac     = $event->getTarget()
-            ->getServiceLocator()
-            ->get('ZfcRbac\Service\AuthorizationService');
+                          ->getServiceLocator()
+                          ->get('ZfcRbac\Service\AuthorizationService');
 
         // Check permission
         $permission = $page->getPermission();

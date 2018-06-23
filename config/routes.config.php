@@ -61,7 +61,7 @@ return [
                                 BreadEvent::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
-                                'action' => 'ban'
+                                'action' => 'ban',
                             ],
                         ],
                     ],
@@ -73,7 +73,7 @@ return [
                                 BreadEvent::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
-                                'action' => 'unban'
+                                'action' => 'unban',
                             ],
                         ],
                     ],
@@ -104,7 +104,7 @@ return [
                         'options' => [
                             'route'    => '/edit',
                             'defaults' => [
-                                'action' => 'edit'
+                                'action' => 'edit',
                             ],
                         ],
                     ],
@@ -116,7 +116,7 @@ return [
                                 BreadEvent::IDENTIFIER => $uuidRegex,
                             ],
                             'defaults'    => [
-                                'action' => 'view'
+                                'action' => 'view',
                             ],
                         ],
                     ],

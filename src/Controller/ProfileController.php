@@ -47,29 +47,29 @@ class ProfileController extends AbstractActionController
     {
         $user = $this->identity();
         if (!$user) {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException;
         }
 
         $form = $this->userService->getForm(BreadEvent::FORM_UPDATE);
         $form->bind($user);
-        $prg  = $this->prg();
+        $prg = $this->prg();
 
         if ($prg instanceof ResponseInterface) {
             return $prg;
         } elseif ($prg !== false) {
             // Set id
             $prg[BreadEvent::IDENTIFIER] = $user->getId();
-            
+
             // Remove password
             unset($prg['password']);
             $form->remove('password');
             $form->getInputFilter()->remove('password');
-            
+
             // Remove email
             unset($prg['email']);
             $form->remove('email');
             $form->getInputFilter()->remove('email');
-            
+
             // Perform action
             if ($this->userService->edit($prg)) {
                 return $this->redirect()->toRoute('zfcuser/profile');
@@ -85,7 +85,7 @@ class ProfileController extends AbstractActionController
      */
     public function viewAction()
     {
-        $id   = (string) $this->params(BreadEvent::IDENTIFIER, '');
+        $id   = (string)$this->params(BreadEvent::IDENTIFIER, '');
         $user = $this->userService->read($id);
         if (!$user) {
             return $this->notFoundAction();

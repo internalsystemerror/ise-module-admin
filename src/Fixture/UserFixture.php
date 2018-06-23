@@ -2,8 +2,8 @@
 
 namespace Ise\Admin\Fixture;
 
-use Ise\Admin\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Ise\Admin\Entity\User;
 
 class UserFixture extends AbstractFixture implements DependentFixtureInterface
 {
@@ -64,7 +64,7 @@ class UserFixture extends AbstractFixture implements DependentFixtureInterface
         // Add roles
         if (isset($data['role'])) {
             echo ', with assigned roles:', PHP_EOL;
-            $roles = array_merge([], (array) $data['role']);
+            $roles = array_merge([], (array)$data['role']);
             foreach ($roles as $role) {
                 echo "\t", '- ', $role, PHP_EOL;
                 $user->addRole($this->getReference('role-' . $role));

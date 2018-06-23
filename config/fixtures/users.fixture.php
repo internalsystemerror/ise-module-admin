@@ -1,6 +1,6 @@
 <?php
 return [
-    'admin_demo'  => [
+    'admin_demo'      => [
         'role'         => 'admin',
         'email'        => 'admin@example.com',
         'display_name' => 'Admin User',
@@ -18,7 +18,7 @@ return [
         'display_name' => 'RBAC Admin User',
         'password'     => '$2y$14$zMHbytWzy0voD.0Ppzbmm.KbUHFSMsNycR43nORg0mKUb4ZgKxwGK',
     ],
-    'member_demo' => [
+    'member_demo'     => [
         'role'         => 'member',
         'email'        => 'member@example.com',
         'display_name' => 'Test User',

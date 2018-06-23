@@ -103,23 +103,12 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * Set id
      *
      * @param string $id
+     *
      * @return self
      */
     public function setId($id)
     {
-        $this->id = (string) $id;
-        return $this;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return self
-     */
-    public function setUsername($username)
-    {
-        $this->username = (string) $username;
+        $this->id = (string)$id;
         return $this;
     }
 
@@ -134,14 +123,15 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     }
 
     /**
-     * Set email
+     * Set username
      *
-     * @param string $email
+     * @param string $username
+     *
      * @return self
      */
-    public function setEmail($email)
+    public function setUsername($username)
     {
-        $this->email = (string) $email;
+        $this->username = (string)$username;
         return $this;
     }
 
@@ -156,14 +146,15 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     }
 
     /**
-     * Set password
+     * Set email
      *
-     * @param string $password
+     * @param string $email
+     *
      * @return self
      */
-    public function setPassword($password)
+    public function setEmail($email)
     {
-        $this->password = (string) $password;
+        $this->email = (string)$email;
         return $this;
     }
 
@@ -178,14 +169,15 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     }
 
     /**
-     * Set displayName
+     * Set password
      *
-     * @param string $displayName
+     * @param string $password
+     *
      * @return self
      */
-    public function setDisplayName($displayName)
+    public function setPassword($password)
     {
-        $this->displayName = (string) $displayName;
+        $this->password = (string)$password;
         return $this;
     }
 
@@ -200,14 +192,15 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     }
 
     /**
-     * Set state
+     * Set displayName
      *
-     * @param integer $state
+     * @param string $displayName
+     *
      * @return self
      */
-    public function setState($state)
+    public function setDisplayName($displayName)
     {
-        $this->state = (integer) $state;
+        $this->displayName = (string)$displayName;
         return $this;
     }
 
@@ -222,14 +215,15 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     }
 
     /**
-     * Set banned
+     * Set state
      *
-     * @param boolean $banned
+     * @param integer $state
+     *
      * @return self
      */
-    public function setBanned($banned)
+    public function setState($state)
     {
-        $this->banned = (boolean) $banned;
+        $this->state = (integer)$state;
         return $this;
     }
 
@@ -244,9 +238,23 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
     }
 
     /**
+     * Set banned
+     *
+     * @param boolean $banned
+     *
+     * @return self
+     */
+    public function setBanned($banned)
+    {
+        $this->banned = (boolean)$banned;
+        return $this;
+    }
+
+    /**
      * Add role
      *
      * @param Role $role
+     *
      * @return self
      */
     public function addRole(Role $role)
@@ -254,7 +262,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
         if ($this->roles->contains($role)) {
             return $this;
         }
-        
+
         $this->roles[$role->getName()] = $role;
         $role->addUser($this);
         return $this;
@@ -264,6 +272,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
      * Remove role
      *
      * @param Role $role
+     *
      * @return self
      */
     public function removeRole(Role $role)
@@ -271,7 +280,7 @@ class User extends AbstractEntity implements UserInterface, IdentityInterface
         if (!$this->roles->contains($role)) {
             return $this;
         }
-        
+
         $this->roles->removeElement($role);
         $role->removeUser($this);
         return $this;

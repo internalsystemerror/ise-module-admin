@@ -17,7 +17,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
      * @var ObjectManager
      */
     protected $manager;
-    
+
     /**
      * Get list of modules
      *
@@ -33,7 +33,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
                 if (!class_exists($className)) {
                     continue;
                 }
-                $reflection = new \ReflectionClass($className);
+                $reflection          = new \ReflectionClass($className);
                 self::$modulesList[] = dirname($reflection->getFileName());
             }
         }
@@ -47,14 +47,14 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
     {
         // Set manager
         $this->manager = $manager;
-        
+
         // Run
         $this->run();
 
         // Flush manager
         $this->manager->flush();
     }
-    
+
     /**
      * Run the fixture
      */
@@ -65,6 +65,7 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
      * Get fixture configuration
      *
      * @param string $configName
+     *
      * @return array
      */
     protected function getFixtureConfig($configName)
@@ -80,22 +81,23 @@ abstract class AbstractFixture extends AbstractDoctrineFixture
         }
         return Factory::fromFiles($configFiles);
     }
-    
+
     /**
      * Get description from value
      *
      * @param array|string $value
+     *
      * @return string
      */
     protected function getDescriptionFromValue($value)
     {
         if (is_array($value)) {
             if (isset($value['description'])) {
-                return (string) $value['description'];
+                return (string)$value['description'];
             }
             return '';
         }
-        
-        return (string) $value;
+
+        return (string)$value;
     }
 }

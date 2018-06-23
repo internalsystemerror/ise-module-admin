@@ -9,7 +9,7 @@ use Ise\Bread\EventManager\BreadEvent;
  */
 class UserController extends AdminActionController
 {
-    
+
     /**
      * {@inheritDoc}
      */

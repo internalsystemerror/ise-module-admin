@@ -13,14 +13,6 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     protected $object;
 
     /**
-     * Sets up the fixture
-     */
-    protected function setUp()
-    {
-        $this->object = new Role;
-    }
-
-    /**
      * @covers Ise\Admin\Entity\Role::getParent
      * @todo   Implement testGetParent().
      */
@@ -138,5 +130,13 @@ class RoleTest extends \PHPUnit_Framework_TestCase
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * Sets up the fixture
+     */
+    protected function setUp()
+    {
+        $this->object = new Role;
     }
 }

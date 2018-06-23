@@ -2,19 +2,19 @@
 
 namespace Ise\Admin\Listener;
 
+use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
 use Zend\EventManager\ListenerAggregateTrait;
-use Zend\EventManager\EventInterface;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\Http\RouteMatch;
-use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Model\ViewModel;
+use Zend\View\Renderer\PhpRenderer;
 
 class AdminRouteListener implements ListenerAggregateInterface
 {
-    
+
     use ListenerAggregateTrait;
 
     /**
@@ -38,7 +38,8 @@ class AdminRouteListener implements ListenerAggregateInterface
         if (!$match instanceof RouteMatch
             || !$viewModel instanceof ViewModel
             || $viewModel->terminate()
-            || !$serviceManager->has('ViewRenderer')) {
+            || !$serviceManager->has('ViewRenderer')
+        ) {
             return;
         }
 
@@ -54,8 +55,8 @@ class AdminRouteListener implements ListenerAggregateInterface
      * Setup layout based on route
      *
      * @param AbstractController $controller
-     * @param string $matchedRouteName
-     * @param PhpRenderer $renderer
+     * @param string             $matchedRouteName
+     * @param PhpRenderer        $renderer
      */
     protected function setupLayoutBasedOnRoute(AbstractController $controller, $matchedRouteName, PhpRenderer $renderer)
     {
@@ -63,10 +64,11 @@ class AdminRouteListener implements ListenerAggregateInterface
             $controller->layout('layout/admin');
             return $this->configureViewForAdminLayout($renderer);
         }
-        
+
         if ($matchedRouteName === 'zfcuser/login'
             || $matchedRouteName === 'zfcuser/register'
-            || $matchedRouteName === 'zfcuser/authenticate') {
+            || $matchedRouteName === 'zfcuser/authenticate'
+        ) {
             $controller->layout('layout/login');
             return $this->configureViewForLoginLayout($renderer);
         }

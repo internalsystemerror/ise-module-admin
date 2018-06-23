@@ -13,14 +13,6 @@ class RbacNavigationListenerTest extends \PHPUnit_Framework_TestCase
     protected $object;
 
     /**
-     * Sets up the fixture
-     */
-    protected function setUp()
-    {
-        $this->object = new RbacNavigationListener;
-    }
-
-    /**
      * @covers Ise\Admin\Listener\RbacNavigationListener::attachShared
      * @todo   Implement testAttachShared().
      */
@@ -54,5 +46,13 @@ class RbacNavigationListenerTest extends \PHPUnit_Framework_TestCase
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * Sets up the fixture
+     */
+    protected function setUp()
+    {
+        $this->object = new RbacNavigationListener;
     }
 }

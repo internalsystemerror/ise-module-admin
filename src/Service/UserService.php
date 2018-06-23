@@ -13,6 +13,7 @@ class UserService extends BreadService
      * Ban user
      *
      * @param array $data
+     *
      * @return boolean
      */
     public function ban(array $data)
@@ -33,6 +34,7 @@ class UserService extends BreadService
      * Unban user
      *
      * @param array $data
+     *
      * @return boolean
      */
     public function unban(array $data)

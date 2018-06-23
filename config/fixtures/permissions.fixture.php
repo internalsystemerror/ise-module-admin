@@ -14,11 +14,11 @@ return [
                     BreadEvent::ACTION_DELETE  => 'Delete an existing user',
                     BreadEvent::ACTION_ENABLE  => 'Enable a user',
                     BreadEvent::ACTION_DISABLE => 'Disable a user',
-                    'ban'                 => 'Ban a user',
-                    'unban'               => 'Unban a user',
+                    'ban'                      => 'Ban a user',
+                    'unban'                    => 'Unban a user',
                 ],
             ],
-            'rbac'  => [
+            'rbac' => [
                 'description' => 'Role based access control',
                 'children'    => [
                     'role'       => [
@@ -45,5 +45,5 @@ return [
             ],
         ],
     ],
-    'member' => 'Member access'
+    'member' => 'Member access',
 ];

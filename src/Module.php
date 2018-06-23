@@ -28,14 +28,14 @@ class Module implements
         // Attach listeners
         $adminRouteListener = $serviceManager->get(Listener\AdminRouteListener::class);
         $adminRouteListener->attach($eventManager);
-        
+
         $rbacNavigationListener = $serviceManager->get(Listener\RbacNavigationListener::class);
         $rbacNavigationListener->attachShared($eventManager->getSharedManager());
 
         // Attach ZfcRbac unauthorised strategy
         $unauthorisedStrategy = $serviceManager->get(UnauthorizedStrategy::class);
         $unauthorisedStrategy->attach($eventManager);
-        
+
         // Attach ZfcRbac redirect strategy
         $redirectStrategy = $serviceManager->get(RedirectStrategy::class);
         $redirectStrategy->attach($eventManager);

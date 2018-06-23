@@ -20,18 +20,6 @@ class AbstractRbacEntity extends AbstractBasicEntity
     protected $permanent = false;
 
     /**
-     * Set permanent
-     *
-     * @param boolean $permanent
-     * @return self
-     */
-    public function setPermanent($permanent)
-    {
-        $this->permanent = (boolean) $permanent;
-        return $this;
-    }
-
-    /**
      * Is permanent
      *
      * @return boolean
@@ -39,5 +27,18 @@ class AbstractRbacEntity extends AbstractBasicEntity
     public function isPermanent()
     {
         return $this->permanent;
+    }
+
+    /**
+     * Set permanent
+     *
+     * @param boolean $permanent
+     *
+     * @return self
+     */
+    public function setPermanent($permanent)
+    {
+        $this->permanent = (boolean)$permanent;
+        return $this;
     }
 }

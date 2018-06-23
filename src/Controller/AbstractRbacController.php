@@ -21,7 +21,7 @@ abstract class AbstractRbacController extends AdminActionController
      * @param BreadEvent $event
      */
     abstract public function updatePermanentEntity(BreadEvent $event);
-    
+
     /**
      * {@inheritDoc}
      */

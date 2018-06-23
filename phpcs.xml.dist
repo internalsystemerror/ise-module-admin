@@ -4,9 +4,12 @@
     <file>config</file>
     <file>src</file>
     <file>test</file>
+    <file>view</file>
 
     <arg name="report-full" value="./build/logs/phpcs.txt" />
     <arg name="extensions" value="php" />
+    <arg name="extensions" value="php.dist" />
+    <arg name="extensions" value="phtml" />
     <arg value="np" />
     <arg name="colors" />
     

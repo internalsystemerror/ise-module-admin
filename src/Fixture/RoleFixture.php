@@ -64,7 +64,7 @@ class RoleFixture extends AbstractFixture
         if (isset($value['permissions'])) {
             $this->addPermissionsToRole($role, $value['permissions']);
         }
-        
+
         // Persist role
         $this->manager->persist($role);
 
@@ -81,7 +81,7 @@ class RoleFixture extends AbstractFixture
     /**
      * Add permissions to role
      *
-     * @param Role $role
+     * @param Role  $role
      * @param array $permissions
      */
     protected function addPermissionsToRole(Role $role, array $permissions)

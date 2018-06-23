@@ -13,14 +13,6 @@ class AdminRouteListenerTest extends \PHPUnit_Framework_TestCase
     protected $object;
 
     /**
-     * Sets up the fixture
-     */
-    protected function setUp()
-    {
-        $this->object = new AdminRouteListener;
-    }
-
-    /**
      * @covers Ise\Admin\Listener\AdminRouteListener::attach
      * @todo   Implement testAttach().
      */
@@ -54,5 +46,13 @@ class AdminRouteListenerTest extends \PHPUnit_Framework_TestCase
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * Sets up the fixture
+     */
+    protected function setUp()
+    {
+        $this->object = new AdminRouteListener;
     }
 }

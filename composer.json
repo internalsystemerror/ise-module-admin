@@ -4,13 +4,13 @@
     "license": "BSD-3-Clause",
     "homepage": "https://github.com/internalsystemerror/ise-module-admin",
     "require": {
-        "php": "^5.6 || ^7.0",
-        "ise/ise-module-bread": "^1.0",
-        "zf-commons/zfc-user-doctrine-orm": "^1.0",
-        "zf-commons/zfc-rbac": "^2.5"
+        "php": "^7.1",
+        "ise/ise-module-bread": "^1.0.0",
+        "zf-commons/zfc-user-doctrine-orm": "^2.0.0",
+        "zf-commons/zfc-rbac": "^2.6.3"
     },
     "require-dev": {
-        "ise/php-metapackage-development": "^1.0"
+        "ise/php-metapackage-development": "^2.0.2"
     },
     "suggest": {
         "ise/zf2-module-doctrinedatafixture": "To use doctrine fixtures"

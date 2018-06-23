@@ -39,7 +39,7 @@ return [
                     'admin.rbac.permission.disable',
                 ],
             ],
-            'member' => [
+            'member'     => [
                 'description' => 'Logged in member',
                 'permissions' => [
                     'member',

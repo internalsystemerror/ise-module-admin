@@ -19,7 +19,7 @@ return [
         'previous_uri_query_key'         => 'redirect',
     ],
     'unauthorized_strategy' => [
-        'template' => 'error/403'
+        'template' => 'error/403',
     ],
     'guards'                => [
         'ZfcRbac\Guard\RouteGuard' => [

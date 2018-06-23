@@ -1,6 +1,7 @@
 <?php
 
-function echoRoles($roles) {
+function echoRoles($roles)
+{
     echo '<ul>';
     foreach ($roles as $role) {
         echo '<li>', $role->getName(), '</li>';
@@ -10,13 +11,15 @@ function echoRoles($roles) {
         echoRoles($role->getChildren());
     }
     echo '</ul>';
-};
+}
+
+;
 
 ?>
-<h1 class="page-header">
-    Your dashboard
-</h1>
-<p>
-    You currently have access to the following roles:
-</p>
+    <h1 class="page-header">
+        Your dashboard
+    </h1>
+    <p>
+        You currently have access to the following roles:
+    </p>
 <?php echo echoRoles($this->identity()->getRoles()) ?>

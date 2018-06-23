@@ -10,7 +10,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class ProfileControllerFactory implements FactoryInterface
 {
-    
+
     /**
      * {@inheritDoc}
      */
@@ -18,7 +18,7 @@ class ProfileControllerFactory implements FactoryInterface
     {
         return new $requestedName($container->get(BreadManager::class)->getService(UserService::class));
     }
-    
+
     /**
      * {@inheritDoc}
      */

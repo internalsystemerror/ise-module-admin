@@ -13,14 +13,6 @@ class NotCurrentUserAssertionTest extends \PHPUnit_Framework_TestCase
     protected $object;
 
     /**
-     * Sets up the fixture
-     */
-    protected function setUp()
-    {
-        $this->object = new NotCurrentUserAssertion;
-    }
-
-    /**
      * @covers Ise\Admin\Assertion\NotCurrentUserAssertion::assert
      * @todo   Implement testAssert().
      */
@@ -30,5 +22,13 @@ class NotCurrentUserAssertionTest extends \PHPUnit_Framework_TestCase
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * Sets up the fixture
+     */
+    protected function setUp()
+    {
+        $this->object = new NotCurrentUserAssertion;
     }
 }

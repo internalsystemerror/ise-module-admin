@@ -1,6 +1,6 @@
 <?php
 return [
-    'default'      => [
+    'default'   => [
         'index' => [
             'label'      => 'Dashboard',
             'route'      => 'admin',
@@ -38,19 +38,19 @@ return [
             'order'      => 1000,
             'permission' => 'member',
             'pages'      => [
-                'profile'     => [
+                'profile'  => [
                     'label'      => 'Edit Profile',
                     'route'      => 'zfcuser/profile/edit',
                     'icon'       => 'edit',
                     'permission' => 'member',
                 ],
-                'settings'    => [
+                'settings' => [
                     'label'      => 'Change Settings',
                     'route'      => 'zfcuser/profile/settings',
                     'icon'       => 'cog',
                     'permission' => 'member',
                 ],
-                'logout'      => [
+                'logout'   => [
                     'label'      => 'Logout',
                     'route'      => 'zfcuser/logout',
                     'class'      => 'no-ajax',

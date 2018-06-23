@@ -3,15 +3,15 @@
 namespace Ise\Admin\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
-use Ise\Admin\Entity\Role;
 use Ise\Admin\Entity\Permission;
+use Ise\Admin\Entity\Role;
 use Ise\Bread\ServiceManager\BreadManager;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class RbacControllerFactory implements FactoryInterface
 {
-    
+
     /**
      * {@inheritDoc}
      */
@@ -23,7 +23,7 @@ class RbacControllerFactory implements FactoryInterface
             $breadManager->getServiceFromEntityClass(Permission::class)
         );
     }
-    
+
     /**
      * {@inheritDoc}
      */

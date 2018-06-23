@@ -5,8 +5,8 @@ namespace Ise\Admin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use ZfcRbac\Permission\PermissionInterface;
 use Zend\Form\Annotation as ZF;
+use ZfcRbac\Permission\PermissionInterface;
 
 /**
  * @ORM\Entity
@@ -52,11 +52,12 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
         $this->roles = new ArrayCollection;
         parent::__construct();
     }
-    
+
     /**
      * Add roles
      *
      * @param Collection $roles
+     *
      * @return self
      */
     public function addRoles(Collection $roles)
@@ -71,6 +72,7 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      * Add role
      *
      * @param Role $role
+     *
      * @return self
      */
     public function addRole(Role $role)
@@ -78,7 +80,7 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
         if ($this->roles->contains($role)) {
             return $this;
         }
-        
+
         $this->roles[$role->getName()] = $role;
         return $this;
     }
@@ -87,6 +89,7 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
      * Remove roles
      *
      * @param Collection $roles
+     *
      * @return self
      */
     public function removeRoles(Collection $roles)
@@ -96,11 +99,12 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
         }
         return $this;
     }
-    
+
     /**
      * Remove permission
      *
      * @param Role $role
+     *
      * @return self
      */
     public function removeRole(Role $role)
@@ -108,7 +112,7 @@ class Permission extends AbstractRbacEntity implements PermissionInterface
         if (!$this->roles->contains($role)) {
             return $this;
         }
-        
+
         $this->roles->removeElement($role);
         return $this;
     }
